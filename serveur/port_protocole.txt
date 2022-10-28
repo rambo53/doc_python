@@ -1,0 +1,33 @@
+////////////////////////////////// PORT ET PROTOCOLE //////////////////////////////
+
+Pour envoyer des données on utilise une adresse IP, mais une adresse IP indique une machine, par exemple un serveur, mais pas l'application vers laquelle envoyé les données sur le serveur.
+Pour cela il faut communiquer le port.
+
+162.126.14.35
+** mon adresse IP **
+
+25
+** mon port **
+
+162.126.14.35:25 
+** ma socket **
+
+Il y a environ 65000 ports sur une machine, mais les ports de 0 à 1023 sont réservés pour des services spécifiques.
+
+//////////////////////////////
+
+Le port 80 est utilisé pour le web avec le protocole HTTP.
+
+Le port 21 est utilisé pour le transfert de fichier avec le protocole FTP.
+
+Le port 25 est utilisé pour le transfert de mail avec le protocole SMTP.
+
+Le port 53 permet d'associer un nom de domaine à une IP via le protocole DNS.
+
+Le port 67 pour le DHCP.
+
+//////////////////////////////
+
+Le protocole de transfert TCP est un protocole qui garantit le transfert de données, il est très utilisé avec HTTP SMTP et FTP.
+
+Le protocole de transfert UDP est quand à lui plus rapide mais n'assure pas la transmission de données.

@@ -1,0 +1,8 @@
+////////////////////////////////// OSI //////////////////////////////
+
+Open System Interconnection.
+
+C'est un standard de communication entre les machines.
+L'information passe par plusieurs couche avant d'être envoyé sur le réseau et repasse par ces mêmes étapes pour être décodés et lisible par l'utilisateur final.
+
+Chaque couche rajoute des informations dans le header qui serviront à la couche suivante pour appliqué le bon process.

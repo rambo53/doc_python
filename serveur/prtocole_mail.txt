@@ -1,0 +1,11 @@
+////////////////////////////////// PROTOCOLE MAIL //////////////////////////////
+
+Protocole SMTP pour simple mail transfer protocol.
+Port 25 pour le TCP.
+Port 587 ou 465 pour SSL.
+
+Protocole IMAP.
+Permet de synchroniser mes mails avec tous mes appareils, si il est lu sur PC apparait aussi en lu sur Tel.
+
+Protocole MAPI.
+Développé par microsoft, même avantages qu'au dessus avec gestion agenda en plus. 
