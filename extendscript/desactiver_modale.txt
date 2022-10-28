@@ -1,0 +1,14 @@
+////////////////////////////////// DESACTIVER MODALE //////////////////////////////
+
+
+Pour désactiver les modales d'infos utilisateur et ainsi gagner du temps :
+
+Par défaut l'interaction est active.
+
+- var userInteract = app.scriptPreferences.userInteractionLevel
+
+** active **
+
+- app.scriptPreferences.userInteractionLevel = UserInteractionLevels.NEVER_INTERACT;
+
+** désactivé **

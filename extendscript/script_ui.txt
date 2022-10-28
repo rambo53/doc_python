@@ -1,0 +1,38 @@
+////////////////////////////////// SCRIPT UI //////////////////////////////
+
+L'objet script ui utilise window pour générer une modale :
+
+function dlg(){
+
+	var w = new Window('dialog', 'nom de ma modale'),
+
+	urlPanel = w.add('panel',undefined, 'url du client'),
+
+	urlLabel = urlPanel.add('statictext', undefined, 'url :')	
+
+	urlInput = urlPanel.add('edittext', undefined, 'exemple/path/')
+	
+	w.show();
+}
+
+
+dlg();
+
+Pour fermer :
+
+W.close(1)
+
+//////////////////////////////
+
+Je peux attacher des événements sur ma modale :
+
+Function getFolder(){
+
+	var fo = Folder.selectDialog();
+	return fo;	
+}
+
+
+But.onClick = getFolder()
+
+

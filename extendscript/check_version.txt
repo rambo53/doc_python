@@ -1,0 +1,10 @@
+////////////////////////////////// CHECK VERSION //////////////////////////////
+
+Pour s'assurer de la compatibilité d'un script en cas de changement de version, je peux paramétrer
+La numéro de la version et lors du déroulement de mon script il m'affichera d'éventuels problèmes
+de compatibilté.
+
+- var numVersion = 6;
+
+- app.scriptPreferences.version = numVersion;
+

@@ -1,0 +1,19 @@
+////////////////////////////////// DEBUG CONSOLE ET FICHIER //////////////////////////////
+
+Pour afficher des logs dans ma console plutôt que d'utiliser alert pour vérifier le déroulement de mon script :
+
+- $.writeln("mon message")
+
+//////////////////////////////
+
+Pour générer un fichier de logs :
+
+- var logFile = File( Folder.desktop+"logs.txt");
+
+** desktop est là pour préciser qu'on va créer notre fichier sur notre bureau **
+
+- logfile.open('w');
+
+- logfile.write("mon message");
+
+- logfile.close();

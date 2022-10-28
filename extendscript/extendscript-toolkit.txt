@@ -1,0 +1,8 @@
+////////////////////////////////// EXTENDSCRIPT TOOLKIT //////////////////////////////
+
+Pour écrire des scripts je peux utiliser VS code avec le plugin "ExtendScript Debugger".
+
+Ou "exendscript toolkit" qui est un IDE spécifique à adobe.
+Pour y accéder je vais sur mon script dans ma modale et click droit dessus, puis modifier le script.
+Ou je fais une recherche dans la barre de recherche indesign.
+

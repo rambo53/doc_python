@@ -1,0 +1,20 @@
+////////////////////////////////// UNITE MESURE //////////////////////////////
+
+Pour créer et placer des éléments on peut utiliser différentes unités, les millimètres, les points...
+
+- MeasurementUnits.POINTS
+- MeasurementUnits.INCHES
+- MeasurementUnits.CENTIMETERS
+
+Pour sauvegarder ou même modifier les préférences de l'utilisateur :
+
+** récupère les préférences par défaut **
+
+- var monDoc = app.activeDocument;
+
+- var horizontal = monDoc.viewPreferences.horizontalMeasurementUnits;
+- var vertical = monDoc.viewPreferences.verticalMeasurementUnits;
+
+** set les préférences **
+
+- monDoc.viewPreferences.verticalMeasurementUnits = MeasurementUnits.MILLIIMETERS;

@@ -1,0 +1,13 @@
+////////////////////////////////// ANNULER SCRIPT //////////////////////////////
+
+Si j'ai exécuter un script dont je veux annuler le traitement avec juste "contrôle+Z", sans intervenir directement sur mon document.
+
+Exemple d'un script créant 50 éléments textframes, si je reviens sur mon document et que je veux annuler l'action avec "contrôle+Z" il me supprimera mes éléments 1 par 1 plutôt que mes 50.
+
+Pour contrer ça :
+
+function make50TF(){
+	script pour produire 50 textframes
+}
+
+- app.doScript("make50TF()", undefined, undefined, UndoModes.ENTIRE_SCRIPT, "make50TF");

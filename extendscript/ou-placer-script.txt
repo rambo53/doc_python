@@ -1,0 +1,18 @@
+////////////////////////////////// OU TROUVER MES SCRIPTS //////////////////////////////
+
+Dans l'onglet "Fenêtre" :
+- Utilitaires
+- Scripts
+
+Puis dans l'onglet "scripts" de la modale.
+Je retrouve un dossier applications, avec en son sein un dossier "samples" et "javascript", qui contient des script déjà inclus dans mes projets.
+
+//////////////////////////////
+
+Pour trouver des scripts en ligne sur "scriptopedia".
+
+//////////////////////////////
+
+Si un script en ligne m'intéresse, je peux le télécharger et ensuite dans in design je retourne sur ma modale de script, click droit sur utilisateur "faire apparaitre dans le finder" et je drag and drop dans mon panneau de script pour qu'il soit disponible dans le dossier "utilisateur".
+
+Pour l'appliquer je crée l'élément nécessaire, le sélectionne et je clique sur mon script dans ma modale.

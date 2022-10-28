@@ -1,0 +1,33 @@
+////////////////////////////////// RECUPERE DOCS //////////////////////////////
+
+Pour récupérer mes différents documents sous in design :
+
+- var docs = app.documents; 	** je récupère les docs depuis mon application app **
+
+Ici c'est un tableaux contenant mes docs.
+
+- var n = docs.length;
+
+//////////////////////////////
+
+Pour récupérer le contenu d'un dossier j'utilise la classe Folder :
+
+- var dossier = Folder("/adresse/de/mon/dossier")
+
+Pour vérifier que notre dossier existe bien :
+
+- dossier.exists;
+
+Pour le créer s'il n'existe pas :
+
+- dossier.create();
+
+//////////////////////////////
+
+Pour enregistrer un fichier :
+
+- var backupFile = File(dossier+"/"+docs[0].name+".indd")		
+
+** name pour récupérer le nom de mon doc et l'extension indd pour indesign **
+
+- docs[0].saveACopy(backupFile)

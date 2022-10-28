@@ -1,0 +1,17 @@
+////////////////////////////////// UTILISER AUTRE SCRIPT DANS SCRIPT COURANT //////////////////////////////
+
+Pour récupérer des méthodes ou des variables depuis un autre script jsp j'utilise :
+
+- $.evalfile("lechemin/demonscript")
+
+Si je déclare une méthode :
+
+Function ok(){
+	return "ok"
+}
+
+Dans un fichier "ok.jsx", et que je veux utiliser cette méthode dans un autre script jsx "useok.jsx" ici au même niveau :
+
+- $.evalfile("ok.jsx")
+
+- var okstr = ok()

@@ -1,0 +1,43 @@
+////////////////////////////////// DIALOG //////////////////////////////
+
+Pour créer une modale plus poussée avec de plus nombreux param :
+
+function dialogUser(){
+
+var dlg = app.dialogs.add({name:"doc to check"})
+
+with (dlg){
+	
+	with(dialogColumns.add()){
+		staticTexts.add({ staticLabels:"Infos création document indd :" });
+
+		with(borderPanels.add()){
+			with(dialogColumns.add()){
+
+				staticTexts.add({ staticLabels:"Path du fichier :" });
+			}	
+			with(dialogColumns.add()){
+				userResponse = textEditboxes.add({ editContents:"/exemple/depath/", minWidth: 50 });
+			}
+		}
+	}
+
+}
+
+	If (dlg.show() == 1){
+
+		userResponse = userResponse.editContents;
+	
+		return userResponse;
+
+	} 
+
+
+}
+
+
+- var response = dialogUser();
+
+** l'appel à dlg.show retourne 0 si user click sur annuler et 1 si user click sur ok **
+
+** editContents permet de récupérer la valeur de l'input **

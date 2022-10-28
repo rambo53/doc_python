@@ -1,0 +1,14 @@
+////////////////////////////////// OBJET //////////////////////////////
+
+Pour créer un objet, comme en js standard :
+
+- var monObjet = {
+		name: "toto",
+		age: 15
+	};
+
+- monObjet.surname = "titi";
+
+Pour inspecter mon objet :
+
+- alert(monObjet.toSource())

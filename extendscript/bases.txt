@@ -1,0 +1,74 @@
+////////////////////////////////// BASES //////////////////////////////
+
+Si j'ai besoin de débugger mon programme tout du long de son écriture, je peux utiliser :
+
+- alert()
+
+Ex :
+
+- alert(document.name)
+
+//////////////////////////////
+
+- var document = app.activeDocument;
+
+Pour accéder à indesign et au document courant (notre projet).
+
+- var newDoc = app.documents.add();
+- newDoc.name = "mon-nouveau-doc";
+
+Ici je crée un nouveau document et je le renomme.
+
+//////////////////////////////
+
+- Var layers = document.layers;
+
+Pour accéder aux différents calques de notre projet, c'est une liste qui contiendra l'ensemble de nos calques.
+
+- layers[0].name
+
+Pour accéder au nom de mon layer.
+
+- var newLayer = layers.add()
+
+Pour ajouter un layer à notre projet.	
+
+//////////////////////////////
+
+- var pages = document.pages;
+
+Pour accéder aux différentes p’ages disponibles sur mon projet.
+
+- var newPage = pages.add()
+
+Pour ajouter une page à notre projet.
+					
+//////////////////////////////
+
+- var swatches = app.swatches;
+
+Pour accéder aux nuanciers de couleurs sous indesign. Encore une fois il s'agit d'une liste, array.
+
+//////////////////////////////
+
+- var newTextFrame = newPage.textFrames.add();
+
+Pour ajouter un élément de texte.
+Je peux rajouter tous les éléments que je veux (buttons, checkboxes...).
+
+- newTextFrame.contents = "le contenu de mon text frame";
+
+Pour ajouter le texte que je veux dans mon textFrame que je viens de créer.
+
+- newTextFrame.geometricBounds = [5,5,10,10];
+
+Pour placer mon élément sur ma page, dans l'ordre [y1, x1, y2, x2].
+Par défaut l'unité de mesure pour les placements est le "picas", 1 picas = 12 points.
+
+- newTextFrame.verticalScale = 500
+- newTextFrame.horizontalScale = 700
+
+Pour modifier la taille de mon élément text frame.
+
+
+

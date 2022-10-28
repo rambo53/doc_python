@@ -1,0 +1,36 @@
+////////////////////////////////// INFO DU CLIENT //////////////////////////////
+
+Pour dialoguer avec mon utilisateur :
+
+- prompt("Quel est le nom du dossier?", "", "backupName");
+
+Bien sûr je peux récupérer la réponse dans une variable : 
+
+- var reponse = prompt("Quel est le nom du dossier?", "", "backupName");
+
+
+//////////////////////////////
+
+Pour récupérer un fichier :
+
+- var filterFunction = function(fileToCheck){
+		return /\.indd$/i.test(fileToCheck.name);
+	}
+
+- var fileToCheck = File.openDialog("Quel fichier voulez vous traiter?", filterFonction, true)
+
+** Permet de sélectionner un fichier sur ma machine, ma filterFonction est là pour bloquer l'import de fichier autre que "indd" via une regex, et true est pour indiquer que j'autorise l'import multiple de fichiers **
+
+Pour vérifier qu'un fichier à bien été sélectionné : 
+
+- if(! fileToCheck) alert("Veuillez choisir un fichier")
+
+//////////////////////////////
+
+Pour sélectionner un dossier :
+
+- var folderToCheck = Folder.selectDialog("Quel dossier voulez vous traiter?");
+
+** les fichiers seront automatiquement grisés **
+
+ 
