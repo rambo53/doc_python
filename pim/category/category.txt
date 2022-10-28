@@ -1,0 +1,5 @@
+//////////////////////////// CATEGORY //////////////////////////////////
+
+Un produit peut appartenir à plusieurs categories.
+
+On peut paramétrer des utilisateurs qui auront le droit de faire des modifications sur les produits.

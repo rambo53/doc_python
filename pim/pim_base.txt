@@ -1,0 +1,42 @@
+//////////////////////////// PIM BASE //////////////////////////////////
+
+Ont distingue le PIM et le DAM, le PIM étant pour des données textuelles froides (qui ne changent pas ou peu donc pas de stock par exemple), le DAM étant pour des données multimédia (photos, audio...).
+
+//////////////////////////////////
+
+Les éléments de base d'un pin sont les suivants :
+
+- catégories
+- produits
+- familles
+- assets
+- attributs
+- entités
+
+Une catégorie peut être par exemple un catalogue : bain, électricité, général...
+
+Dans cette catégorie j'ai des produits qui peuvent être communs à ces différentes catégories.
+Dans le catalogue bain je peux avoir le produits "vasque sdb céramique 40cm", que je vais aussi retrouver dans mon catalogue général.
+
+Mes produits sont regroupés dans des familles, et je peux avoir plusieurs familles, mon produit "vasque sdb céramique 40cm" peut être dans la famille "bains", puis "vasque" et aussi "marque".
+
+Mes produits ont des attributs telles que la taille, le poids, la matière...
+
+Mes produits ont des assets, qui sont des données multimédia stockés dans un DAM photos, audio...).
+
+Et mes attributs peuvent être des entités, c'est à dire un attribut avec lui même des attributs, par exemple : une couleur peut être enregistré en attribut produit comme "bleu" mais les attributs de cette couleur peuvent être :
+
+- désignation complète "bleu marine"  
+- visuel "lié à un visuel dans le dam"
+
+Pareil pour la marque qui peut être simplement "GSK" dans mon produit mais qui est une entité avec d'autres attributs :
+
+- nom complet "GlaxoSmithKline"
+- logo entreprise "lien vers dam"
+- adresse "mayenne" ...
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+//////////////////////////// FAMILLE //////////////////////////////////
+
+Une famille dans Akeneo est un ensembles d'attributs partagés par des produits qui en hériteront automatiquement.
+
+Un produit ne peut appartenir qu'à une seule famille.
+
+Les familles servent donc à créer des templates pour mes produits.
+
+
+

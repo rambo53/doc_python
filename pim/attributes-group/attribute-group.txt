@@ -1,0 +1,10 @@
+//////////////////////////// ATTRIBUTE GROUP //////////////////////////////////
+
+On peut créer des groupes d'attributs par produits, mais un attribut ne peut appartenir qu'à un seul groupe.
+
+Ainsi je peux déterminer facilement qui peut accéder à la modification de ces attributs au sein de l'entreprise.
+
+
+
+
+

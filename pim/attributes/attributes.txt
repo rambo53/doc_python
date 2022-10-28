@@ -1,0 +1,18 @@
+//////////////////////////// ATTRIBUTES //////////////////////////////////
+
+Un attribut est une caractéristique produit ex : taille, marque...
+
+Les attributs ont un type ex : text, boolean, image, fichier...
+
+Je peux attribuer des paramètres de validation à mes attributs ex : pas de nombre négatif, un certains nombre de char...
+
+Les attributs peuvent être configuré pour avoir différentes valeurs en fonction du média sur lequel ils seront diffusés.
+Pour cela je valide la possibilité de "Value per Channel".
+Ce sont des attributs que l'on appel "scopable".
+
+Je peux aussi les configurer en fonction de locales (fr-Fr, en-EN...), afin de mettre des traductions si nécessaire sur certains attribut comme la description. 
+
+
+
+
+

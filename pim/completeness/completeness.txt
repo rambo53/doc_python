@@ -1,0 +1,11 @@
+//////////////////////////// COMPLETENESS //////////////////////////////////
+
+Permet de définir quels attributs sont requis pour les produits de chaque familles avant de les rendre disponibles sur les différents canaux. 
+
+La completeness est calculé en fonction des attributs obligatoires remplis par rapport à la totalité des attributs obligatoires pour un produit.
+
+La completeness est calculé en fonction des locales, la "fr" peut être à 100% tandis ce que la "en" peut n'être qu'à 80%, mais aussi en fonction du channel de distribution (e-commerce, btob...).
+
+
+
+

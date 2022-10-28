@@ -1,0 +1,8 @@
+//////////////////////////// LOCALES //////////////////////////////////
+
+Les locales sont des paramètres qui permettent de définir des valeurs d'attributs ou des attributs spécifiques à une langue ou un endroit du globe.
+
+Par exemple le canada a le français et l'anglais en langues officielle, et pour des vêtements ils doivent faire figurer un attribut de protection pour les températures.
+
+Elle combine la langue et le pays.
+

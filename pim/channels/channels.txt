@@ -1,0 +1,7 @@
+//////////////////////////// CHANNELS //////////////////////////////////
+
+Les channels sont les différents réseaux sur lesquels seront distribués notre produit, internet, catalogue, b to b, b to c...
+
+Je peux modifier des valeurs d'attributs en fonction du channel de distribution.
+
+
