@@ -1,0 +1,38 @@
+////////////////////////////////////////// SSH //////////////////////////////////////////
+
+
+Protocole sécurisé et crypté pour connecter 2 machines entre elles, un pc avec un pc, un pc avec un serveur...
+Il utilise un chiffrement symétrique et asymétrique.
+
+Avec un chiffrement symétrique quand j'envoie une cmd vers une autre machine elle est crypté par une clés de chiffrement, qui est décrypté par mon autre machine avec la même clé.
+
+Le chiffrement asymétrique les 2 machines ne possèdent pas la même clés pour chiffrer et déchiffrer et avant toutes action elles s'envoient respectivement leurs clés de déchiffrage.
+
+Géré par le daemon SSHD.
+
+//////////////////////////////////////////
+
+Pour vérifier si SSH est installé sur ma machine j'utilise la cmd "ssh".
+
+Ensuite pour se connecter à la machine :
+
+- ssh root@51.178.31.212				**root est le nom d'utilisateur sur la machine distante, ça aurait pu être cam, crios... puis "@" et l'adresse ip de la machine distante**
+
+Ensuite on met yes pour établir la connection.
+Et enfin le password pour se connecter au serveur.
+
+Pour se déconnecter du serveur "exit".
+
+//////////////////////////////////////////
+
+En faisant "ll", j'ai un dossier ".ssh", en allant dessus j'ai un fichier "known_hosts" sur lequel est enregistré ma fingerprint.
+
+//////////////////////////////////////////
+
+Pour générer une clé de cryptage :
+
+- ssh-keygen
+
+Pour l'envoyer à ma machine distante :
+
+- ssh-copy-id -i ./id_rsa.pb root@51.178.31.212		**./id... est le fichier où est stocké notre keygen par défaut**

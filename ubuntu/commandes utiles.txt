@@ -1,0 +1,56 @@
+////////////////////////////////////////// COMMANDES UTILES //////////////////////////////////////////
+
+Pour vérifier où je suis dans mon terminal :
+
+- pwd
+
+//////////////////////////////////////////
+
+Pour nettoyer les commandes :
+
+- clear
+
+Pour récupérer la date :
+
+- date
+- date --utc				**pour récupérer la date utc, c'est à dire universelle**
+- date -u				**même commande du dessous en version courte**
+
+Pour afficher le calendrier :
+
+- cal
+- cal -A 3				**afficher détails des 3 mois suivants**
+
+Pour afficher message :
+
+- echo ici mon message à la suite
+
+
+Pour consulter mon historique de commandes :
+
+- history
+
+- !5				**une fois mon historique afficher je peux exécuter la commande en fonction de son id, ici 5**
+
+Pour revenir en début de commande :
+
+- ctrl+A
+
+- ctrl+E			**pour retourner à la fin**
+
+Si je n'ai plus la main sur mon terminal :
+
+- ctrl+C
+
+Pour couper/coller
+
+- ctrl+U
+- ctrl+Y
+
+Pour supprimer le lettre sur laquelle je suis avec mon curseur :
+
+- ctrl+D
+
+Pour supprimer toutes les instructions à la suite de mon curseur :
+
+- ctrl+K

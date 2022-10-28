@@ -1,0 +1,12 @@
+////////////////////////////////////////// MANUEL //////////////////////////////////////////
+
+Le manuel me sert pour consulter mes différentes commandes disponibles.
+Pour y accéder :
+
+- man nom de ma page
+
+ex : 
+
+- man cal			**affiche la page du manuel de mon cal**
+
+Je peux ensuite ouvrir un second onglet de mon terminal afin de tester ces méthodes.

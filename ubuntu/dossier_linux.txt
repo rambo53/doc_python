@@ -1,0 +1,25 @@
+ ////////////////////////////////////////// DOSSIERS LINUX //////////////////////////////////////////
+
+Si le répertoire ordinateur ne s'affiche pas directement aller sur autres emplacements.
+
+Il peut y avoir des fichiers cachés, ils commenceront par un point, je peux les afficher en cochant dans les options "affiché dossiers cachés".
+
+- bin = contient les fichiers binaire qui servent à utiliser les commandes de bases sur mon système et ce sans avoir de droits particuliers
+
+- boot = pour démarrer mon système d'exploitation
+
+- dev = contient les liens vers périphériques physiques ou virtuels
+
+- etc = logiciels configuration des logiciels installé sur ta machine
+
+- home = contient les dossiers des utilisateurs avec une session sur la machine
+
+- lib = pour les librairies
+
+- media = périphériques externes connectés, type clé USB
+
+- opt = librairie optionnelle à certains programme
+
+- root = dossier pour utilisateur ayant tous les droits sur la machine
+
+- srv = pour mes serveurs

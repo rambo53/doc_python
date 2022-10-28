@@ -1,0 +1,98 @@
+////////////////////////////////////////// FLUX //////////////////////////////////////////
+
+Flux standard utiliser par un processus pour communiquer avec l'utilisateur.
+
+3 types de flux :
+
+- Stdin = standard input 0 (clavier)
+- Stdout = standard output 1 (ecran)
+- Stderr = standard error 2 (ecran)
+
+//////////////////////////////////////////
+
+Si l'on veut écrire le retour dans un fichier plutôt que l'afficher dans le terminal :
+
+- ls 1> retour.txt
+
+Ainsi le flux de retour (1) sera inscrit dans un fichier retour.txt qui sera créé par la même occasion.
+
+- echo "Test d'écriture" 1> test_ecrit.txt		**mon fichier sera créé avec "Test d'écriture" à l'intérieur**
+
+- cat 1> cat.txt					**écrira tout ce que j'écris dans le terminal dans le fichier**
+
+- cat test_ecrit.txt retour.txt				**affiche le contenu de mes deux fichiers**
+
+- cat test_ecrit.txt retour.txt	1> global.txt  		**concatène le contenu pour l'écrire en un fichier**
+
+- cat 0< global.txt 1> concat.txt			**récupère le contenu de global et l'enregistre dans concat qui est créé au passage**
+
+//////////////////////////////////////////
+
+- echo "hello" 1> hello.txt
+- echo "bonjour" 1> hello.txt		**en faisant cela le contenu de mon fichier est écrasé**
+
+- echo "bonjour" 1>> hello.txt		**ici "bonjour" est ajouté à mon  fichier**
+
+//////////////////////////////////////////
+
+- cat hofzhefopn 2> error.txt		**le retour d'erreur sera enregistré dans mon fichier error.txt, puisque le dossier hofzhefopn 					n'existe pas**
+
+//////////////////////////////////////////
+
+On peut chainer les commandes avec des pipes '|' le "ou" en prog.
+
+-ls | cat > ls.txt			**ici on ne met pas de 1 devant > ça fonctionnera tout pareil, comme pour les commandes du dessus**
+
+//////////////////////////////////////////
+
+La commande wc permet de compter dans un fichier le nombres de lignes, de characters, ou de bytes.
+
+- wc test.txt
+
+**retourne par exemple "9 9 81 test.txt", ici notre fichier test.txt comporte : 9 lignes, 9 char et fait 81 bytes**
+
+Pour récupérer le nombre de lignes :
+
+- wc -l			** -m pour le nombre de char et -c pour les bytes **
+
+!!!! Attention en l'état si j'envoie mon flux vers un fichier je ne peux pas ensuite le passer à une autre commande.
+
+- ls > gaga.txt | wc -l			**le résultat sera 0 car mon flux est envoyé vers un fichiers à la première instruction**
+- ls | wc -l				**ici il sera par exemple de 8 car il n'est pas interrompue via un envoie vers fichier**
+
+//////////////////////////////////////////
+
+Pour envoyer le flux vers un fichier tout en continuant les instructions avec le flux récupérer, j'utilise la commande tee :
+
+- ls | tee gaga.txt | wc -l		**ici retourne 9 car mon fichier a été ajouter dans la liste retourner par ls**
+
+Si je veux rajouter à la suite du contenu de mon fichier la valeur 9 :
+
+- ls | tee gaga.txt | wc -l | xargs echo >> gaga.txt		**je rajoute xargs pour lui indiquer qu'il doit récupérer la valeur récupérer 								par la commande précédente afin de prendre cette valeur en paramètre, autrement 								echo seule n'accepte que les arguments passé à sa suite**
+
+//////////////////////////////////////////
+
+Pour mes flux j'ai des codes de retour, 0 indiquant que tout s'est bien passé, supérieur à 0 qu'il y a eu un problème.
+
+Je peux consulter le code de retour avec la commande echo :
+
+- ls 
+- echo $? 				**me retourne 0 car ma commande du dessus s'est bien passé**
+
+- cd hphofjrezz
+- echo $? 				**me retourne 1 car le dossier n'existe pas**
+
+!!!!!!!!!!!!!!! avec le shell le 0 = True l'inverse de la programmation !!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+//////////////////////////////////////////
+
+Si j'utilise le | pour 2 instructions :
+
+- ls | echo "luss"			**il m'affichera uniquement luss**
+
+- ls && echo "luss" 			**il m'affichera la liste avec ls et "luss" à la suite**
+
+- cd lghreviuep || echo "good"		**ici la première instruction ne fonctionne pas mais la deuxième s'exécute, par contre si la première 					s'exécute alors la deuxième ne passera pas**
+
+- cd ovnzezpodcn ; echo "hou"		**avec le ; les deux commandes s'exécute dans tous les cas, peut importe si le retour de la première 					commande est true ou false**

@@ -1,0 +1,11 @@
+////////////////////////////////////////// SCP //////////////////////////////////////////
+
+Pour le transfert de données depuis une connexion ssh vers un autre serveur :
+
+Ici par exemple, le "r" est pour récursif car je veux tous les fichiers, "P" est pour indiquer le port de connexion, puis le nom du serveur, l'adresse des fichiers à dupliquer, et en dernier paramètre l'adresse de la machine où je veux les récupérer, ici sur ma machine local, avec le path users et infoesl3 : 
+
+- scp -r -P 8568 root@217.109.11.217:/home/user/depose /users/infoesl3
+
+Pour envoyer depuis ma machine sur un serveur en ssh :
+
+- scp -P 8568 /users/infoesl3/Desktop/dossier_git_repo/magiline/main.py root@217.109.11.217:/root/easycom/magiline

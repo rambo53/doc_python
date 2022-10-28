@@ -1,0 +1,5 @@
+/////////////////// FDISK ///////////////////
+
+La commande fdisk n'ets accessible qu'en super user, root, elle me permet d'afficher les caractéristiques de ma machine et ses périphériques :
+
+- fdisk -l

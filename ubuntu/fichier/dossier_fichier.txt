@@ -1,0 +1,153 @@
+////////////////////////////////////////// FICHIER DOSSIERS //////////////////////////////////////////
+
+Pour vérifier où je suis dans mon terminal :
+
+- pwd
+
+Pour lister les dossiers présents dans mon répertoire actuel :
+
+- ls
+
+Pour lister les dossiers présents dans un dossier, ici Documents pour l'exemple :
+
+- ls Documents/
+
+**il y a un code couleur, blanc = fichier txt, rouge = dossier compressé(zip), bleu = un dossier, vert = un programme, turquoise = raccourci**
+
+Pour plus de détails sur le contenu de mon répertoire :
+
+- ls -l
+
+- ls -al 		**affichera aussi les fichiers cachés**
+
+Pour un affichage récursif, avec dons le détail au sein de chaques dossiers :
+
+- ls -R			**attention avec le R majuscule**
+
+//////////////////////////////////////////
+
+Pour me déplacer dans mes fichiers/dossier, ici Documents pour l'exemple :
+
+- cd Documents/	
+
+Pour revenir sur le dossier parent :
+
+- cd ..
+
+Pour désigner le dossier courant sans repartir du home :
+
+- cd .
+
+Pour revenir au home :
+
+- cd
+
+Pour remonter sur le root avec tous les dossiers linux :
+
+- cd /
+
+//////////////////////////////////////////
+
+Pour créer un dossier dans un dossier parent :
+
+- mkdir nom_de_mon_dossier
+
+Je peux créer plusieurs dossiers en même temps :
+
+- mkdir nom_de_mon_dossier1 nom_de_mon_dossier2 nom_de_mon_dossier3
+
+Je peux aussi utiliser le range :
+
+- mkdir {1..5}			**me créera 5 dossiers**
+
+Pour créer des dossiers les uns dans les autres :
+
+- mkdir -p A/B/C/D		**un dossier A est créé avec à l'intérieur un dossier B puis à l'intérieur du B un dossier C ...**
+
+//////////////////////////////////////////
+
+Pour créer un fichier :
+
+- touch test.txt
+
+Pour créer un fichier dans des répertoires imbriqués :
+
+- touch {A,A/B,A/B/C,A/B/C/D}/test.txt			**ici je crée un fichier test.txt dans chacun de mes dossiers A puis B puis C ...**
+
+//////////////////////////////////////////
+
+Pour créer un raccourci pointant vers un autre fichier :
+
+- ln -s test.txt raccourcitest			**en premier param le nom du fichier vers lequel je pointe et en deuxième le nom de mon 								raccourci** 
+
+//////////////////////////////////////////
+
+Pour supprimer un fichier dans mon terminal, attention celui ci ne passe pas par la corbeille et est donc définitivement supprimé :
+
+- rm test.txt
+
+Pour supprimer un dossier dans mon terminal, attention celui ci ne passe pas par la corbeille et est donc définitivement supprimé :
+
+- rm -r test.txt				**-r pour récusrsif**
+
+- rm -rf test.txt				**j'aoute un f pour forcer le remove sans demander la moindre validation**
+
+//////////////////////////////////////////
+
+Pour copier un fichier :
+
+- cp test.txt test2.txt				**je copie test et ma copie s'appelle test2**
+
+Pour un dossier :
+
+- cp -r dossier dossier2
+
+//////////////////////////////////////////
+
+Pour renommer un fichier/dossier :
+
+- mv test.txt testdeouf.txt			**premier param le fichier ou dossier à renommer, et deuxième param le nouveau nom**
+
+Pour déplacer un fichier dans un dossier :
+
+- mv test.txt dossier				**ici je ne renomme pas, j'envoie bien mon fichier**
+
+Pour déplacer un dossier dans un dossier :
+
+- mv dossier2 dossier				**ici je ne renomme pas, j'envoie bien mon dossier si il existe vers mon autre dossier**
+
+Pour renommer et déplacer un dossier :
+
+- mv dossier/dossier2 Musique/dossier2_devientdossierzic	**en premier param l'adresse dossier à déplacer, en deuxiéme l'adresse où je 								l'envoie avec son nouveau nom**
+
+//////////////////////////////////////////
+
+Je peux utiliser des caractères spéciaux pour aller plus vite, pour bouger plusieurs fichiers en même temps :
+
+- mv test.txt test2.txt test3.txt dossier		**je peux écrire de cette façon**
+
+- mv test* dossier					**ainsi tous les fichier commençant par test seront envoyés vers mon dossier**
+
+- mv dossier/* .					**ici je transfère tous les fichiers dans dossier vers le dossier courant symbolisé 							par le point**
+
+Si je ne veux que certains fichiers :
+
+- mv test[12]* dossier					**ici ce sera test1 puis test2 uniquement**
+
+- mv test[1-3]* dossier					**ici ce sera test1 jusqu'à test3 uniquement**
+
+- mv test[!1-3]* dossier				**ici test1 jusqu'à test3 ne seront pas envoyés, mais par exemple test4.txt oui**
+
+Si je veux remplacer un seul et unique caractère j'utilise :
+
+- mv test?.txt dossier
+
+**ici test1.txt sera pris en compte mais pas test10.txt car il y a deux caractères après test**
+
+Pour tout supprimer dans un dossier :
+
+- rm *
+
+Pour créer plusieurs fichiers :
+
+- touch test{4,5,6}.txt					**ainsi j'aurais test4.txt test5.txt test6.txt**

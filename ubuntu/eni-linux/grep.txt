@@ -1,0 +1,38 @@
+////////////////////////// GREP ////////////////////////// 
+
+La commande grep est pour faire des recherches dans un fichier ou dans le résultat d'une commande.
+Pour un fichier pour chercher un mot :
+
+- grep mot file.txt
+
+** affichera la ligne où le mot se trouve **
+
+- grep -i mot file.txt
+
+** affichera la ligne en étant insensible à la casse mot == MOT **
+
+- grep -c mot file.txt
+
+** affichera le nombre de fois où apparait ce mot ** 
+
+- grep -n mot file.txt
+
+** affichera le numéro de ligne ainsi que la ligne **
+
+//////////////////////////
+
+On peut bien sûr effectuer des recherches avec des regex :
+
+- grep -i [*t] file.txt
+
+** ici recherche tous les mots contenant un "t" **
+
+//////////////////////////
+
+Pour filtrer les résultat d'une commande :
+
+- ls Documents/ | grep [*.txt]
+
+** pour le "|" consulter doc sur le chainage des commandes, ici affichera uniquement les fichier avec une extension "txt" ** 
+
+

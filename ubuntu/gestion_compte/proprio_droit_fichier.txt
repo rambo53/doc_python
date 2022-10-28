@@ -1,0 +1,59 @@
+////////////////////////////////////////// PROPRIO DROIT FICHIER //////////////////////////////////////////
+
+En tant qu'user je suis proprio de mon répertoire, user crios possède répertoire crios dans home.
+Pour modifier cela :
+
+- sudo chown cam crios/			**ici cam deviens la proprio du répertoire de crios dans le home**
+
+- sudo chown cam:warrior crios/		**ici je modifie aussi son groupe primaire quis era maintenant warrior**
+
+Par contre le répertoire home s'appelera toujours "crios" et les fichier ou dossier à l'intérieur appartiennent toujours à crios.
+Pour parer à cela :
+
+- sudo chown cam:warrior crios/	-R 	**-R pour recursif**
+
+//////////////////////////////////////////
+
+Mes différents droits r w x sont associés à des valeurs chiffrées, r = 4, w = 2, x = 1.
+
+Pour modifier mes droits j'utilise la commande chmod à laquelle j'associe les droits en fonction du user, du groupe primaire et du groupe secondaire :
+
+- chmod 750 test.txt		**ici 7 correspond à mon user, 5 grp primaire, 0 grp secondaire**
+
+7 signifie que mon user a tous les droits, 4+2+1 = r+w+x, mon grp primaire 4+1 = r+x et secondaire n'a aucun droits 0.
+Pour définir mes droits j'additionne les valeurs chiffrés des droits que je veux attribuer, ex :
+
+- 7 = 4+2+1 = rwx
+- 4 = 4 = r--
+- 3 = 2+1 = -wx
+- 5 = 4+1 = r-x
+- 6 = 4+2 = rw-
+
+Et j'applique cette règle pour mes 3 colonnes, user, groupe primaire, et groupe secondaire.
+
+- chmod 750 test.txt		**et en dernier c'est le fichier sur lequel j'applique ces droits.**
+
+//////////////////////////////////////////
+
+Pour modifier les droits d'un user, d'un group ou des others.
+Ma colonne de droits est comme cela :
+
+drwxr-xr--	d est pour dossier, ensuite les 3 premier char sont pour mon user, puis group, puis others, soit :
+
+/Users/infoesl3/Desktop/dossier_git_repo/magiline/start_python_task.sh
+
+Si je veux modifier des droits :
+
+- chmod g-rx test.txt		**ici sur mon group (g) je retire les droit de lecture(r) et d'exécution(x)**
+- chmod u-w test.txt		**ici sur mon user (u) je retire les droits d'écriture(w)**
+
+Pour rajouter des droits :
+
+- chmod o+r test.txt		**ici sur mon other(o) j'ajoute les droit de lecture**
+
+
+
+
+
+
+

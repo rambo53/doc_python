@@ -1,0 +1,61 @@
+////////////////////////////////////////// CREER SCRIPT //////////////////////////////////////////
+
+Pour un fichier contenant un script bash, l'extension est ".sh", ici par exemple test.sh.
+Je commence toujours mes scripts par :
+
+- #!/bin/bash
+
+Ensuite j'écris mon script par exemple :
+
+- echo hello
+
+Pour exécuter mon script :
+
+- ./test.sh		**affichera hello**
+
+//////////////////////////////////////////
+
+Pour mettre un commentaire je met un # en début de ligne.
+
+//////////////////////////////////////////
+
+Pour déclarer des variables :
+
+mot=jump		**Pas d'espaces avec le =**
+
+Pour l'appeler plus loin dans mon script :
+
+- echo $mot		**un $ devant ma var comme php**
+
+Si la permission n'est pas accordé pour l'exécution utilisé :
+
+- chmod u+x test.sh		**x est pour l'exécution et u désigne mon user**
+
+//////////////////////////////////////////
+
+Quelques variables d'environnement :
+
+- $USER
+- $HOSTNAME
+- $?			**un boolean pour savoir si le processus précédent s'est bien passé**
+- $RANDOM		**un entier aléatoire**
+- $$ 			**pour afficher le pid du process actuel**
+- ${#mot}		**pour connaitre le nombre de char d'une variable**
+- $LINENO		**pour connaitre le numero de ligne où est rendu mon script**
+- $0			**pour le nom du script**
+
+Pour retrouver toutes les variables d'environnements de ma machine la commande :
+
+- env
+
+//////////////////////////////////////////
+
+Pour ajouter des args à mon script, lors de l'appel de mon script je lui passe :
+
+- ./test.sh argument1 argument2
+
+Ensuite dans mon script :
+
+- echo $1 $2 		**affichera "argument1 argument2" **
+
+- $@ 			**récupère tous les arguments passés**

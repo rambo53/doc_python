@@ -1,0 +1,5 @@
+////////////////////////////////////////// MULTIPLES TERMINAUX //////////////////////////////////////
+
+Pour ouvrir plusieurs terminaux de commande sous Mac j'utilise :
+
+- command+T

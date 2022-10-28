@@ -1,0 +1,19 @@
+/////////////////////////////////////////////// WC ///////////////////////////////////////////////
+
+La commande "wc" pour compter le nombre de lignes, de mots...
+
+- wc -l 
+
+** nombre de lignes **
+
+- wc -w 
+
+** nombre de mots **
+
+- wc -m 	
+
+** nombre de caratères **
+
+- wc -c 
+
+** nombre d'octets ** 

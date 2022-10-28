@@ -1,0 +1,60 @@
+////////////////////////////////////////// RECUP DATA //////////////////////////////////////////
+
+Pour la substitution, c'est dire à intégrer la valeur d'une variable dans une string :
+
+mot=bonjour
+
+echo "$mot, la forme?"		**affichera : bonjour, la forme?**
+
+!!ATTENTION IL FAUT UTILISER LES DOUBLES QUOTES "" !!
+
+Les simples quote '' afficheront le nom de ma variable = $mot.
+
+//////////////////////////////////////////
+
+Je peut faire des include dans mes scripts ex :
+
+Mon fichier "include.sh" contient :
+
+- echo $mot2
+
+///////////////////
+
+Ici mon fichier s'appel "test.sh" :
+
+- #!/bin/bash
+
+- mot=bonjour
+- export mot2=hello		**le mot clé export permet d'être récupérer par "include.sh"**
+
+- echo $mot
+
+- ./include.sh			**j'inclue le script du dessus**
+
+///////////////////
+
+Lors de l'appel de test.sh :
+
+bonjour
+hello				**l'instruction de mon include est bien appelé avec la valeur de la variable de mot2 contenu dans test.sh**
+
+//////////////////////////////////////////
+
+Pour stocker la valeur d'une commande dans une variable :
+
+- var=$(cat test.sh | head -n 1)
+
+- echo $var				**#!/bin/bash**
+
+//////////////////////////////////////////
+
+Pour récupérer les données entrées par mon user :
+
+- echo "comment vas?"
+- read response				**le mot clé read indique à ma machine de récupérer ce que mon user rentre avec son clavier**
+
+- echo $response
+
+- read -p "[user] :" response		**affiche "[user] :" à la suite de "comment vas?" pour faire comprendre à mon user qu'on attend sa 						réponse, bien sûr je peux remplacer user par ce que je veux **
+
+- read -sp "[mdp] :" mdp		**le s sert à cacher ce que mon user rentre**

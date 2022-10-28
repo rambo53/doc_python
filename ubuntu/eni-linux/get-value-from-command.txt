@@ -1,0 +1,15 @@
+/////////////// GET VALUE FROM A COMMAND ////////////////
+
+Pour stocker dans une variable le résultat d'une commande :
+
+- taille=$(wc -l file.txt)
+
+Ici taille sera égale par exemple à "54 file.txt"
+
+////////////////
+
+Mais je veux récupérer uniquement le nombre de lignes pas le nom du fichier.
+
+- nombre="$(cut -d" " -f1 <<< "$taille")"
+
+Equivalent à un split, ma commande cut, le d est le delimiter avec " " disant que ici c'est le caractère vide, -f1 que je récupère la première valeur (54) et que je fais ce traitement sur ma variable taille (54 file.txt).

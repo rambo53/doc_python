@@ -1,0 +1,15 @@
+////////////////////////////////////////// MODIFIER FICHIER //////////////////////////////////////////
+
+Pour modifier un fichier en ligne de commande j'utilise nano :
+
+- nano mon_fichier.txt
+
+Pour sortir j'utilise
+
+- control+X
+
+Puis Y.
+
+
+
+

@@ -1,0 +1,16 @@
+///////////// PARAMETRER VIM /////////////
+
+Pour ajouter des paramètres à vim je rentre la commande :
+
+- ~/.vimrc
+
+Pour me rendre dans le fichier de paramètrage.
+Ici je rajoute les options que je veux :
+
+- syntax on 
+
+** coloration syntaxique **
+
+- set number
+
+** ajouter numéros de lignes en début **

@@ -1,0 +1,35 @@
+////////////////////////////////////////// CALCULS //////////////////////////////////////////
+
+Pour déclarer un calcul, dans mon script :
+
+- let calcul=2+2
+
+- echo calcul
+
+Je peux incrémenter ma variable :
+
+- lest calcul++		**calcul vaudra 5**
+
+//////////////////////////////////////////
+
+Dans mon terminal directement avec la commande expr avec des espaces entre chiffres et operandes :
+
+- expr 2 + 2
+
+//////////////////////////////////////////
+
+Ou dans un script avec des espaces entre chiffres et operandes :
+
+- calcul=$( expr 1 + 1 )		**attention dans bash le char "*" est déjà utilisé, il faut faire un "\*" pour multiplier**
+
+- echo $calcul
+
+//////////////////////////////////////////
+
+Dans un script bash je peux substituer la commande expr avec des espaces entre chiffres et operandes :
+
+- calcul=$(( 2 + 2 ))		**avec 2 parenthèses ouvrante fermante**
+
+Autre avantage je ne suis plus obligé d'échapper le "*".
+
+- calcul=$(( 2 * 2 ))

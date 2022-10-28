@@ -1,0 +1,26 @@
+////////////////////////////////////////// GESTION SERVICES //////////////////////////////////////////
+
+Autrement appelé "Daemon".
+Géré en background par le "systemD" sur lequel on ne pas interagir en direct.
+C'est un processus qui tournera en arrière plan.
+Le serveur Apache est un daemon quand il est lancé.
+
+Par exemple un serveur FTP pour accéder à des dossier, des images... 
+
+Pour accéder à mes daemon :
+
+- cd /usr/lib/sytemd/
+
+Puis un ls pour afficher la liste de ces services.
+
+Pour les fichiers de configuration :
+
+- cd /etc/systemd/
+
+Puis un ls pour la liste.
+
+//////////////////////////////////////////
+
+Pour consulter les services tournant à l'instant t :
+
+- systemctl --type=service

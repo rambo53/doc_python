@@ -1,0 +1,10 @@
+////////////////////////////////////////// TAIL //////////////////////////////////////////
+
+Pour afficher les 10 dernières lignes de mon fichier, par exemple pour des logs :
+
+- tail logs.txt
+
+Pour afficher plus de lignes par exemples les 20 dernières lignes :
+
+- tail -20 logs.txt
+

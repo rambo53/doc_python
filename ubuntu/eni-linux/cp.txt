@@ -1,0 +1,16 @@
+/////////////////////////////////////////////// CP ///////////////////////////////////////////////
+
+Pour copier des fichier :
+
+- cp file.txt filecopie.txt
+
+Pour déplacer des fichier :
+
+- cp file.txt ./dossier/
+
+Pour déplacer plusieurs fichiers en une fois :
+
+- cp -rp file.txt file2.txt dossiermove dossierfinal
+
+** le -r est pour récursif, le "p" est pour preserve afin de garder les droits d'accès aux différents éléments, et le dernier arg est le dossier de destination, tous les args précédents sont des fichier ou dossier à déplacer ** 
+

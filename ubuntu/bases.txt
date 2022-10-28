@@ -1,0 +1,32 @@
+////////////////////////////////////////// BASES //////////////////////////////////////////
+
+Pour utiliser Ubuntu d'abord télécharger VirtualBox de oracle, puis télécharger Ubuntu.
+Créer une VM puis lui injecter Ubuntu.
+
+Démarrer la VM puis dans le terminal rentrer la commande suivante pour disposer de la redimension de ma fenêtre :
+
+-sudo apt install build-essential
+
+Ensuite onglet en haut 'périphériques' je clique sur 'insérez l'image cd'.
+Puis je redémarre pour activer les changements.
+
+!!! Attention le terminal n'est pas le shell, shell est un programme à part entière inclut dans mon système linux.
+
+//////////////////////////////////////////
+
+Le terminal me permet d'interagir directement avec mon système (ici ubuntu) sans passer par mon interface graphique.
+Au lancement de mon terminal il lira les variables d'environnements les PATH.
+
+Raccourcis pour le lancer :
+
+- ctrl+alt+T
+
+Pour le fermer :
+
+- ctrl+D
+
+//////////////////////////////////////////
+
+Comme en programmation le && veut dire "et".
+
+|| veut dire "ou".

@@ -1,0 +1,88 @@
+////////////////////////////////////////// ARCHIVER/COMPRESSER FICHIER //////////////////////////////////////////
+
+J'utilise la commande file pour par exemple connaitre la nature d'un fichier:
+
+- file test.txt 			**si le fichier est vide retourne empty, sinon retourne par exemple "ASCII text"**
+
+Je peux utiliser la même commande pour un programme.
+
+//////////////////////////////////////////
+
+Pour lire plus facilement les fichiers volumineux :
+
+- less test.txt
+
+Ou juste afficher les 10 premières lignes :
+
+- head test.txt
+- head -n 1 test.txt 			**Pour afficher juste la première ligne, bien sûr je peux mettre la valeur que je veux à la place de 1**
+
+Pour afficher les dernières lignes d'un fichier :
+
+- tail test.txt
+- tail -n 1 test.txt 
+
+//////////////////////////////////////////
+
+Pour momdifier le contenu d'un fichier :
+
+- nano test.txt				**je peux rajouter ce que je veux, ensuite j'enregistre avec la liste de commande qui s'affiche en bas**
+
+//////////////////////////////////////////
+
+Une archive n'est pas un dossier, je ne peux pas y accéder avec les commandes cd.
+Pour créer une archive de mes fichiers j'utilise la commande tar, qui me permettra de manipuler ces archives :
+
+- tar -c archive.tar 			**ici je crée mon archive que je nomme archive.tar**
+- tar -cf archive.tar *.txt		**ici en une ligne je crée une archive, je la nomme puis je lui inclut tous les fichiers avec 					l'extension .txt**
+
+Pour consulter le contenu de mon dossier archive.tar :
+
+- tar -tf archive.tar			**t est pour lister et f pour que je précise le dossier**
+
+Pour supprimer un fichier d'une archive :
+
+- tar --delete test1.txt -f archive.tar		**je précise après delete le fichier à sup' puis avec -f je lui indique l'archive de laquelle 						je veux le sup'**
+
+Pour ajouter un fichier dans une archive :
+
+- tar -r test9.txt -f archive.tar
+
+Pour extraire des fichiers d'une archive :
+
+- tar -xf archive.tar				**pour extraire tous les fichiers**
+- tar -x test1.txt -f archives.tar		**pour extraire 1 fichier**
+
+//////////////////////////////////////////
+
+Pour compresser je peux utiliser :
+
+- gzip
+- bzip2			**plus lent meilleure compression**
+- xz			**encore plus lent mais meilleure compression**
+
+Pour compresser mon fichier :
+
+- gzip test.html	
+
+Pour décompresser :
+
+- gzip -d test.html.gz
+
+Pour compresser en créant une copie du fichier :
+
+- gzip -k test.html
+
+Pour compresser tous les fichiers d'un dossier :
+
+- gzip -r mon_dossier			**utilise a récursivité pour tous compresser**
+
+Contrairement aux dossiers je peux compresser directement une archive :
+
+- gzip archives.tar
+
+//////////////////////////////////////////
+
+Je peux archiver et compresser en 1 ligne :
+
+- tar -czf archives2.tar.gz test?.txt		**ici je crée mon archive avec c, puis je compresse en gzip avce z, puis je nomme mon dossier 						avec f et enfin j'inclus tous les fichiers avec test +"n'importe quel caractère grâce à mon 						alias"+.txt**

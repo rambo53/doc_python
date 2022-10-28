@@ -1,0 +1,33 @@
+////////////////////////////////////////// FONCTIONNEMENT //////////////////////////////////////////
+
+Un programme est stocké sur un disque dur.
+Un processus est l'instance d'un programme qui sera stocké dans la RAM et qui aura besoin de ressources comme mon processeur.
+La sécurité lors de l'exécution de mon processus est géré par le kernel.
+Mon processus a 3 état, actif, en attente ou terminé.
+
+Au démarrage de ma machine j'ai mon OS qui démarre, puis le processus SYSTEMD avec le Pid1 toujours c'est le processus parent.
+
+//////////////////////////////////////////
+
+Pour consulter les processus en fonctionnement sur ma machine dans mon terminal :
+
+- ps
+		
+Retourne le pid, le tty soit le numero de terminal ouvert sur la machine si j'ouvre une deuxième fenêtre de terminal la valeur de TTY sera différente dans le deuxième, le time = le temps d'exécution sur la machine, et enfin la cmd est la commande dont est issue le processus.
+
+- ps -au
+
+Retourne plus d'infos comme qui a lancé quel processus, la conso du cpu, la conso de la RAM, l'heure à laquelle le processus a été lancé. 
+RSS = la consommation exacte de byte par celui ci.
+VSZ = la ressource de RAM max dont il pourrait avoir besoin.
+STAT = a différentes valeurs en fonction du statut, consultable avec "man ps" chapitre process state codes.
+
+- ps -aux	
+
+Retourne tous les processus de la machine.
+
+//////////////////////////////////////////
+
+- pstree		**Pour voir l'arbre de mes processus**
+- pstree | less		**conseillé car sinon données affichées trop conséquentes**
+- pstree -p | less	**pour afficher les id de mes processus**

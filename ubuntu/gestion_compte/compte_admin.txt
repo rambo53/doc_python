@@ -1,0 +1,75 @@
+////////////////////////////////////////// COMPTE ADMIN //////////////////////////////////////////
+
+Je crée un compte admin dans les param.
+
+Avec la commande "ll" je peux avoir un affichage plus détaillé que "ls", et avoir accés  notament aux droits utilisateurs.
+
+La première colonne correspond aux droits de lecture, d'écriture et d'exécution de programme.
+
+ex :	drwx		**d est pour dossier, quand c'est un fichier c'est un -, r=read, w=write, x=execute**
+
+La colonne suivante est le nombre d'élément dans mon dossier, il sera à 1 pour un fichier.
+La 3ième colonne est le nom de mon utilisateur avec lequel je suis connecté.
+La 4ième colonne est le groupe primaire, par défaut il est du même nom que ton compte que tu as créé.
+
+Si je reprend ma première colonne :
+
+- drwxrwx	**dossier,read,write,execute, et les 3 lettres suivantes sont les mêmes droit mais pour le groupe primaire, si mon utilisateur 				ou les membres du groupe n'ont pas le droit il y a un - **
+
+Les membres du groupe n'ont pas forcément les mêmes droits que mon utilisateur, et enfin les 3 dernières lettres de ma première colonne :
+
+- -rwxr-xr-x	**sont les droits du ou des groupes secondaires si il y en a ou si une personne est connecté sans session par exemple**
+
+//////////////////////////////////////////
+
+La commande id me permet de récupérer des infos sur mon compte, par exemple mon uid = user id, mon gid = group id, des groupes auquelles j'appartient, et si j'ai accès à la commande sudo.
+
+//////////////////////////////////////////
+
+La commande groups me permet de voir les groupes auxquelles j'appartient.
+
+Mais aussi auquelles appartiennent les autres comptes :
+
+- groups cam
+
+cam : cam sudo
+
+//////////////////////////////////////////
+
+- getent group			**me retourne la liste des groupe existant sur ma machine**
+
+//////////////////////////////////////////
+
+Pour se connecter à un autre compte j'utilise la commande su :
+
+- su cam
+
+Le terminal me demande le mot de passe et ensuite je suis sur le compte de la personne dans le terminal uniquement.
+Par défaut il reste sur le dossier home de mon utilisateur précédent, pour pouvoir faire des actions dans le compte cam j'utilise la commande cd pour retourner à "cam@ko-Virtualbox" et ainsi pouvoir faire un cd sur le compte cam et effectuer des actions.
+
+Pour sortir du compte je fait "exit" puis entrée.
+
+Pour se connecter directement au home de cam :
+
+- su - cam			**il me redemande le mdp mais se placera direct sous le home de cam**
+
+//////////////////////////////////////////
+
+Pour se connecter au root je ne peux pas utiliser "su root" mais j'utilise :
+
+- sudo su - root			**il me demande mon mdp si je suis admin**
+
+//////////////////////////////////////////
+
+Pour sup un user :
+
+- sudo deluser cam
+
+Mais son dossier sous home est toujours existant, pour supprimer définitivement le compte et son répertoire :
+
+- sudo rm -rf cam/
+
+
+
+
+ 

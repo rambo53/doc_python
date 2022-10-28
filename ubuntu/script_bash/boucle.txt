@@ -1,0 +1,103 @@
+////////////////////////////////////////// BOUCLE ET FONCTIONS //////////////////////////////////////////
+
+Pour une boucle while :
+
+- num = 1
+
+- while [ $num -le 10 ]			**plus petit ou egale**
+- do
+-  echo $num
+-  let num++
+- done
+
+//////////////////////////////////////////
+
+Pour une boucle for :
+
+- villes="Mayenne Aron Laval"
+
+- for ville in $villes
+- do
+-  if [ $ville = "Aron" ]
+-  then
+-   continue				**continue est là pour indiquer qu'il faut quand même continuer l'instruction tout en sautant cette 					étape, ici afficher Aron, puisque avec cette condition et continue "Aron" ne sera pas affiché 					contrairement aux autres**
+-  fi
+-  echo $ville
+- done
+
+//////////////////////////////////////////
+
+Pour une boucle for avec break:
+
+- villes="Mayenne Aron Laval"
+
+- for ville in $villes
+- do
+-  if [ $ville = "Aron" ]
+-  then
+-   break				**si ma ville est = à Aron alors je stop ma boucle**				
+-  fi
+-  echo $ville
+- done
+
+//////////////////////////////////////////
+
+Pour do while :
+
+- num = 1
+
+- until [ $num -gt 10 ]			**plus grand**
+- do
+-  echo $num
+-  let num++
+- done
+
+//////////////////////////////////////////
+
+Les fonctions dans mon script :
+
+- function demo { 
+-  echo test
+- }
+
+- demo				**j'appel ma fonction demo qui affiche test**
+
+
+Autre façon :
+
+- demo() {
+-  echo test
+- }
+
+- demo
+
+Pour passer des param dans mon script lors de l'appel de fonction:
+
+- demo() {
+-  echo $@			**$@ affichera "ok affiche" mais $1 affichera "ok" le @ prend tous les param**
+- }
+
+- demo ok affiche
+
+//////////////////////////////////////////
+
+Une variable est globale par défaut:
+
+- demo() {
+-  let calcul=1+1
+- }
+
+- demo
+- echo $calcul			**affichera 2**
+
+Pour rendre ma variable locale :
+
+- demo() {
+-  local phrase=$@			**var phrase = exemple pour locale**
+- }
+
+- demo exemple pour locale
+
+
+
+

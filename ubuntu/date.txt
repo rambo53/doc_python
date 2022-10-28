@@ -1,0 +1,29 @@
+////////////////////////////////////////// DATE //////////////////////////////////////////
+
+Pour récupérer la date sur le serveur, qui peut être différentes de mon fuseau horaire.
+
+- date
+
+Pour afficher des infos sur ma date à la suite de ma commande :
+
+- date "+Nous sommes %A"
+
+** Nous sommes Lundi **
+
+A majuscule est le jour écrit en entier, le a minuscule est son abréviation.
+
+%Y pour l'année
+%m pour le mois
+%d pour le numéro du jour
+%D pour la date au format mois/jour/année
+%T pour l'heure
+%H pour l'heure
+%M pour les minutes
+%S pour les secondes
+%B pour le mois en entier
+
+//////////////////////////////////////////
+
+Pour stocker la date dans une variable :
+
+Datedujour=$(date)

@@ -1,0 +1,87 @@
+////////////////////////////////////////// CHERCHER FICHIER //////////////////////////////////////////
+
+On va utiliser la commande locate, par défaut elle n'est pas installé, pour cela on utilise :
+
+- sudo apt install locate			**sudo est la commande super utilisateur**
+
+Le terminal nous demande notre mot de passe.
+
+Puis on peut chercher un fichier :
+
+- locate .conf			**il nous renverra tous les fichiers contenant ".conf" peut importe ce qu'il y a avant ou après, ex 				'toto.conf' ou "toto.configuration.txt"**
+
+- locate -r .conf$ 		**le r indique que j'utilise une regex et le dollar signifie que je ne souhaite que les extensions .conf avec 				rien à la suite**
+
+Attention locate est sensible à la casse, pour pallier à ce soucis :
+
+- locate -i TEST.txt
+
+//////////////////////////////////////////
+
+Locate utilise une bdd pour gérer nos fichiers/dossiers, pour consulter le détails de celle ci :
+
+- locate -S		**attension grand S**
+
+La mise à jour n'est pas instantannée, si je rajoute des fichiers, la bdd ne sera pas actualisé, elle l'est une fois par jour, mais je peux 
+forcer la mise à jour avec :
+
+- sudo updatedb
+
+//////////////////////////////////////////
+
+Pour récupérer le path complet d'un fichier, je me place dans le répertoire puis je rentre le nom complet de mon fichier :
+
+- locate test.txt
+
+/home/stef/Dossier/test.txt		**exemple**
+
+Pour vérifier si le fichier existe toujours :
+
+- locate -e test.txt			**si je n'ai pas de retour de path alors le fichier n'existe plus**
+
+//////////////////////////////////////////
+
+Pour connaitre le détails de mon répertoire et de chaque dossiers :
+
+- find .		**il m'affichera le détail de chaque dossier de façon récursive**
+
+Pour limiter la récursivité et la profondeur de recherche :
+
+- find . -maxdepth 1		**il me retourne uniquement les dossiers et fichiers présent dans mon répertoire, bien sûr je peux modifier la 						profondeur à volonté, le 1**
+
+Pour récupérer uniquement les dossiers :
+
+- find . -type d			**pour les fichiers je remplace le d par le f**
+
+- find . maxdepth 1 -type d
+
+//////////////////////////////////////////
+
+Pour retrouver des fichiers/dossiers dans mon arborescence :
+
+- find . maxdepth 1 -type f -name test.txt
+
+//////////////////////////////////////////
+
+Pour chercher en fonction de la taille de mes fichiers : 
+
+- find ~ -type f -size +50M		**le ~ est là pour indiquer que je part de mon home, ensuite +50M est pour plus de 50 mega**
+
+Je peux utiliser les giga avec G majuscule et k en minuscule pour les kilo.
+Pour les compter :
+
+- find ~ -type f -size +50M | wc -l		**wc et l pour compter les lignes de mon flux et donc le nombre de fichiers pesant plus de 50 						mega**
+
+Si je veux rajouter des critères de recherches :
+
+- find ~ -type f -size +50M -o -size -100k		**o est pour or, ainsi il vérifie mes deux conditions**
+
+//////////////////////////////////////////
+
+Pour déplacer un flux vers un autre répertoire :
+
+- find -name toto* -exec mv {} ~/Documents/\;		**avec exec j'enchaine les commande, {} est un tableau si jamais j'ai plusieurs 									retour, donc plusieurs fichiers avec toto, ensuite je l'envoie dans mon répertoire 									Documents, je fini toujours mon instruction par \?**
+
+En cas d'erreur type param manquants :
+
+- find -name toto* -exec mv -t ~/Documents/ {} \;	**t indiquant l'emplacement vers lequel mon fichier sera envoyé et mes {} le ou les 							fichiers à envoyer**

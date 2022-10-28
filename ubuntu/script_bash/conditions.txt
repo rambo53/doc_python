@@ -1,0 +1,58 @@
+////////////////////////////////////////// CONDITIONS //////////////////////////////////////////
+
+Je peux faire un test directement dans mon terminal :
+
+- test 12 = 12			**après ma commande test je passe mon test, avec des espaces, ici mes chiffres sont comparés en tant que 				string**
+- test -eq 12 = 12		**ici mes chiffres seront comparés en tant que int**
+
+- test 12 -ne 12		**not equal**
+
+- test 12 -ge 12		**plus grand ou egale**
+
+- test 14 -gt 12		**greater than test si le premier int est plus garnd que le 2ième**
+
+- test 12 -lt 12		**less than, plus petit**
+
+- test -z ""			**vérifie si la taille d'une chaine de caractère est de 0**
+
+//////////////////////////////////////////
+
+- test -e ./test.txt		**vérifie si le fichier existe**
+
+- test -d ./test.txt		**vérifie si il existe et si c'est bien un dossier**
+
+//////////////////////////////////////////
+
+Pour tester une condition dans un script bash :
+
+- read -p "quel age?" age
+
+- if [ $age -ge 18 ]			**crochet et non parenthèse et ne pas oublier espaces**
+- then					**toujours then après la condition**
+-  echo tu es majeur
+- elif [ $age -gt 150 ]
+- then
+-  echo impossible
+- else
+-  echo tu es mineur
+- fi					**fi pour marquer la fin de la condition**
+
+//////////////////////////////////////////
+
+Pour un switch, par exmple j'appel mon script en lui passant un param :
+
+- ./script.sh start		**start est mon param**
+
+- case $1 in 				**$1 recupère mon param**
+-	start)				**si mon param vaut start**
+-	 echo serveur ok
+-	 ;;				**fin de cas**
+-	stop)			
+-	 echo serveur down
+-	 ;;
+-	*)				** l'étoile est là pour dire dans tous les autres cas en dehors de start et stop**
+-	 echo pas compris
+-	 ;;
+- esac					**esac est pour indiquer la fin de mon switch**
+
+

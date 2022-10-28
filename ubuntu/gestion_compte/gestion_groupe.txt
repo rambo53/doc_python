@@ -1,0 +1,76 @@
+////////////////////////////////////////// GESTION GROUPE //////////////////////////////////////////
+
+Pour ajouter un groupe sur ma machine :
+
+- sudo addgroup warrior			**warrior est le nom de mon groupe, il enregistre le groupe et me renvoie son gid**
+
+Pour ajouter un utilisateur dans un groupe :
+
+- sudo usermod -g warrior cam		**1er param le nom de mon groupe, second mon utilisateur ici cam**
+
+- sudo usermod -aG gaga,gogo cam	**pour passer cam dans plusiseurs groupes, le -a est pour append et le G maj est pour une liste de 					groupes**
+
+Pour activer cette modification je dois redémarrer ma machine et ainsi le groupe primaire de cam devient warrior quand je tape id.
+
+Pour consulter les droits j'utilise soit la commande "ll" qui m'affichera même les dossiers ou fichiers cachés.
+Sinon "ls -l" pour les dossiers non cachés.
+
+//////////////////////////////////////////
+
+Pour voir tous les comptes qui font partie du groupe warrior :
+
+- getent group warrior
+
+//////////////////////////////////////////
+
+Pour sup un groupe :
+
+- sudo delgroup warrior				**Si le groupe est le groupe primaire d'un compte, je déplace l'utilisateur dans un autre groupe 						"sudo usermod -g warrior cam"**
+
+//////////////////////////////////////////
+
+Pour créer un compte depuis le terminal :
+
+- sudo adduser crios		**la machine crééra un compte primaire crios et son espace home**
+
+Je lui affecte un mdp puis je confirme, ensuite je peux affecter un nom complet, téléphone... je tape entrée pour sauter ces étapes.
+
+//////////////////////////////////////////
+
+Pour modifier la liste des groupe auquels appartient un user :
+
+- sudo usermod -G warrior crios		**G maj me permet d'indiquer les groupes auquels je veux que crios appartiennent, mais pas sudo par 					exemple** 
+
+//////////////////////////////////////////
+
+Pour modifier le nom d'un compte user :
+
+- sudo usermod -l cam crios		**ici crios deviendra cam, mais son dossier home restera au nom de crios**
+
+//////////////////////////////////////////
+
+Pour modifier le mdp d'un user :
+
+- sudo passwd crios			**il me demandera un nex mdp et de le valider**
+
+- passwd				**pour modifier mon propre mdp**
+
+//////////////////////////////////////////
+
+Pour désactiver la modif du mdp d'un user :
+
+- sudo passwd -l crios			**ici le -l est pour lock, crios ne pourra pas modifier son mdp**
+
+- sudo passwd -u crios			**le -u est pour unlock, j'autorise à nouveau crios à modifier son mdp**
+
+- sudo passwd -d crios			**ici je bloque le compte de crios, il ne peut plus entrer de mdp**
+		
+
+
+
+
+
+
+
+
+

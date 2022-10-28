@@ -1,0 +1,11 @@
+///////////////////////////////////////////// PS KILL /////////////////////////////////////////////
+
+La commande "ps" est pour afficher les processus en cours d'exécution.
+
+- ps
+
+La commande "kill" est pour arrêter un processus :
+
+- kill 5454
+
+** 5454 est le PID de mon processus pour indiquer lequel je veux arrêter **

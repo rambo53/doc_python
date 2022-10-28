@@ -1,0 +1,80 @@
+////////////////////////////////////////// CRON //////////////////////////////////////////
+
+Automatisation des tâches à effectuer à interval souhaité.
+
+Pour accéder au fichier "/car/spool/cron/crontabs/" j'ai besoin d'accéder au comptes root admin.
+
+- sudo su -
+
+Puis :
+
+- cd /car/spool/cron/crontabs/		**pour le moment le répertoire est vide**
+
+- crontab -e				**demande quel méthode pour éditer des cron, choisir "nano" qui est sa valeur par défaut**
+
+//////////////////////////////////////////
+
+Je peux créer directement un cron avec la commande :
+
+- crontab -e
+
+La colonne à respecter est :
+
+- m h dom mon dow
+
+minutes / heure / jour du mois / mois / jour de la semaine 
+
+Si je met "*" je déclare que je veux effectuer cette action par exemple toutes les minutes :
+
+- * * * * * 
+
+Toutes les heures à la demie :
+
+- 30 * * * * 
+
+etc...
+
+Pour indiquer si je veux effectuer ma cmd toutes les heures à la 5ieme minute, la 10ième, 15ième :
+
+- 5,10,15 * * * * 
+
+A faire toutes les minutes de 5 à 10 min :
+
+- 5-10 * * * * 			**à 0h05, 0h06, 0h07... jusqu'à 0h10**
+
+Pour faire la tâche toutes les 10 min :
+
+- */10 * * * *
+
+//////////////////////////////////////////
+
+Si besoin de vérifier mes intervalles de cron, le site "crontab guru". 
+
+//////////////////////////////////////////
+
+Pour modifier les variables globales qu'utilise mon cron, je les déclare dans mon cron avec "crontab -e".
+
+- SHELL=/bin/bash		**si on utilise bash au lieu de sh qui est un autre exécuteur**
+
+Autrement on a juste accés à HOME LOGNAME PATH(qui pointe sur bin) LANG PWD et SHELL
+
+//////////////////////////////////////////
+
+Si ma machine est éteinte lors de l'exécution d'un cron, ce dernier ne sera pas effectué, pour pallier à ce problême on à les anacron, qui eux seront effectué à chaque démarrage de la machine si celle ci était éteinte lors des crons qu'elle devait effectuer.
+
+Pour y accéder "/etc/anacrontab".
+
+Pour accéder aux timestamp qui permettent de vérifier si les tâches ont été réaliser "/var/spool/anacron".
+
+Pour visualiser mes anacrontab toujours "sudo su -".
+
+- cd /etc/anacrontab/
+
+//////////////////////////////////////////
+
+Sous Mac pour accéder à la crontab :
+
+- crontab -e
+
+Puis pour éditer j'appuie sur "i" pour insert.
+Une fois mon cron déclarer j'appuie sur "esc", et ":wq"

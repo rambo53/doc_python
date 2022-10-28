@@ -1,0 +1,33 @@
+////////////////////////////////////////// FILTRER TRIER FICHIER //////////////////////////////////////////
+
+Pour trier mes fichiers la commande est "sort" :
+
+- sort test.txt			**triera les mots dans mon fichier par ordre alphabétique**
+
+- sort -n numbers.txt		**triera les chiffres par ordre croissant**
+
+- sort -nu numbers.txt		**triera les chiffres par ordre croissant et gardera les valeurs uniques sans doublon**
+
+- sort -nur numbers.txt		**triera avec les uniques mais par ordre décroissant**
+
+- sort -Mk 6			**ici M est pour trier sur les mois k est pour lui passer ensuite le numéro de la colonne où se situe les mois 				sur mon affichage, ici il s'agit de la 6ième colonne, on démarre de 1 pas 0**
+
+- sort -nk 5			**ici je trie sur des nombres, sur la taille de mes fichiers, mes nombres sont à la 5ième colonne**
+
+- sort numbers.txt -R		**ici R majuscule signifie random, je vais mélanger les résultats au sein de mon fichier**
+
+//////////////////////////////////////////
+
+Pour filtrer j'utilise la commande "grep" :
+
+- grep mot fichier_plein_de_mots.txt		**ici après grep je précise le mot que je recherche dans le fichier_plein_de_mots.txt**
+
+- grep -in mot fichier_plein_de_mots.txt	**i pour insensible à la casse et n pour indiquer à quelle ligne se situe le mot cherché**
+
+- grep -inv mot fichier_plein_de_mots.txt	**ici v me retourne toutes les lignes où le mot n'est pas présent**
+
+Pour récupérer tous les dossiers :
+
+- ls -F | grep /			**ici -F indique que je souhaite rajouter un / à la fin du nom de mes dossiers mais pas mes fichiers,  					et ensuite avec mon grep je récupère uniquement les noms qui comporte un /** 
+
+- ls -F | grep / -v 			**pour extraire les fichiers**

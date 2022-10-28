@@ -1,0 +1,84 @@
+////////////////////////////////////////// VARIABLE ENV //////////////////////////////////////////
+
+La commande "env" pour afficher toutes mes var d'env.
+
+- $USER 		**par exemple pour récupérer la valeur de ma var**
+
+Autre commande "printenv".
+
+- printenv $USER 	**affiche directement la valeur plutôt que passer par echo**
+
+//////////////////////////////////////////
+
+Pour visualiser les commandes de shell la commande "set".
+Affichera aussi des fonctions de shell.
+
+Si besoin pour afficher les commandes précédemment tapé dans mon terminal :
+
+- set -v
+
+Si je tape ensuite "echo test" il affichera :
+
+- echo test
+- test
+
+Pour retirer cette option :
+
+- set +v
+
+//////////////////////////////////////////
+
+Pour créer une variable de shell :
+
+- varshell=data
+
+Pour créer une variable d'environnement à partir de cette variable de shell :
+
+- export varshell		**avec env je retrouve "varshell=data", attention elle ne sera dispo que pendant et dans le processus actuel**
+
+Pour supprimer des variables d'env :
+
+- unset USER			**USER n'apparait plus dans le process courant**
+
+//////////////////////////////////////////
+
+Pour ajouter des variables d'env de façon permanentes, je vais passer par le fichier ".bashrc", pour le visualiser j'utilise la cmd "ll" pour pouvoir afficher les fichier cachés car il en fait partie.
+
+Une fois dans mon fichier .bashrc avec la cmd "nano" je peux rajouter des variables comme je veux, toujours en respectant :
+
+- varshell=une_var_de_shell
+
+- export varenv=une_var_d_env		**toujours export devant ma var pour indiquer qu'elle est d'environnement**
+
+Une fois que c'est fais pour y accéder il faut relancer le terminal afin que le fichier soit relu.
+
+//////////////////////////////////////////
+
+Pour déclarer des var d'env ou de shell globales pour tous mes user :
+
+- sudo nano /etc/bash.bashrc
+
+Le fichier bash.bashrc sera toujours lu avant bashrc.
+
+//////////////////////////////////////////
+
+Pour créer un alias qui servira par exemple pour ouvrir un répertoire en mode graphique :
+
+- xdg-open .		**ici la commande de base pour faire cette action**
+
+Pour créer mon alias de cette commande je le déclare dans "/etc/bash.bashrc" ou ".bashrc", toujours en y accédant avec "nano", puis :
+
+- alias open="xdg-open"
+
+Ensuite j'appel ma cmd :
+
+- open .		**et exécutera la même action que "xdg-open ."**
+
+//////////////////////////////////////////
+
+Pour créer une commande, par exemple "backup", je crée un dossier "bin" aux côtés de Document, Public... à l'intérieur du quel je crée un script "backup.sh".
+Ensuite dans "bashrc" :
+
+- PATH=$PATH:~/bin
+
+Et enfin si je veux faire un backup je peux entrer directement la cmd "backup".

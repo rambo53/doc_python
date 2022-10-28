@@ -1,0 +1,11 @@
+////////////////////////////////////////// ASTUCES TERMINAL //////////////////////////////////////////
+
+Pour l'autocomplétion dans mon terminal je tape la/les premières lettres de mon dossier puis j'appuie sur la touche tab, et je peux enchainer. 
+
+**attention à la casse**
+
+Pour ouvrir un terminal depuis mon explorateur de fichiers, je me positionne dans le dossier souhaité, puis click droit "ouvrir dans un terminal", et mon terminal s'ouvre direct avec l'adresse du fichier.
+
+Pour ouvrir l'explorateur depuis mon terminal, une fois qu'avec mon terminal je suis rendu dans le dossier souhaité je tape :
+
+- xdg-open . 			**le point est nécessaire**

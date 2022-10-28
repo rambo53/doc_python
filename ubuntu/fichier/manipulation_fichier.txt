@@ -1,0 +1,139 @@
+////////////////////////////////////////// MANIPULATION FICHIER //////////////////////////////////////////
+
+Pour chercher un mot et le remplacer par un autre :
+
+- sed "s/mot_que_je_cherche/nouveau_mot/g" test.txt		**j'utilise une regex si je veux remplacer tous les mots je rajoute g, si je 								ne veux modifier que le premier mot trouvé je retire le g, et en dernier je 								rajoute le fichier que je veux traiter**
+
+Par défaut le fichier avec les modifs n'est pas enregistré, si je veux enregistrer mes modifs je rajoute -i :
+
+- sed -i "s/mot_que_je_cherche/nouveau_mot/gI" test.txt		**je rajoute un I majuscule à ma regex pour la rendre insensible à la casse**
+
+//////////////////////////////////////////
+
+- sed -i '1d' test.txt			**ici je lui indique que je veux supprimer la première ligne**
+
+- sed -i '$d' test.txt			**ici je lui indique que je veux supprimer la dernière ligne**
+
+- sed -i '1,2d' test.txt		**ici je lui indique que je veux supprimer la première et la deuxième ligne**
+
+- sed -i '1-24d' test.txt		**ici je lui indique que je veux supprimer de la première à la 24ième ligne**
+
+//////////////////////////////////////////
+
+Pour lire les fichiers en commençant par la fin :
+
+- tac test.txt
+
+//////////////////////////////////////////
+
+Pour inverser le sens des mots d'un fichier :
+
+- rev test.txt				**à la place de "je suis stephane" on aura "ej sius enahpets"**
+
+//////////////////////////////////////////
+
+Pour récupérer juste certains caractères :
+
+ex :
+
+Alain, 3
+Stephane, 4
+Maxime, 5
+
+- cut -c 1 test.txt 			**affichera A S M**
+
+- cut -c 1-3 test.txt			**affichera Ala Ste Max**
+
+- cut -c 1,3 test.txt			**affichera Aa Se Mx**
+
+Pour récupérer une colonne :
+
+- cut -d "," -f 2 test.txt		**ici mon delimiteur est la "," et -f 2 est pour indiquer que je récupère les valeurs de la 2ième 					colonne 3 4 5**
+
+Pour récupérer juste une valeur :
+
+- head -n 2 | tail -n 1 | cut -d "," -f 1 test.txt		**ici je récupère Stephane, head pour les 2 premières lignes, puis tail pour 								la dernière**
+
+Pour récupérer tout ce qui n'a pas été coupé :
+
+- cut --complement -c 1 test.txt 
+
+lain, 3
+tephane, 4
+axime, 5
+
+//////////////////////////////////////////
+
+La commande awk peut me servir aussi pour manipuler mes fichiers :
+
+- awk '{print $0}' test.txt			**ici se contente d'afficher le contenu de mon fichier**
+
+Alain, 3
+Stephane, 4
+Maxime, 5
+
+- awk '{print $2}' test.txt
+
+3
+4
+5
+
+- awk '{print $2 $1}' test.txt
+
+3Alain, 
+4Stephane, 
+5Maxime, 
+
+- awk '{print $2,$1}' test.txt
+
+3 Alain, 
+4 Stephane, 
+5 Maxime, 
+
+- awk 'OFS="-"{print $2,$1}' test.txt		**OFS output field separator me permet de remplacer l'espace vide par le char de mon choix**
+
+3-Alain, 
+4-Stephane, 
+5-Maxime, 
+
+- awk '$2>4 {print $0}' test.txt		**ma conditions pour afficher uniquement les lignes sup à 4**
+
+Maxime, 5
+
+- awk '/Al/ {print $0}' test.txt		**regex pour retourner uniquement la ligne avec un mot commencant par Al**
+
+Alain, 3
+
+//////////////////////////////////////////
+
+- awk -F, '{print $0}' test.txt			**F majuscule permet de spécifié le séparateur afin de le retirer pour l'affichage**
+
+Alain 3
+Stephane 4
+Maxime 5
+
+//////////////////////////////////////////
+
+Alain;3
+Stephane;4
+Maxime;5
+
+Si je veux remplacer mes point virgules par un saut de ligne :
+
+- sed 's/\;/\n/g'			**j'échappe mon ; pour ne pas que mon programme pense que c'est la fin d'une instruction, puis je 					remplace mon ; par \n qui correspond à un saut de ligne**
+
+//////////////////////////////////////////
+
+Pour rajouter une légende à mon fichier :
+
+- awk 'BEGIN {print="Clients"} END {print="Fin"} {print $0}' test.txt
+
+Clients
+Alain, 3
+Stephane, 4
+Maxime, 5
+Fin
+
+
+
+

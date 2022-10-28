@@ -1,0 +1,67 @@
+////////////////////////////////////////// GESTION PROCESSUS //////////////////////////////////////////
+
+La commande "top" me permet de gérer mes processus en temps réel, la liste est rafraichit toutes les 3 secondes.
+
+- top
+
+Les infos dan smon header correspondent à l'heure de mise à jour de ma liste, au temps de connexion, aux nombres d'user, au nombre de tâches en exécution, les tâches actives ou en veille.
+MiB Mem correspond à ma RAM total dispo, la RAM libre et donc la RAM utilisée.
+MiB Ech est la swap, prend le relai quand ma RAM est consomé en intégralité pour écrire sur le disque dur plutôt que de faire planter le système.
+
+Le load average est la conso du processeur. si il est à 1 il est à 100%.
+
+PR est pour l'ordre de priorité des processus.
+NI est pour indiquer si le processus consomme beaucoup ou non, ça va de -20 à 20, plus c'est négatif moins c'est bon.
+
+La colonne S est pour le status, si il est à S il est en sleep et donc inactif, en R il est running donc en fonctionnement.
+
+Pour connaitre le nombre de CPU (coeur) de mon processeur :
+
+- nproc		**si j'ai 4 coeurs dans ce cas mon load average est à 100% à 4**
+
+//////////////////////////////////////////
+
+Pour stopper un processus une fois que j'ai fait la commande "top", je tape "k".
+Je rentre l'id du prog que je veux arrêter, par défaut il à la valeur du programme consommant le plus de ressources.
+Ensuite je valide pour l'envoie du signal.
+
+//////////////////////////////////////////
+
+Pour stopper des processus j'utilise la commande "kill" suivit du pid du processus à stopper.
+
+- kill 5250		**5250 est un exmple**
+
+Pour consulter la liste des signaux qu'on peut envoyer à notre process.
+
+- kill -l
+
+Le 15 est pour fermer de façon propre par défaut c'est le signal envoyé.
+Le 9 est plus brutal et risque de laisser des process zombies.
+
+Pour envoyer un signal différent :
+
+- kill -9 5250		**j'envoie le signal 9**
+
+Pour être sûr de détruire le processus parent et tous ses enfants :
+
+- killall firefox		**je met le nom du processus cette fois pas l'id**
+
+Sinon je peux utiliser un grep :
+
+- pstree -p | grep firefox | less		**m'affichera les programme enfants et parent dans un tree avec leur id**
+
+//////////////////////////////////////////
+
+Pour effectuer des tâche en arrière plan comme la commande man par exemple :
+
+- man ls &		**rajouter & permet d'indiquer que je passe cette action en arrière plan, elle me retourne son pid et un int**
+
+[1] 5250
+
+- jobs 			**pour avoir le détails des tâches en attentes**
+
+- jobs -l 		**pour plus de détails avec entre autres le pid**
+
+Pour repasser un processus en premier plan :
+
+- fg 1			**le 1 est le int entre crochet du dessus [1] 5250**

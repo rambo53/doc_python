@@ -1,0 +1,29 @@
+////////////////////////////////////// SUPPRESSION DEPLACER //////////////////////////////////////
+
+Pour supprimer un fichier c'est la commande rm :
+
+- rm monFichier.txt
+
+Pour supprimer un dossier :
+
+- rm -r monDossier 
+
+
+//////////////////////////////////////
+
+
+Pour déplacer des fichiers :
+
+- mv file.txt /dossier/
+
+Remonter d'un niveau :
+
+- mv file.txt  ../
+
+Pour déplacer tous les fichiers et/ou dossier dans un dossier :
+
+- mv * dossier
+
+Pour déplacer un dossier dans un autre :
+
+- mv dossier1 dossier2

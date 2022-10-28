@@ -1,0 +1,32 @@
+////////////////////////////////////////// INSTALLER PROGRAMME //////////////////////////////////////////
+
+Pour installer des programmes sous ubuntu, sur le site trouver les fichiers avec l'extension ".deb".
+
+Ensuite la commande pour gérer les programmes est "apt" :
+
+- apt update
+- apt install mon_programme
+- apt remove mon_programme				**supprime uniquement le programme**
+
+- apt upgrade 						**va permettre de mettre à jour tous les programmes utilisant apt**
+- apt autoremove					**supprime toutes les librairies tiers non utilisés ainsi que le programme**
+- apt purge						**supprime les fichiers de configurations de mon programmes**
+- apt list						**liste des programmes installables depuis mes dépots**
+- apt search						**chercher des infos sur le programme comme les metadonnées (qui à créé le programme, 							qui l'utilise, les librairies...)**
+
+////////////////////////////////////////// 
+
+Pour installer on a aussi la commande "snap".
+
+- snap install
+- snap find						**chercher un snap dans le store**
+- snap list						**voir tous les snaps installé sur ma machine**
+- snap show						**consulter les méta données du snap**
+
+Snap prend plus de place sur ma machine car il installe les librairies même si elles sont déjà sur notre machine, il regroupe tout mon programme dans un package indépendant, et est légèrement moins rapide.
+Mais il est plus sécurisé car isolé dans un package.
+Mise à jour auto.
+
+Le snap store est dispo sur ubuntu dans l'onglet ubuntu software.
+
+- snap info nom_du_programme				**pour consulter de brèves infos sur un programme**
