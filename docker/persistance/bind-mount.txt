@@ -1,0 +1,12 @@
+////////////////////////////////////////// BIND MOUNT //////////////////////////////////////////
+
+Pour persister les données sur la machine hôte, cela nous permettra de récupérer automatiquement les données stockées sur ma machine hôte sur mon container.
+Si jamais mon container est interrompu, les données sont toujours disponibles sur ma machine hôte.
+
+Sur la machine hôte on crée un répertoire "data", dans lequel on crée un fichier (mon_fichier.txt) qui contiendra nos données (ou plusieurs).
+
+On lance notre image depuis notre répertoire data en lui indiquant la source de données :
+
+- docker run --mount type=bind,source="$(pwd)",target=/data -it nom_de_mon_image sh
+
+** source avec la commande "pwd" est pour avoir le path complet pour récupérer les données, d'où l'importance de lancer la commande depuis mon dossier data sur ma machine hôte **

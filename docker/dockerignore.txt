@@ -1,0 +1,20 @@
+////////////////////////////////////////// DOCKERIGNORE //////////////////////////////////////////
+
+Même principe que le gitignore mais pour docker, pour cela je crée un fichier :
+
+- .dockerignore
+
+** le point est important **
+
+Puis à l'intérieur je précise le fichier à ignorer :
+
+- mon_fichier.txt
+
+Si mon fichier est dans un dossier :
+
+- */mon_fichier.txt
+
+Pour ignorer mon fichier peut importe où il se situe dans mon app :
+
+- **/mon_fichier.txt
+

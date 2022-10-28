@@ -1,0 +1,69 @@
+////////////////////////////////////////// CREATION IMAGE //////////////////////////////////////////
+
+Un container peut contenir plusieurs images.
+
+Dans vscode sur le marketplace j'installe docker.
+
+Je crée un fichier "Dockerfile" dans lequel je vais déclarer toutes les commandes nécessaires afin de créer mon image.
+
+ex : 
+
+- FROM ubuntu:latest
+
+- RUN apt-get update --yes
+- RUN apt-get install --yes curl...
+
+//////////////////////////////////////////
+
+Ensuite je construit mon image avec la cmd :
+
+- docker build -t le_nom_de_mon_image:latest .		**le point est pour indiquer qu'on est dans le bon répertoire pour build, le -t est 							pour nommer mon image**
+
+//////////////////////////////////////////
+
+Il y a toujours un FROM dans mon Dockerfile qui est une image source, on peut récupérer une image locale sur ma machine.
+
+RUN permet d'exécuter une étape pour une action et donc de créer un container intermédiaire.
+
+WORKDIR permet de positionner le chemin d'accès où on le souhaite, ex "/var/www/"
+
+ARG permet de récupérer des valeurs passés lors du lancement de notre image, des variables.
+
+ex :
+
+- ARG folder 
+
+Dans le terminal :
+
+- docker build -t le_nom_de_mon_image:latest --build-arg folder=/var/www/
+
+Je peux aussi assigné une valeur par défaut :
+
+- ARG folder=/var/www/
+
+ENV pour des variables d'environnement :
+
+- ENV environnement=production
+
+LABEL pour ajouter des meta données, par exemple le créateur de l'image, ex:
+
+- LABEL author="moi"
+
+//////////////////////////////////////////
+
+Pour afficher les logs qu'il y a eu sur ma machine :
+
+- docker container logs id_de_mon_image			**seulement les 3 ou 4 premiers char de celui-ci**
+
+Pour consulter l'historique de mon image :
+
+- docker image history le_nom_de_mon_image:latest
+
+Pour modifier le tag de mon image, ici c'est "le_nom_de_mon_image:latest" de base :
+
+- docker image tag le_nom_de_mon_image:latest le_nom_de_mon_image:prod
+
+
+
+
+

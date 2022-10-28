@@ -1,0 +1,75 @@
+////////////////////////////////////////// COMMANDES UTILES //////////////////////////////////////////
+
+Pour vérifier si docker bien installé et les différentes info :
+
+- docker info
+
+Pour charger une image tout en vérifiant qu'elle n'existe pas localement :
+
+- docker run le_nom_de_mon_image
+
+Pour interagir avec le terminal de mon container contenant mon image :
+
+- docker run -it le_nom_de_mon_image
+
+Pour sortir de mon conteneur :
+
+- exit
+
+//////////////////////////////////////////
+
+Pour consulter les images que j'ai sur docker :
+
+- docker image ls
+
+Pour retirer une image je lui précise l'id de mon image récupéré via la commande précédente :
+
+- docker image rm idimage
+
+//////////////////////////////////////////
+
+Pour consulter les container docker active :
+
+- docker container ls
+- docker ps
+
+Pour consulter tous les container présent sur la machine :
+
+- docker container ls -a
+- docker ps -a
+
+Pour supprimer un container :
+
+- docker container rm le_nom_de_mon_container
+
+Pour supprimer tous les containers arrêté sur ma machine :
+
+- docker container prune
+
+//////////////////////////////////////////
+
+Pour créer un container :
+
+- docker create le_nom_de_mon_image
+
+Pour créer un container avec un terminal :
+
+- docker create -it le_nom_de_mon_image
+
+Pour démarrer mon container :
+
+- docker container start id_de_mon_container
+
+Pour accéder au terminal de mon container une fois que celui ci est démarré :
+
+- docker container attach id_de_mon_container
+
+Pour démarrer mon container directement avec mon interaction via le terminal :
+
+- docker container start -ai id_de_mon_container
+
+//////////////////////////////////////////
+
+Pour renommer mon container :
+
+- docker container rename le_nom_de_mon_container le_nouveau_nom_de_mon_image

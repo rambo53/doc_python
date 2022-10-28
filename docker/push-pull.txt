@@ -1,0 +1,26 @@
+////////////////////////////////////////// PUSH PULL //////////////////////////////////////////
+
+Si j'ai un compte docker, je peux créer et enregistrer des image sur docker.
+Pour l'envoyer vers le hub de docker je dois build mon image après m'être connecté depuis mon terminal.
+
+Une fois connecté à mon compte comme pour git je peux créer un repo avec mon image.
+
+Une mon repo et mon image créé, je me connecte à docker à partir de mon terminal :
+
+- docker login
+
+Je renseigne le login et le mot de passe de mon compte docker, puis :
+
+- docker push docker_login/nom_image:mon_tag
+
+Il envoie mon image sur le docker hub.
+
+//////////////////////////////////////////
+
+Pour récupérer mon image :
+
+- docker pull docker_login/nom_image:mon_tag
+
+Pour la récupérer et l'exécuter :
+
+- docker run docker_login/nom_image:mon_tag

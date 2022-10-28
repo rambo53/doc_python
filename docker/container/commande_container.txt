@@ -1,0 +1,38 @@
+////////////////////////////////////////// COMMANDE CONTAINER //////////////////////////////////////////
+
+Pour renommer notre container :
+
+- docker container rename nom_container nouveau_nom		**je peux aussi utiliser l'id**
+
+Mettre container en pause :
+
+- docker container pause nom_container
+
+Pour enlever pause de mon container :
+
+- docker container unpause nom_container
+
+//////////////////////////////////////////
+
+Pour exécuter des commande depuis le terminal de ma machine sur un container sans m'y connecter :
+
+- docker container exec nom_container touch /home/test.txt		**Pour créer un fichier**
+
+//////////////////////////////////////////
+
+Copier des fichiers depuis ma machine vers docker, dans le terminal de ma machine :
+
+- docker container cp ./test.txt nom_container:/home
+
+Pour l'inverse de mon container vers ma machine :
+
+- docker container cp nom_container:/home/test.txt .		**le point . est pour indiquer le répertoire courant sur ma machine**
+
+//////////////////////////////////////////
+
+Pour avoir un aperçu des modifications de fichiers et de dossiers qui ont été faites depuis que j'ai lancé mon image :
+
+- docker container diff nom_container
+
+C /home					**le c est pour les répertoires**
+A /home/test.txt			**le a est pour les fichiers**	

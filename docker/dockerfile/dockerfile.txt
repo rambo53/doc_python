@@ -1,0 +1,148 @@
+////////////////////////////////////////// DOCKERFILE //////////////////////////////////////////
+
+Un Dockerfile va me servir pour créer une image.
+Attention je ne peux accéder qu'aux éléments à l'intérieur de mon dossier.
+
+Pour ajouter des commentaires :
+
+# commentaire
+
+//////////////////////////////////////////
+
+Pour créer un dockerfile, je nome mon file "Dockerfile", la majuscule est importante.
+
+Pour récupérer une image depuis une registry docker :
+
+- FROM ubuntu:latest
+
+Ici je récupère la dernière version de mon image ubuntu.
+Pour lui demander d'exécuter des commandes lors du démarrage de ubuntu, ici ce sera pour mettre à jour les repo sur mon image ubuntu :
+
+- RUN apt-get update --yes
+
+Ensuite par exemple je lui demande d'installer curl, un logiciel qui me permet de récupérer des fichiers sur internet :
+
+- RUN apt-get install --yes curl
+
+Pour installer node js avec curl, silent est pour ne pas afficher les logs lors du chargement :
+
+- RUN cur --silent --location https://deb.nodesource...
+
+Puis pour intégrer un fichier dans mon image :
+
+- COPY ./mon_fichier.js /var/www/
+
+** j'indique que je charge mon_fichier.js et que je le copie vers le dossier /var/www/ **
+
+Pour copier l'intégralité de mon projet :
+
+- WORKDIR /var/www/
+
+- COPY . .
+
+** le premier point lui indique de tout prendre pour le charger sur le deuxième point qui est mon workdir **
+
+Et enfin j'utilise la commande CMD pour lui dire d'exécuter cette commande au lancement de mon container :
+
+- CMD [ "node", "/var/www/mon_fichier.js" ]
+
+** attention les espaces en début et fin de crochets sont obligatoires **
+
+//////////////////////////////////////////
+
+A la place de COPY je peux utiliser ADD, la différence est que je peux lui passer une URL pour récupérer des infos sur un serveur, ou bien des fichiers compressés qui seront décompréssés de façon automatique.
+
+La commande WORKDIR permet d'indiquer dans quel répertoire je veux placer mes éléments sur mon image, par exemple :
+
+- WORKDIR /var/www/
+
+- COPY ./mon_fichier.js .
+
+** Plus besoin de préciser le répertoire à la suite de COPY, attention le . est important **
+
+//////////////////////////////////////////
+
+Pour construire mon container :
+
+- docker build -t nom_de_mon_image:le_tag .
+
+** attention au point et le -t est pour nommer mon image**
+
+//////////////////////////////////////////
+
+Pour lancer mon container, je me positionne dans le dossier contenant mon projet et mon dockerfile, puis :
+
+- docker run -it nom_de_mon_image:le_tag bash
+
+** le_tag est par exemple "latest" **
+
+Ainsi grâce au workdir je serait directement placé dans le répertoire "/var/www/".
+
+Si je dois juste le lancer :
+
+- docker run nom_de_mon_image:le_tag 
+
+//////////////////////////////////////////
+
+Une alternative plus safe de l'instruction CMD est ENTRYPOINT, le problème avec CMD c'est que mon utilisateur peut entrer d'autres commandes à la suite du run de mon image pour switcher les commandes de mon image.
+
+- CMD [ "node", "/var/www/mon_fichier.js" ] 
+
+- docker run nom_de_mon_image:le_tag echo "un message"
+
+Pour éviter cela :
+
+- ENTRYPOINT [ "node", "/var/www/mon_fichier.js" ] 
+
+//////////////////////////////////////////
+
+Pour pouvoir ajouter des arguments lors de l'instantiation de notre image, je peux préciser dans mon dockerfile des ARG :
+
+- ARG folder
+- WORKDIR $folder
+
+Puis quand je lance ma commande pour build je lui passe les arguments :
+
+- docker build -t nom_de_mon_image:le_tag --build-arg folder=/var/www/
+
+//////////////////////////////////////////
+
+Pour accéder aux variables d'environnement dans mon image, attention pour cela il faut que je sois en mode 'it' :
+
+- env
+
+Je peux rajouter des variables d'environnement dans mon image via un système de clé valeur, pour cela dans mon dockerfile je rajoute :
+
+- ENV environnement=production
+
+//////////////////////////////////////////
+
+Pour ajouter des meta données dans mon container, ici par exmple qui l'a créé :
+
+- LABEL author="stef"
+
+Pour les consulter après :
+
+- docker image inspect nom_de_mon_image:le_tag
+
+//////////////////////////////////////////
+
+Pour consulter les logs sur mon container :
+
+- docker container logs id_container
+
+Pour les consulter en temps réel :
+
+- docker container logs -f id_container
+
+Pour consulter tout l'historique sur mon container :
+
+- docker image history nom_de_mon_image:le_tag
+
+//////////////////////////////////////////
+
+Pour modifier le tag de mon image :
+
+- docker image tag nom_de_mon_image:le_tag nom_de_mon_image:le_nouveau_tag
+
+

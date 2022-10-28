@@ -1,0 +1,29 @@
+////////////////////////////////////////// IMPORT EXPORT //////////////////////////////////////////
+
+Pour transférer des images par exemple à un collègue sans passer par le docker hub :
+
+- docker image save mon_image:mon_tag -o mon_image.tar
+
+** le -o est pour output, mon dossier sera un .tar car c'est une archive linux **
+
+Il me génère automatiquement un fichier .tar dans mon dossier courant.
+
+//////////////////////////////////////////
+
+Pour récupérer notre image :
+
+- docker image load < mon_image.tar
+
+//////////////////////////////////////////
+
+Si je veux récupérer l'intégralité de mon container dans un dossier tar je le lance avec un run si il est coupé, puis :
+
+- docker container export -o nom_container.tar id_container
+
+Ensuite pour le récupérer j'utilise la commande :
+
+- docker image import nom_container.tar mon_image:mon_tag
+
+Pour le lancer et effectué d'éventuelle manip' :
+
+- docker run -it mon_image:mon_tag bash 

@@ -1,0 +1,64 @@
+////////////////////////////////////////// VOLUME //////////////////////////////////////////
+
+Pour la persistance des données entre ma machine hôte et mon container.
+
+Pour consulter les commandes :
+
+- docker volume
+
+Pour créer un volume sur ma machine :
+
+- docker volume create data
+
+Pour vérifier si le volume est bien créé :
+
+- docker volume ls
+
+Pour consulter les infos sur le volume :
+
+- docker volume inspect data
+
+Pour accéder à mon volume il faut que je sois en "root", j'utilise donc "sudo" :
+
+- sudo su
+
+//////////////////////////////////////////
+
+Pour lancer mon container et lui indiquer la source de données :
+
+- docker run --mount type=volume,source=data,target=/data -it nom_de_mon_image sh
+
+** rappel : sh et it sont pour lancer mon image de manière interactive et ne sont donc pas obligatoire **
+
+//////////////////////////////////////////
+
+Pour effacer un volume :
+
+- docker volume rm nom_de_mon_volume
+
+//////////////////////////////////////////
+
+On peut partager un volume entre plusieurs container :
+
+- docker run --mount type=volume,source=data,target=/data --name container1 -it nom_de_mon_image sh
+
+Puis je déclare un autre container avec le même volume :
+
+- docker run --mount type=volume,source=data,target=/data --name container2 -it nom_de_mon_image sh
+
+//////////////////////////////////////////
+
+Pour sauvegarder un volume on va utiliser un bind-mount pour faire une sauvegarde auto de nos données au format archive (tar).
+Pour commencer je crée un répertoire "save".
+
+Puis :
+
+- docker run --mount type=volume,source=data,target=/data --mount type=bind,source=$(pwd)/save,target=/save nom_de_mon_image tar -czf /save/data.tar.gz /data
+
+** /save/data.tar.gz /data pour indiquer qu'on injecte le contenu de /data dans /save **
+
+//////////////////////////////////////////
+
+Pour faire un backup de mon répertoire "save", je crée d'abord un nouveau volume (recupsave), puis je rentre la commande :
+
+- docker run --mount type=volume,source=recupsave,target=/data --mount type=bind,source=$(pwd)/save,target=/save nom_de_mon_image tar -xf /save/data.tar.gz /data

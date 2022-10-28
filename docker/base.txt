@@ -1,0 +1,47 @@
+////////////////////////////////////////// BASE //////////////////////////////////////////
+
+Je télécharge docker Community edition, Docker desktop, ou Enterprise edition.
+
+Un container docker est un bloc contenant un programme indépendant de la machine hôte pouvant s'exécuter sur une machine locale ou virtuelle.
+Son avantage est qu'il est plus rapide à exécuter qu'une vm car il est plus léger n'embarquant pas d'os pour fonctionner.
+Il ne monopolise pas des ressources inutilement en cpu, ram... contrairement à une vm à qui on attribue des ressources fixes dès le départ.
+
+Un container ne doit faire tourner qu'un seul processus.
+
+//////////////////////////////////////////
+
+Un container est une instance de mon image, ainsi je peux avoir plusieurs container à partir d'une même image.
+
+Un container peut être stateless ou state full, state full par exemple si il contient un SGBD.
+
+//////////////////////////////////////////
+
+On intègre à l'intérieur de notre container les différentes librairies dont notre programme a besoin pour s'exécuter.
+
+Un container peut être lié à différents containers.
+
+On déclare ses requirements via un fichier Dockerfile.
+
+Ex:
+
+FROM python:3.7-alpine
+WORKDIR /code
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
+RUN apk add --no-cache gcc musl-dev linux-headers
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+EXPOSE 5000
+COPY . .
+CMD ["flask", "run"]
+
+//////////////////////////////////////////
+
+Une fois mon container téléchargé sur ma machine je peux le faire tourné en arrière plan, nous permettant de continuer à utiliser le terminal pour par exemple lancer d'autres images, en mode détaché (-d), pour interagir avec j'utilise la commande -it pour interactif.
+
+Pour indiquer le port de communication à utiliser entre ma machine et mon container j'utilise "-p 8080:80 nginx", nginx étant le container que je lance.
+8080 étant celui de machine et 80 étant celui de mon container.
+
+//////////////////////////////////////////
+
+Une registry est un docker hub où l'on stockera plusieurs container. 

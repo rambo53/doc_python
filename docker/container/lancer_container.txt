@@ -1,0 +1,77 @@
+////////////////////////////////////////// LANCER CONTAINER //////////////////////////////////////////
+
+Pour vérifier si docker est bien installé :
+
+- docker info
+
+Ensuite pour récupérer l'image Ubuntu et l'intaller :
+
+- docker run ubuntu bash
+
+Pour intéragir directement avec mon image de Ubuntu via son terminal :
+
+- docker run -it ubuntu bash
+
+Ici j'intéragis directement avec mon image d'Ubuntu et non plus mon système linux de ma VM.
+Je suis donc en mode root dessus, et dans mon dossier home je n'ai plus rien.
+Si je lance une nouvelle commande interactive de mon image Ubuntu dans un nouveau terminal de ma VM, les deux sont totalement indépendants.
+
+Pour quitter mon image :
+
+- exit
+
+//////////////////////////////////////////
+
+Pour accéder aux commandes disponibles :
+
+- docker
+
+- docker container
+
+Pour accéder aux explications des commandes :
+
+- docker container nom_de_commande --help
+ 
+//////////////////////////////////////////
+
+Pour connaitre les différentes images installés :
+
+- docker image ls
+
+Pour supprimer une image :
+
+- docker image rm ubuntu			**ubuntu est le nom de mon image, je peux aussi utiliser son id**
+
+Si il y a conflit je peux accéder aux instance de mes images via :
+
+- docker container ls -a
+
+Ou version raccourcie :
+
+- docker ps -a
+
+//////////////////////////////////////////
+
+Pour supprimer un container :
+
+- docker container rm nom_container		**le nom est dans la colonne names et est généré automatiquement par docker**
+
+Pour supprimer tous les containers :
+
+- docker container prune
+
+//////////////////////////////////////////
+
+Pour me connecter à un container existant et utiliser da ligne de commande :
+
+- docker container start -ai ici_id_container		**à la fin je passe juste les 4 premiers caractères de mon id**
+
+Si je me connecte sur le même container depuis un autre terminal il coupera la session ouverte sur le terminal précédent.
+
+Pour arrêter mon container :
+
+- docker container stop ici_id_container
+
+Si le container a crasher pour le stopper :
+
+- docker container kill ici_id_container
