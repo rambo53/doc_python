@@ -1,0 +1,57 @@
+//////////////////////////// CONNECTER GITLAB //////////////////////////////////
+
+D'abord je dois générer une clé SSH sur mon Mac pour pouvoir me connecter à mon compte gitlab et faire des commit.
+Dans le terminal de ma machine :
+
+- ssh-keygen -t rsa
+
+Va me générer une clé SSH, me demande un fichier où enregistrer ma clé, taper sur entrée, propose d'enregistrer une passphrase, taper sur entrée, demande de confirmer passphrase, taper sur entrée.
+
+Je me rend dans le dossier SSH avec la commande :
+
+- cd ~/.ssh
+
+- cat id_rsa.pub
+
+La clé SSH s'affiche, exemple :
+
+"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDIxUs5KiMjo9DepkjHUn6nFzD+GUMPJAXhIGkmd76ELFGUK9FNtxd/IP+gI2sfo5IXrAYYPcqH0kGq4Rw3jBT+dM3HJs1QC0C5qnRMAmovfJ50mMOovBa0zGL/XZhpablcJcooVLUotvlQ9H6GN3BdjaqSNbCNOq4lR81rCrZtkbVK2FcumvDUvOy3ygvO47wSeEbhA0Gk/Gt7QKlwj1BevKFpkGdeggUdpahF++3d0Uo99I8cQtoeAGtp8wkncXM9XsvijoT3heeWypxJhfSn+sxYjPJ+hH/Hi1JbZa4BijygOtFo6/E8FV1A0x56mpfff+VrMJNocTfdqwcyz610ajF3524CDD44SQmLUJII2V218hAzaArvprbuesv0b7p8o3n+/JS9GoQQ86oG5EqfG7nYSfkVGVeTKgU0oFLRATgDSi+dxvJMvW8niIsIQo3GAU7xo1kXwi049GAYMy5d9fOsGPZ9jw5exKlubvDBCASFK8G+LCJCjnYQNIT1D8E= infoesl3@port144.agir.net" 
+
+//////////////////////////////////
+
+Je copie/colle ma clé ssh dans mon profil gitlab dans "SSH Keys".
+
+On crée un dossier git sur notre machine pour y insérer nos différents repo, ensuite je me place dessus et je clone notre repo git sur ma machine depuis gitlab en sélectionnant le repos à cloner, je click sur clone et je copie le contenu de "Clone wsh SSH", que je vais ensuite coller dans mon terminal : 
+
+- git clone git@scm.easycom.digital:BUDATAMANAGEMENT/akeneo-initialization.git
+
+Mon terminal me demande si je veux continuer, j'écris "yes".
+Je me place sur mon dossier :
+
+- cd /Users/infoesl3/Desktop/dossier_git/akeneo-initialization
+
+Si la connexion s'établit bien ma ligne de commande est précédé de "(base)".
+
+- git status
+
+M'indique sur quelle branche je suis, ici "dev".
+
+J'ajoute le fichier que j'ai modifié, ici le fichier python "convert_data_dictionary.py" :
+
+- git add datadictionary/convert_data_dictionary.py
+
+Ensuite je prépare mon commit avec mon commentaire :
+
+- git commit -m 'ajout traitement asset entity product' 
+
+Puis je termine par :
+
+- git pull
+
+- git push
+
+
+
+
+
+
