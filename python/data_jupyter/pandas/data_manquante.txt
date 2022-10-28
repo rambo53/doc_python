@@ -1,0 +1,64 @@
+//////////////////////////////////// DATA MANQUANTE ////////////////////////////////////
+
+Pour vérifier si les valeurs sont manquantes :
+
+sex = data_titanic["sex"]			**je récupère la colonne "sex"**
+
+pd.isnull(sex)					**je fais le test sur ma colonne**
+
+0       False
+1       False
+2       False
+3       False
+4       False...
+
+/////////////////////////////////////
+
+Pour récupérer les valeurs manquantes dans une colonne :
+
+data_titanic = pd.read_csv("titanic_survival.csv")
+
+col_age=data_titanic["age"]					**je récupère toutes les valeurs de la colonne âge**
+
+filter_age = pd.isnull(col_age)					**je prépare mon filtre**
+
+age_nan=data_titanic[filter_age]				**je récupère uniquement les valeurs manquantes dans ma colonne**
+
+
+len(age_nan["age"])						**j'affiche la taille**
+
+/////////////////////////////////////
+
+Exemple pour calcul moyenne :
+
+age_filter = pd.isnull(data_titanic["age"])			**returne un bool**
+age_valid=data_titanic["age"][age_filter==False]		**récupère uniquement les bool à False**
+
+moyenne = sum(age_valid) / len(age_valid)
+
+print(moyenne)
+
+29.88...
+
+
+Ou en plus court et tout aussi performant :
+
+print(data_titanic["age"].mean())
+
+/////////////////////////////////////
+
+Si l'on veut supprimer les lignes ou les colonnes avec des données manquantes : 
+
+data_titanic.dropna(axis=0) 			**pour trier les lignes et supprimer celles avec des valeurs manquantes**
+
+data_titanic.dropna(axis=1) 			**pour trier les colonnes et supprimer celles avec des valeurs manquantes**
+
+/////////////////////////////////////
+
+Si je veux trier mon dataframe par rapport à une colonne, exemple je garde toutes les lignes qui ont au moins la colonne "name" qui n'est pas nan :
+
+data_titanic.dropna(axis=0, subset=["name"]) 
+
+
+
+

@@ -1,0 +1,19 @@
+//////////////////////////////////// COMPARER 2 DATASETS ////////////////////////////////////
+
+major_list=data_grades["Major"].unique()				**recup liste des Major**
+total_compare = 0
+
+if major_list.size > 0:							**test si array vide**
+    
+    for major in major_list:
+        filtre_grades = data_grades[data_grades["Major"]==major]	**recup ligne où la valeur de la col Majeur correspond à major**
+        major_grades = filtre_grades["Unemployment_rate"].values	**recup la valeur de la col "Unemployment_rate" et non pas l'objet**
+
+        filtre_ages = data_ages[data_ages["Major"]==major]
+        major_ages = filtre_ages["Unemployment_rate"].values
+        
+        if (major_ages.size > 0) & (major_grades.size > 0):		**test si mes valeurs ne sont pas vides**
+            if major_grades<major_ages:
+                total_compare += 1
+        
+print(total_compare)

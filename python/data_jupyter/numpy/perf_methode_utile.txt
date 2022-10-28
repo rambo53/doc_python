@@ -1,0 +1,26 @@
+//////////////////////////////////// PERFORMANCES ET METHODES UTILES ////////////////////////////////////
+
+Pour tester simplement la performance de mon code :
+
+import time
+
+ticks = time.time() 
+
+"Mon code"
+
+ticks2 = time.time()
+
+print(ticks2-ticks)				**affichera la différence entre mes 2 timeticks et donc la rapidité d'exécution**
+
+////////////////////////////////
+
+Pour retrouver la valeur max dans un dictionnaire :
+
+dic_conso ={"France": 15, "Allemagne": 20, "Espagne": 35}
+
+max_key = max(dic_conso, key=lambda key: dic_conso[key])
+print(max_key)
+print(dic_conso[max_key])
+
+Espagne
+35

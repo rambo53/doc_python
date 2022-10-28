@@ -1,0 +1,142 @@
+//////////////////////////////////// FONCTIONS ////////////////////////////////////
+
+Pour utiliser des fonctions sur des dataframes, attention par défaut on les applique sur les colonnes, ma fonction va donc boucler sur toutes les colonnes de mon dataframe :
+
+def test(col):
+    return col.iloc[99]				**je déclare ma fonction qui ici retourne la ligne 100 de mon dataframe**
+
+age_100 = data_titanic.apply(test)		**j'appel ma fonction avec la méthode apply, sans paramètres, le seul étant self qui correspond 							au dataframe qui appel ma méthode sur laquelle je vais appliquer le traitement**
+
+age_100
+
+
+////////////////////////////////////
+
+Exemple d'une fonction pour connaitre le nombre de valeurs manquantes dans chaques colonnes :
+
+def test(col):
+    dt=pd.isnull(col)				**parcour les valeurs de ma colonne pour vérifier si null**
+    dt_null = col[dt]				**applique filtre sur mes colonnes pour récupérer les valeurs null**
+    return len(dt_null)
+
+nan = data_titanic.apply(test)			
+
+nan
+
+pclass          1				**je parcours chaques colonnes**
+survived        1
+name            1
+sex             1
+age           264
+sibsp           1
+parch           1
+ticket          1
+fare            2
+cabin        1015
+embarked        3
+boat          824
+body         1189
+home.dest     565
+dtype: int64
+
+////////////////////////////////////
+
+Pour appliquer une fonction sur les lignes :
+
+def test(row):
+    mineur = row["age"]			**je précise que sur chaques lignes ce sera la valeur de "age" qui sera évalué**
+    
+    if mineur < 18:
+        row = "mineur"
+    elif mineur > 18:
+        row = "adulte"
+    else:
+        row = "inconnue"
+    
+    return row
+
+
+mineur_data = data_titanic.apply(test,axis=1)
+
+mineur_data
+
+0         adulte
+1         mineur
+2         mineur
+3         adulte
+4         adulte...
+
+////////////////////////////////////
+
+Si j'ai besoin de passer des paramètres à ma méthode que j'appelle via apply :
+
+Def test(row, arg):
+	print(arg)
+
+- df.apply(test, axis=1, args=["ok"])
+
+Comme args est un tableau je peux rajouter autant de param que je veux
+
+////////////////////////////////////
+
+
+def test(row):
+    mineur = row["age"]			
+    
+    if mineur < 18:
+        return  "mineur"			**je peux retourner directement la valeur afin de passer à la ligne suivante**
+    elif mineur > 18:
+        return  "adulte"
+    else:
+        return "inconnue"
+    
+
+mineur_data = data_titanic.apply(test,axis=1)
+
+mineur_data
+
+////////////////////////////////////
+
+Exemple d'utilisation de notre valeur de retour age, ici on crée une nouvelle colonne dans notre dataframe data_titanic, un nouvel index sur lequel on va pouvoir faire des test et des stats, ici le pourcentage de survivants en fonction de la tranche d'âge :
+
+def test(row):
+    mineur = row["age"]
+    
+    if mineur < 18:
+        return  "mineur"
+    elif mineur >= 18:
+        return  "adulte"
+    else:
+        return "inconnue"
+
+age = data_titanic.apply(test,axis=1)
+
+data_titanic["Age_Labels"]=age			**je rajoute donc la valeur obtenue sur chaque ligne en créeant une nouvelle colonne**
+
+age_group_survival=data_titanic.pivot_table(index="Age_Labels", values="survived", aggfunc=numpy.mean)
+
+**j'obtiens la moyenne en groupant toutes les lignes ayant le même index dans "Age_Labels" je vérifie la valeur de survived et fait la moyenne**
+
+age_group_survival*100			**je multiplie par 100 pour avoir un pourcentage**
+
+////////////////////////////////////
+
+Pour effectuer un traitement sur un dataframe :
+
+def tri_cat(df):
+    categories_list_with_nan=df["Major_category"].unique()
+    categories_list = [x for x in categories_list_with_nan if pd.isnull(x) == False]
+    dic_cat={}
+
+    for categorie in categories_list:
+        cat_filter=data_ages["Major_category"]==categorie
+        number_by_cat = data_ages[cat_filter].Total.sum()
+        dic_cat[categorie]=number_by_cat
+    return dic_cat
+    
+cat=tri_cat(data_ages)
+cat
+
+{'Agriculture & Natural Resources': 632437.0,
+ 'Biology & Life Science': 1338186.0,
+ 'Engineering': 3576013.0,...

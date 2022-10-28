@@ -1,0 +1,105 @@
+//////////////////////////////////// SERIES ////////////////////////////////////
+
+import pandas as pd
+from pandas import Series						**j'importe l'objet Series**
+
+data_fandango = pd.read_csv("fandango_score_comparison.csv")
+
+films=data_fandango["FILM"]						**j'extrait les noms de films**
+rt_media = data_fandango["RottenTomatoes"]				**j'extrait les notes rt**
+
+serie=Series(data=rt_media.values, index=films.values)			**je crée mon objet Series avec en data les notes et en values les 											noms de films**
+serie
+
+Avengers: Age of Ultron (2015)                74
+Cinderella (2015)                             85
+Ant-Man (2015)                                80...
+
+serie["Leviathan (2014)"]						**je cherche par le nom de film**
+
+99									**retourne la note de mon film sur rt**	
+
+serie[["Leviathan (2014)","Minions (2015)"]]				**j'utilise les 2 dimensions pour récupérer plusieurs infos et films 											en même temps**			
+Leviathan (2014)    99
+Minions (2015)      54
+dtype: int64
+
+serie[5:10]								**je peux utiliser les index chiffrés pour retrouver mes infos**
+
+The Water Diviner (2015)        63
+Irrational Man (2015)           42
+Top Five (2014)                 86
+Shaun the Sheep Movie (2015)    99
+Love & Mercy (2015)             89
+dtype: int64
+
+////////////////////////////////////
+
+On peut réindexer des listes/series si en bdd ou sur notre csv ce n'est pas dans l'ordre que l'on souhaite quand on extrait les données :
+
+films=data_fandango["FILM"]						**je récupère le colonne nom de film**
+rt_media = data_fandango["RottenTomatoes"]				**je récupère la colonne note rt**
+
+serie=Series(data=rt_media.values, index=films.values)			**je crée un objet Series avec ces données en désignant nom de film 											comme index**
+original_index=serie.index						**je récupère les valeurs de mes index**
+
+sorted_index=sorted(original_index)					**j'applique un tri par ordre alphabétique sur cette liste** 
+
+serie.reindex(sorted_index)						**puis je fais mon réindexage en me basant sur l'ordre alphabétique 											que j'ai créé au dessus**
+
+
+////////////////////////////////////
+
+Si je veux manipuler mes data, j'applique directement les calculs que j'ai à a faire sur mon objet Series, et ils seront directement affectés à mes data :
+
+serie_sorted=serie.reindex(sorted_index)
+
+serie_sorted/10
+
+'71 (2015)                          9.7			**ici j'ai tout simplement divisé par 10**
+5 Flights Up (2015)                 5.2
+A Little Chaos (2015)               4.0
+A Most Violent Year (2014)          9.0...
+
+Je peux aussi utiliser des fonction numpy :
+
+import numpy as np
+
+np.max(serie_sorted)
+
+100
+
+////////////////////////////////////
+
+Pour comparer et trier des données d'un objet Series :
+
+filtre=serie_sorted<50				**ici je filtre uniquement les notes supérieures 50**
+
+serie_sorted[filtre]
+
+A Little Chaos (2015)                         40
+Aloha (2015)                                  19
+American Ultra (2015)                         46
+Annie (2014)                                  27
+Black or White (2015)                         39...
+
+////////////////////////////////////
+
+Pour aligner des données :
+
+films=data_fandango["FILM"]						**récupère colonnes FILM**
+rt_media = data_fandango["RottenTomatoes"]				
+rt_users = data_fandango["RottenTomatoes_User"]
+
+serie_media=Series(data=rt_media.values, index=films.values)		**j'ai une series avec les notes rotten media**
+
+serie_users=Series(data=rt_users.values, index=films.values) 		**j'ai une series avec les notes rotten user**
+
+note_mean = (serie_media+serie_users)/2					**j'additionne mes data puis divise par 2 pour la moyenne des deux**
+
+note_mean
+
+Avengers: Age of Ultron (2015)               80.0
+Cinderella (2015)                            82.5
+Ant-Man (2015)                               85.0
+Do You Believe? (2015)                       51.0...

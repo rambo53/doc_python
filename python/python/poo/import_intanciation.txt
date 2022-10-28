@@ -1,0 +1,11 @@
+//////////////////////////// IMPORT ET INSTANCIATION //////////////////////////////////
+
+Pour utiliser des objet dans une autre classe je dois l'importer :
+
+- from album import Album			**ici de mon fichier album j'importe ma classe Album**
+
+Ensuite pour instancier un objet :
+
+- release = album.Album()
+
+- release = Album(name="peace sells",year=1986)

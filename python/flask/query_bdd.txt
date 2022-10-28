@@ -1,0 +1,20 @@
+//////////////////////////////////// QUERY VERS BDD ////////////////////////////////////
+
+Dans mon main je déclare mon blueprint qui sera mon controller pour mon objet Entry :
+
+from entries.blueprint import entries
+app.register_blueprint(entries, url_prefix='/entries')		**je précise que toutes mes url vers entries commenceront par /entries/**
+
+////////////////////////////////////////////
+
+Dans mon blueprint qui est mon controller:
+
+from flask import Blueprint,render_template
+from models import Entry, Tag
+
+entries = Blueprint('entries',__name__, template_folder='templates')
+
+@entries.route('/')
+def index():
+    query = Entry.query.order_by(Entry.title.asc())			**requêtage vers ma bdd**
+    return render_template('entries/index.html', entry=query)

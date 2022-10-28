@@ -1,0 +1,50 @@
+//////////////////////////// CAST ET TRY CATCH //////////////////////////////////
+
+Pour caster en python :
+
+-    age=int(input("quel est ton age?"))		**ici je cast la réponse en int**
+
+-    if type(age)==int:					**je test si le type de age est int**
+        print("tu as "+str(age))			**ici print ne peux concaténer que des string donc je recaste en string mon int**
+-    else:
+        print("oups")
+
+//////////////////////////////////
+
+Les blocs try catch :
+
+-   try:
+        age=int(input("quel est ton age?"))
+        print("tu as "+str(age))
+-   except:						**en python on utilise except au lieu de catch**
+        print("nope")
+-   finally:						**le finally est un bloc de code qui s'exécute quoi qu'il arrive**
+	print("merci")
+
+
+Je peux aussi préciser le type d'erreur à lever pour une meilleure évaluation et performance:
+
+-   try:
+        age=int(input("quel est ton age?"))
+        print("tu as "+str(age))
+-   except ValueError:					**on rajoute juste le type d'erreur après except**			
+        print("Pas un chiffre")
+
+
+Pour lever les erreurs :
+
+    def asknom():							**je déclare ma fonction askage**
+        try:
+            nom=input("Quel nom?")
+            if nom == "":				**si nom est vide**
+                raise ValueError			**je lève une erreur de type ValueError qui écrira "nope" et reposera la question**
+
+            print("tu t'appelles "+nom)
+
+        except ValueError:
+            print("nope")
+            asknom()
+
+    asknom()
+
+//////////////////////////////////

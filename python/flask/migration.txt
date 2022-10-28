@@ -1,0 +1,34 @@
+//////////////////////////////////// MIGRATIONS ////////////////////////////////////
+
+Pour modifier les tables de ma bdd si j'apporte des modifs au schéma côté objet.
+
+Installation des lib puis import dans app.py :
+
+from flask_migrate import Migrate, MigrateCommand
+from flask_script import Manager
+
+migrate = Migrate(app,db)
+
+manager = Manager(app)
+manager.add_command('db', MigrateCommand)
+
+/////////////////////////////////
+
+Création du fichier manage :
+
+from app import manager
+from main import *
+
+
+if __name__ == "__main__":
+    manager.run()
+
+/////////////////////////////////
+
+Je lance la commande dans le terminal :
+
+- python manage.py db init
+
+- python manage.py db migrate
+
+- python manage.py db upgrade

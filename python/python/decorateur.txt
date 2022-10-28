@@ -1,0 +1,44 @@
+//////////////////////////// DECORATEUR //////////////////////////////////
+
+Equivalent aux annotations à placer au dessus des fonctions.
+
+user = "olivier"
+
+def mon_decorateur(fonction):			**prend en param la fonction au dessus de laquelle il est placé**
+
+    def autre_fonction():			**contient une fonction qui ici s'exécute si le user n'est pas "olivier"**
+        print "Action refusée"
+
+    if user != "olivier":
+        return autre_fonction
+
+    return fonction 				**si le user est bien "olivier" exécute la fonction en dessous du décorateur ici do_that**
+
+
+@mon_decorateur
+def do_that():
+    print "Execution des instructions"
+
+////////////////////////////////
+
+admin = True
+
+def is_admin(role):
+
+	def verif(fonction):
+		def wrapper():
+			if admin:
+				return fonction()
+			else:
+				print("vous n'avez pas les droits")
+		return wrapper
+	return verif
+
+
+
+@is_admin(admin)
+def do_that():
+    print "bonjour admin"
+
+
+

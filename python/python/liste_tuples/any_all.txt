@@ -1,0 +1,46 @@
+//////////////////////////// ANY ALL ZIP//////////////////////////////////
+
+noms=["Marc","Maxime","Cam"]
+
+nom_avec_x = any([True if "x" in nom.lower() else False for nom in noms])
+
+Retourne True si au moins un noms contient la lettre "x" peut importe la casse.
+
+
+nom_avec_x = all([True if "m" in nom.lower() else False for nom in noms])
+
+Retourne True si tous les noms contient la lettre "m" peut importe la casse.
+
+//////////////////////////////////
+
+nom="toto"
+nom_avec_digit = any([True if char.isdigit() else False for char in nom]) 	**test si un des caractères de ma string est un chiffre**
+
+print(nom_avec_digit)
+
+//////////////////////////////////
+
+Je peux associer des valeurs de tuples entre elles avec zip:
+
+noms=("Marc","Maxime","Cam")
+age=(15,12,5)
+
+noms_age = zip(noms,age)		**je ne peux pas le parcourir avec print**
+
+noms_age = list(zip(noms,age))		**je le transforme en liste pour pouvoir le parcourir**
+
+
+for nom,age in noms_age:
+	print(f"noms : {nom} age : {age}")
+
+noms : Marc age : 15
+noms : Maxime age : 12
+noms : Cam age : 5
+
+//////////////////////////////////
+
+Pour l'opération inverse :
+
+unzipped = list(zip(*noms_age))		**avec l'étoile il éclate mes params et zip récupère juste le 1er param de chaque tupple pour en 					reconstituer un autre, ici je vais retrouver noms et age qui seront 2 tupples au seins de unzipped**
+
+noms,age = list(zip(*noms_age))		**je récupère directement mes listes séparées**

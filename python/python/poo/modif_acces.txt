@@ -1,0 +1,24 @@
+//////////////////////////// MODIF ACCES //////////////////////////////////
+
+Par défaut tout est en public, pour les déclarer en private je rajoute "__" devant le nom de ma var :
+
+class User:
+	def __init__(self, nom):
+		self.__nom=nom
+
+user1 = User("marc")
+
+user1.__nom = "jean"
+
+Attention je peux appeler quand même ma var depuis l'extérieur, mais la valeur de "__nom" utilisé restera celle que j'ai déclaré lors de son instanciation.
+Ici dans user1 je me retrouve avec une var "_User__nom" qui à la valeur "marc" et une var "__nom" qui à la valeur "jean".
+
+//////////////////////////////////
+
+Pour protected je rajoute juste "_" devant ma var :
+
+_nom
+
+
+
+ 

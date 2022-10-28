@@ -1,0 +1,27 @@
+//////////////////////////////////// REINDEXER ////////////////////////////////////
+
+Je peux réindexer mon nouveau dataframe avec la fonction "reset_index()" :
+
+Avant réindexage de data_titanic :
+
+	pclass	survived	name				age
+1	1.0	1.0	Allison, Master. Hudson Trevor		2
+2	1.0	0.0	Allison, Miss. Helen Loraine		30
+0	1.0	1.0	Allen, Miss. Elisabeth Walton		55
+
+
+- data_titanic.reset_index()
+
+	index	pclass	survived	name				age
+0	1	1.0	1.0	Allison, Master. Hudson Trevor		2
+1	2	1.0	0.0	Allison, Miss. Helen Loraine		30
+2	0	1.0	1.0	Allen, Miss. Elisabeth Walton		55
+
+Je peux passer un paramètre pour supprimer l'indexage précédent, ici 1,2,0 :
+
+- data_titanic.reset_index(drop=True)
+
+		pclass	survived	name				age
+0	1.0	1.0	Allison, Master. Hudson Trevor		2
+1	1.0	0.0	Allison, Miss. Helen Loraine		30
+2	1.0	1.0	Allen, Miss. Elisabeth Walton		55

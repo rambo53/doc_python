@@ -1,0 +1,27 @@
+//////////////////////////// APPEL RESEAUX //////////////////////////////////
+
+pip install requests
+
+import requests
+
+reponse = requests.get("mon_adresse_url.fr")
+
+Si j'ai des pbm d'encodage :
+
+reponse.encoding = "UTF-8"
+
+Pour vérifier le code de retour :
+
+reponse.status_code		**200, 404 ...**
+
+//////////////////////////////////
+
+Pour afficher le résultat sous forme de texte :
+
+reponse.text		**je peux bien sûr faire un print**
+
+Si je récupère du json :
+
+import json
+
+json.load(reponse.text)

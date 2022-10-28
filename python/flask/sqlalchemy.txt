@@ -1,0 +1,34 @@
+//////////////////////////////////// SQLALCHEMY ////////////////////////////////////
+
+ORM pour python et flask, faire un :
+- pip install sqlalchemy
+- pip install flask-sqlalchemy
+
+Il vient nativement avec le driver pour sql lite.
+Installer le db browser pour sql lite si besoin.
+
+///////////////////////////////////////////
+
+Pour créer mes tables j'utilise un model :
+
+class Entry(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title =  db.Column(db.String(100))
+    slug =  db.Column(db.String(100), unique=True)
+    body = db.Column(db.Text)
+    created_timestamp = db.Column(db.DateTime, default=datetime.datetime.now)
+    modified_timestamp = db.Column(db.DateTime, default=datetime.datetime.now, onupdate=datetime.datetime.now)
+
+Ensuite dans un dossier script je crée un fichier 'create_db.py', puis j'écris :
+
+if __name__ == "__main__":
+    db.create_all()
+
+Pour finir et créer ma db je lance la commande :
+
+python scripts/create_db.py
+
+///////////////////////////////////////////
+
+Pour visualiser ma BDD j'utilise db browser et 'fichier -> ouvrir une base de données'
+Je vais sur mon projet pour sélectionner le fichier 'blog.db' pour ce projet.

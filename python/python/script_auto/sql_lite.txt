@@ -1,0 +1,42 @@
+//////////////////////////// SQL LITE //////////////////////////////////
+
+import sqlite3
+
+connexion = sqlite3.connect("nom_de_ma_bdd.db")
+
+sql_table_artiste = """CREATE TABLE artistes (					**les 3 """ permettent d'écrire une str sur plusieurs lignes**
+			artiste_id INTEGER NOT NULL PRIMARY KEY,
+ 			nom VARCHAR
+			);"""
+
+curseur = connexion.cursor()			**je crée un curseur unique pour parcourir ou écrire mes données**
+
+curseur.execute(sql_table_artiste)		**je lui passe ma commande à exécuter ici création de ma table**
+
+!!!! connexion.execute(sql_table_artiste) !!!! Pas une bonne pratique, car crée un curseur à chaque action.
+
+connexion.commit()
+connexion.close()
+
+//////////////////////////////////
+
+Suite à une insertion d'un nouvel enregistrement si je veux récupérer l'id précédemment enregistré :
+
+new_id = curseur.lastrowid
+
+//////////////////////////////////
+
+Pour des select :
+
+connexion = sqlite3.connect("artistes.db")
+    
+curseur = connexion.cursor()
+
+select = """select * from artistes;"""
+curseur.execute(select)
+lst_artistes = curseur.fetchall()		**je récupère un tuple qui contient mes artistes avec leurs infos**
+
+for artiste in lst_artistes:
+	print(artiste[1])			**j'affiche l'élément index 1 de chaque élément de mon tuple, ici nom de l'artiste**
+	
+connexion.close()

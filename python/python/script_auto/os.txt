@@ -1,0 +1,88 @@
+//////////////////////////// OS //////////////////////////////////
+
+Pour être sûr que le document existe je peux importer la librairie "os".
+
+import os
+
+if os.path.exists("data.txt"):
+	with open("data.txt", "r") as fichier:		
+		print fichier.read()	
+else:
+	print("ce fichier n'existe pas")
+
+////////////////////////////
+
+Si j'ai besoin d'accéder à un fichier qui est dans un dossier sans écrire le path en dur pour que cela s'adapte en fonction de l'os de mon utilisateur :
+
+os.path.join("nom_du_dossier","nom_du_fichier")		**je peux rajouter autant de param que j'ai de sous dossier**
+
+////////////////////////////
+
+Pour créer un dossier si celui ci n'existe pas :
+
+os.mkdir("dossier")
+
+Pour le supprimer :
+
+os.rmdir("dossier")
+
+////////////////////////////
+
+Pour créer des répertoire de manière récursive :
+
+- os.makedirs('/rep1/rep2/newRep/')
+
+////////////////////////////
+
+Pour les supprimer :
+
+os.removedirs("/rep2/newRep/")
+
+////////////////////////////
+
+Pour supprimer un fichier :
+
+os.remove("test.txt")
+
+////////////////////////////
+
+import os
+import shutil
+
+source = "logo.png"
+target = "images.logo.png"		
+
+shutil.copy(source, target)		**pour copier un fichier d'un point a à un point b**
+
+os.remove(source)			**pour effacer ce fichier par la suite**
+
+////////////////////////////
+
+Pour récupérer le repertoire courant :
+
+- os.getcwd()
+
+////////////////////////////
+
+Pour changer de répertoire :
+
+- os.chdir('/mon_repertoire/')
+
+////////////////////////////
+
+Pour lister mes répertoires dans un répertoire :
+
+- os.listdir('/mon_repertoire/')
+
+////////////////////////////
+
+Pour renommer des fichiers ou des répertoires :
+
+- os.rename('nom_initial', 'new_name')
+
+////////////////////////////
+
+Pour récupérer la state d'un répertoire : 
+
+- os.stat('/mon_rep')
+

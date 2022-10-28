@@ -1,0 +1,23 @@
+//////////////////////////// COPIE //////////////////////////////////
+
+Pour copier des objets de façons partiel, peu profonde :
+
+import copy
+
+user1=User("marc", 22, [1,2,3])
+
+user2 = copy.copy(user1)		**user2 sera une copy de user1**
+
+user1.num[0]=15				**ici la valeur à l'index 0 de ma liste dans user1 et user2 sera modifié car c'est une copie peu 					profonde, et pour la liste dans user2 elle pointe vers la valeur, donc si la valeur est modifié elle 					sera aussi modifié dans user2**
+
+//////////////////////////////////
+
+La différence avec une copie profonde c'est que lors de la copie je recrée une liste en mémoire et donc en cas de modif de la liste de user1, user2 ne sera pas affecté :
+
+import copy
+
+user1=User("marc", 22, [1,2,3])
+
+user2 = copy.deepcopy(user1)		**j'utilise deepcopy**
+
+user1.num[0]=15				**la liste de user1 à l'index 0 sera modifié mais pas celle de user2**

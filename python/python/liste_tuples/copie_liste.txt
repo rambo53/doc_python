@@ -1,0 +1,41 @@
+//////////////////////////// COPIE LISTE //////////////////////////////////
+
+liste=[1,2,3]
+
+newListe = liste	**ici je copie ma liste dans une nouvelle variable mais je ne crée pas une nouvelle liste en mémoire**
+
+liste[0]=5
+
+print(liste)		**5,2,3 sur la ligne du dessus comme les listes possède la même adresse mémoire elles sont altérés toutes les 2**
+print(newListe)		**5,2,3**
+
+//////////////////////////////////
+
+
+liste=[1,2,3]
+
+newListe = liste[:]		**ici avec le slice je crée une nouvelle liste avec une nouvelle adresse mémoire, et donc indépendante**	
+
+liste[0]=5
+
+print(liste)			**5,2,3**	
+print(newListe)			**1,2,3**
+
+//////////////////////////////////
+
+liste=[1,2,3]
+
+newListe = liste[:-1]		**ici j'indique que je fait une copie en retirant le dernier élément**
+
+print(liste)			**1,2,3**			
+print(newListe)			**1,2**
+
+//////////////////////////////////
+
+liste=[1,2,3]
+
+newListe = liste[-2:]		**ici j'indique que je fait une copie à partir de l'élément -2**
+
+print(liste)			**1,2,3**			
+print(newListe)			**2,3**
+

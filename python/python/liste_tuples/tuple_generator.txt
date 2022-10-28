@@ -1,0 +1,64 @@
+//////////////////////////// TUPLE //////////////////////////////////
+
+Un tuple est une liste ummuable, une fois instancié on ne peut modifier ses valeurs.
+On distingue un tuple d'une liste par ses parenthèses.
+
+mon_tuple = (1, "ok", "olivier")
+
+Mais je peux aussi me passer des parenthèses à l'instanciation :
+
+mon_tuple = 1, 2, 3
+
+Ainsi je peux créer des constantes en utilisant un tuple, attention  à ne pas oublier la virgule autrement il sera de type string.
+
+mon_tuple = ("ok")
+type(mon_tuple)
+<type 'str'>
+
+mon_tuple = ("ok",)
+type(mon_tuple)
+<type 'tuple'>
+
+J'accède ensuite à mes valeurs via des index comme une liste.
+
+//////////////////////////////////
+
+Je peux récupérer un tableau d'une fonction et l'envoyer à une autre qui attend plusieurs param en séparant chaques param :
+
+def param_separe(nom,age,taille):				**ma fonction attend 3 param**
+	print(f"nom {nom}, age {age}, taille {taille}
+
+tab = ["stef", 15, 1.5]
+
+param_separe(*tab)			**ici j'envoie un seul param qui est mon tableau avec 3 valeurs, et ma fonction attend 3 param, pour 					splitter les valeurs de mon tableau afin qu'elles correspondent au param je rajoute * l'étoile**
+
+
+//////////////////////////// GENERATOR //////////////////////////////////		
+
+gen = (i for i in range(10000))
+
+print(sum(gen))
+
+Au lieu de : 
+
+list = [i for i in range(10000)]
+
+print(sum(list))
+
+Permet de consommer sensiblement moins de mémoire. 
+
+////////////////////////////
+
+def generateur(n):
+    for i in range(n):
+        if i == 5:
+            print "Quoi déjà 5eme tour?"
+        yield i+1
+
+
+
+i=generateur(10)
+
+for v in i:
+     print(v)
+

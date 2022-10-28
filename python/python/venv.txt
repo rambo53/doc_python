@@ -1,0 +1,35 @@
+//////////////////////////// VENV //////////////////////////////////
+
+!!	pour windows 	!!
+
+L'environnement virtuel dans mon projet python me permet de stocker toutes les dépendances, librairies dont j'ai besoin pour faire tourner mon programme, pour cela je me rend dans le dossier de mon projet avec le terminal en ouvrant le terminal et faisant :
+
+- cd C:\Users\user\Desktop\python		**l'adresse est un exemple, pour aller plus vite je fais un drag and drop depuis mon bureau 						sur mon terminal**
+
+Ensuite une fois que je suis dedans avec mon terminal je tape la cmd :
+
+- python -m venv venv		**le premier venv est la commande, le deuxième est le nom que je donne à mon venv**
+
+Pour activer mon environnement virtuel :
+
+- .\venv\script\activate
+
+Mon venv est bien activé, pour en être sûr ma ligne est précédé par (venv).
+A partir de là je peux installer les packages nécessaires directement dans mon venv.
+
+Pour sortir de mon venv :
+
+- deactivate
+
+//////////////////////////////////
+
+Sous vs code une fois mon dossier ouvert je clique en bas à gauche sur Python 3.maversion, et je sélectionne en haut celui avec le venv.
+Je le sélectionne en cliquant dessus puis en le lancant en cliquant sur le run pour lancer mon programme.
+Dans le terminal de vs si c'est la première fois je tape le "T" majuscule.
+
+//////////////////////////////////
+
+Sous MAC et Pycharm :
+
+- python3 -m venv venv
+- source venv/bin/activate

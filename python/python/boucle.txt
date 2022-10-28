@@ -1,0 +1,55 @@
+//////////////////////////// BOUCLES //////////////////////////////////
+
+/////////////// WHILE /////////////////////
+
+i = 0
+
+while i < 10:
+    print("ok")
+    i = i +1
+
+/////////////// FOR /////////////////////
+
+phrase = "Bonjour toi"
+
+for lettre in phrase:		**affichera les lettres une à une**
+    print(lettre)
+
+/////////////// 
+
+for i in range(0,100):		**100 sera exclu**
+    print(i)
+
+/////////////// 
+
+liste = [1,5,10,15,20,25]
+
+for i in liste:
+     if i > 15:
+             print("On stoppe la boucle")
+             break				**break pour casser l'exécution de la boucle**
+     print(i)
+
+///////////////
+
+alphabet = {"a","b","c"}
+
+for index in range(len(alphabet)):
+     letter = alphabet[index]
+     print(index, letter)
+
+0 a
+1 b
+2 c
+
+/////////////// 
+
+alphabet = {"a","b","c"}
+
+for count, letter in enumerate(alphabet ):
+     print(count, letter)
+
+0 a		**enumerate me permet d'avoir l'index ainsi que la valeur de mes éléments**
+1 b
+2 c
+

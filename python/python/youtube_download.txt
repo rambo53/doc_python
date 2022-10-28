@@ -1,0 +1,35 @@
+//////////////////////////// COMMENCER //////////////////////////////////
+
+!!!!!!!!!!!!!!! attention pytube est utilisable uniquement à partir de python 3.6!!!!!!!!!!!!!!!
+
+pip install git+https://github.com/pytube/pytube
+
+
+from pytube import YouTube
+
+url="url_de_la_video_a_charger.com"
+
+video = YouTube(url)
+
+video.title				**récupère titre de mon objet video**
+video.views				**récupère vues de mon objet video**
+
+//////////////////////////////////
+
+Pour récupérer le stream :
+
+lst_streams = video.streams.fmt_streams
+
+Attention j'ai plusieurs stream, la variable retournée sera une liste.
+
+Si je veux charger un stream en particulier j'utilise son itag :
+
+stream = video.streams.get_by_itag(18)			**18 est un exemple, à voir avec la liste de stream retournée**
+stream.download()
+
+//////////////////////////////////
+
+Pour récupérer uniquement les streams audio :
+
+video.streams.filter(only_audio=True, file_extension='mp4')
+

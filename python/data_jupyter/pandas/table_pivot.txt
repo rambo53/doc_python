@@ -1,0 +1,42 @@
+//////////////////////////////////// TABLE PIVOT ////////////////////////////////////
+
+Pour effectuer des calculs sur plusieurs colonnes de façon plus simple.
+
+Sans table pivot :
+
+Exemple calcul prix moyen billet en fonction classe :
+
+classe = [1,2,3]
+moyenne_prix = {}
+
+for i in classe:
+    classe_level=data_titanic[data_titanic["pclass"]==i]		**je récupère les lignes de chaque classe ex:1**
+    fares=classe_level["fare"]						**je récupère les valeurs des colonnes fare des passagers de classe 1**
+    moyenne=fares.mean()
+    moyenne_prix[i]= moyenne						**1: 87.50899164086687, j'associe clé 1 à valeur 87.50...**
+
+print(moyenne_prix)
+
+////////////////////////////////////
+
+Avec table pivot :
+
+moyenne_prix=data_titanic.pivot_table(index="pclass", values="fare", aggfunc=numpy.mean)
+
+**en premier param la colonne avec les valeurs à grouper, en 2ieme la colonne sur laquelle je fais le calcul, et enfin le 3ieme le calcul à effectuer**
+
+**Attention cependant cette façon met plus du double du temps de traitement que la première façon**
+
+////////////////////////////////////
+
+moyenne_prix=data_titanic.pivot_table(index="embarked", values=["fare","survived"], aggfunc=numpy.sum)
+
+print(moyenne_prix)
+
+**On peut passer un tableau de paramêtres dans values**
+
+                fare  survived
+embarked                      
+C         16830.7922     150.0
+Q          1526.3085      44.0
+S         25033.3862     304.0

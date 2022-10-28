@@ -1,0 +1,44 @@
+//////////////////////////// STRUCTURE IF ELSE //////////////////////////////////
+
+a = 5
+
+if a > 5:
+    a = a + 1
+elif a == 5:
+    a = a + 1000
+else:
+    a = a - 1
+
+//////////////////////////// CONDITIONS MULTIPLES //////////////////////////////////
+
+age = 18
+  
+if ((age>= 8) and (age<= 12)):
+    print("YOU ARE ALLOWED. WELCOME !")
+else:
+    print("SORRY ! YOU ARE NOT ALLOWED. BYE !")
+
+Je peux simplifier si je compare 2 fois la même valeur :
+
+if 8<= age <= 12:					**ici je test si mon âge est compris entre 8 et 12 ans inclus**
+    print("YOU ARE ALLOWED. WELCOME !")
+else:
+    print("SORRY ! YOU ARE NOT ALLOWED. BYE !")
+
+//////////////////////////////////////////////////////
+
+age = 18
+  
+if (age == 8 or age == 12):
+    print("YOU ARE ALLOWED. WELCOME !")
+else:
+    print("SORRY ! YOU ARE NOT ALLOWED. BYE !")
+
+//////////////////////////// TERNAIRES //////////////////////////////////
+
+a = 10
+b = 20
+  
+min = a if a < b else b		**min vaut a(10) si a est plus petit que b, sinon min vaut b(20)** 
+  
+print(min) **affichera 10**

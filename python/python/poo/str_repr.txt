@@ -1,0 +1,46 @@
+//////////////////////////// STR REPR STATIC //////////////////////////////////
+
+Pour redéfinir l'affichage de mon objet lors de l'appel de print j'utilise __str__, par défaut ma méthode print avec mon objet me revoie, la classe où l'objet est afficher, le nom de ma classe et son adresse mémoire :
+
+def __str__(self):
+	return str(self.__dict__)
+
+print(user1)
+
+{"nom":"marc","age":22}
+
+//////////////////////////////////
+
+La fonction __repr__ est pour la phase de dev, elle permet lors de la phase de dev de définir les infos à afficher lors de l'appel de print :
+
+def __repr__(self):
+	return __class__.__name__ +self.nom		**avec "__class__.__name__" je récupère le nom de ma classe**
+
+//////////////////////////////////
+
+Pour utiliser des méthodes static à partir d'une instance :
+
+def affiche(a):
+	print(a)
+
+User.affiche("une phrase")		**ici je suis obligé d'utiliser le nom de ma classe pour appoelé la méthode**
+
+
+@staticmethod				**mon décorateur**
+def affiche(a):				**pas besoin de self**
+	print(a)
+
+user1 = User("marc",21)
+user1.affiche("une phrase")		**grâce à mon décorateur je peux appelé ma méthode à partir d'une instance sans lui passer le param						 self**
+
+//////////////////////////////////
+
+Je peux utiliser des méthodes de classe pour accéder aux infos de ma classe par exemple le nom de ma classe ou des variables globales de ma classe :
+
+@classmethod				**mon décorateur**
+def methode_de_classe(classe):		**classe est mon objet classe courant ici ma classe User**
+	print(classe)
+
+User.methode_de_classe()		**pas besoin de param**
+
+

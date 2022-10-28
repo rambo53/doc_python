@@ -1,0 +1,45 @@
+//////////////////////////// SORT //////////////////////////////////
+
+Pour trier ordre croissant :
+
+list =[5,7,2]
+
+list.sort()
+
+print(list)		**2,5,7**
+
+//////////////////////////////////
+
+list =[5,7,2]
+
+newListe=sorted(list)	**retourne une liste sans modifier la précédente**
+
+print(list)		**5,7,2**
+print(newListe)		**2,5,7**
+
+//////////////////////////////////
+
+Pour trier ordre décroissant :
+
+list =[5,7,2]
+
+list.sort(reverse=True)
+
+print(list)		**7,5,2**
+
+Même concept avec sorted :
+
+newListe=sorted(list, reverse=True)
+
+//////////////////////////////////
+
+Si je veux modifier le tri, ici par exemple en fonction du nombre de caractères :
+
+list =["Marc","Maxime","Cam"]
+
+list.sort(key=lambda nom : len(nom))
+
+print(list)		**Cam,Marc,Maxime**
+
+
+

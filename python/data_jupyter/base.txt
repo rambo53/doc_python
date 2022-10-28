@@ -1,0 +1,12 @@
+//////////////////////////////////// BASE ////////////////////////////////////
+
+Une fois installé anaconda, rechercher "anaconda prompt", taper "jupyter notebook".
+On va chercher le dossier dans lequel on va travailler.
+
+On choisit new puis python, on peut renommer le notebook.
+
+On peut sélectionner markdown en cliquant sur le select avec "code", c'est pour écrire des commentaires entre mon code.
+
+Sinon avec code je rentre mon code python et pour l'exécuter je tape "control + entrée" pour exécuter le code de la cellule sélectionnée.
+
+Si besoin je clique sur kernel et je choisit "restart and run all".

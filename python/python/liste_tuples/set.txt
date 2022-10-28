@@ -1,0 +1,38 @@
+//////////////////////////// SET //////////////////////////////////
+
+Set me sert pour supprimer les doublons de ma liste mais ne sera plus dans le même ordre :
+
+nun = [1,2,3,4,5,1]
+
+mon_set = set(num)
+
+print(mon_set)
+
+1,3,5,4,2
+
+Attention comme il n'y a plus d'ordre il n'y a plus d'index.
+
+Pour retrouver un index je le retransforme en liste :
+
+nun = [1,2,3,4,5,1]
+
+mon_set = list(set(num))
+
+//////////////////////////////////
+
+La méthode "difference" me permet de récupérer les valeurs différentes entre 2 set :
+
+A = {1,2,3}
+B = {1,4,3}
+
+print(A.difference(B))
+
+** 2 **
+
+Ici 2 n'est pas présent dans B.
+
+Je peux aussi effectuer le même traitement avec l'opérateur - :
+
+print(A -B)
+
+** 2 ** 

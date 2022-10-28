@@ -1,0 +1,108 @@
+//////////////////////////// DICTIONNAIRE //////////////////////////////////
+
+a = {}
+a["nom"] = "Wayne"
+a["prenom"] = "Bruce"		**clés "prénom" avec valeur "Bruce"**
+
+a = {'nom': 'Wayne', 'prenom': 'Bruce'}
+
+///////////////////////////////////
+
+Récupérer valeur dans dictionnaire :
+
+data = {"name": "Wayne", "age": 45}
+data.get("name")
+
+'Wayne'
+
+///////////////////////////////////
+
+Vérifier la présence d'une clé dans un dictionnaire :
+
+a.has_key("nom")
+
+True
+
+///////////////////////////////////
+
+Supprimer une entrée dans un dictionnaire :
+
+a = {'nom': 'Wayne', 'prenom': 'Bruce'}
+del a["nom"]
+
+a = {'prenom': 'Bruce'}
+
+///////////////////////////////////
+
+Récupérer les clés d'un dictionnaire : 
+
+fiche = {"nom":"Wayne", "prenom":"Bruce"}
+
+for cle in fiche.keys():
+  	print cle
+
+nom
+prenom
+
+///////////////////////////////////
+
+Récupérer les valeurs d'un dictionnaire : 
+
+fiche = {"nom":"Wayne", "prenom":"Bruce"}
+
+for valeur in fiche.values():
+     print valeur
+ 
+Wayne
+Bruce
+
+///////////////////////////////////
+
+Récupérer les clés et valeurs d'un dictionnaire : 
+
+fiche = {"nom":"Wayne","prenom":"Bruce"}
+
+for cle,valeur in fiche.items():
+     print cle, valeur
+
+nom Wayne
+prenom Bruce
+
+///////////////////////////////////
+
+Fusionner des dictionnaires :
+
+a = {'nom': 'Wayne'}
+b = {'prenom': 'bruce'}
+
+a.update(b)
+
+{'nom': 'Wayne', 'prenom': 'Bruce'} 
+
+///////////////////////////////////
+
+Depuis la version 3.9 :
+
+a = {'nom': 'Wayne'}
+b = {'prenom': 'bruce'}
+
+ab = a | b		**je fusionne les deux avec le pipe | **
+
+{'nom': 'Wayne', 'prenom': 'Bruce'} 
+
+Ou pour moins de mémoire consommé :
+
+a |= b		**il fusionnera aussi sans dupliquer mes dictionnaire et donc prend moins de mémoire**
+
+print(a)	
+
+{'nom': 'Wayne', 'prenom': 'Bruce'} 
+
+
+
+
+
+
+
+
+

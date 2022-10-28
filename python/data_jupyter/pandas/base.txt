@@ -1,0 +1,147 @@
+//////////////////////////////////// BASE ////////////////////////////////////
+
+Avec Pandas on distingue 3 sortes de structures de données :
+
+- les series = un ensemble de valeurs, utilise les tableaux numpy
+- les dataframes = un ensemble d'objets series
+- les panels = un ensemble d'objets dataframes
+
+Pour récupérer le fichier csv :
+
+data_food = pd.read_csv("food_info.csv")
+
+Ensuite j'ai les méthodes de base type(), print() et shape pour les dimensions.
+
+////////////////////////////////////
+
+Pour récupérer uniquement les 5 premières lignes de mon dataframe :
+
+data_food.head()
+
+Je peux aussi passer en param de head le nombre de ligne que je veux.
+
+////////////////////////////////////
+
+Pour afficher ou récupérer le noms des colonnes :
+
+data_food.columns
+
+////////////////////////////////////
+
+Pour récupérer soit y soit x :
+
+lignes = data_food.shape[0]
+print(lignes)
+
+8618
+
+colonnes = data_food.shape[1]
+print(colonnes)
+
+36
+
+////////////////////////////////////
+
+Pour récupérer toutes les valeurs d'une ligne :
+
+aliment = data_food.loc[0]
+
+Récupère tous ses attributs (id, description, valeur nutritives...)
+
+Pour récupérer toutes les valeurs de plusieurs lignes :
+
+aliments = data_food.loc[0:4]
+
+Récupère les lignes de l'index 0 à 4 !!!INCLUS!!!
+
+Pour récupérer des lignes qui ne se suivent pas :
+
+deux_cinq_dix = [2,5,10]
+
+aliments = data_food.loc[deux_cinq_dix]
+
+ou :
+
+aliments = data_food.loc[[2,5,10]]
+
+Attention aux doubles crochets.
+
+////////////////////////////////////
+
+Pour récupérer des infos via le nom de la colonne directement :
+
+nom_col = data_food["NDB_No"]
+
+print(nom_col)
+
+0        1001
+1        1002
+2        1003
+3        1004
+4        1005...
+
+Pour récupérer plusieurs colonnes :
+
+cols = ["NDB_No","Shrt_Desc"]
+
+cols_values = data_food[cols]
+
+ou :
+
+cols = data_food[["NDB_No","Shrt_Desc"]]
+
+Attention aux doubles crochets.
+
+Je peux aussi récupérer par index et cette fois c'est 2 non inclus :
+
+nom_col_list = data_food.columns.tolist()			**je récupère les noms de mes colonnes que je convertis en liste**
+
+nom_col_end_by_g = []						**j'instancie une liste vide**
+
+for nom in nom_col_list:
+    if(nom.endswith("(g)")):					**je boucle et j'extrait uniquement les noms finissant pas "(g)"**
+        nom_col_end_by_g.append(nom)
+
+print(nom_col_end_by_g[0:3])					**j'affiche de l'index 0 à 3 non inclus**
+
+////////////////////////////////////
+
+La méthode dtypes permet de récupérer le type de chaques colonnes de mon dataframe :
+
+print(data_food.dtypes)
+
+NDB_No               int64
+Shrt_Desc           object
+Water_(g)          float64
+Energ_Kcal           int64...
+
+////////////////////////////////////
+
+Exemple pour récupérer les valeurs des colonnes où l'affichage est en gramme :
+
+data_food = pd.read_csv("food_info.csv")
+
+nom_col_list = data_food.columns.tolist()
+
+nom_col_end_by_g = []
+
+for nom in nom_col_list:
+    if(nom.endswith("(g)")):
+        nom_col_end_by_g.append(nom)
+        
+gram = data_food[nom_col_end_by_g]				**ici je filtre les données voulus sur mon data_food**
+
+print(gram.head(3))
+
+   Water_(g)  Protein_(g)  Lipid_Tot_(g)  Ash_(g)  Carbohydrt_(g)  
+0      15.87         0.85          81.11     2.11            0.06   
+1      15.87         0.85          81.11     2.11            0.06   
+2       0.24         0.28          99.48     0.00            0.00   
+
+
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+//////////////////////////// FILTRES //////////////////////////////////
+
+a = [1,4,2,7,1,9,0,3,4,6,6,6,8,3]
+
+b = []
+
+**Pour filtrer avec une boucle**
+
+for x in a:
+     if x > 5:
+        b.append(x)
+ 
+b = [7, 9, 6, 6, 6, 8]
+
+**Pour filtrer sans boucle en une ligne**
+
+b = [x for x in a if x > 5]
+
+b = [7, 9, 6, 6, 6, 8]
+
+////////////////////////////
+
+items = ["5", "10", "15"]
+
+items = [int(x) for x in items]		**je peux appliquer un cast directement par exemple**
+
+print(items)
+[5, 10, 15]

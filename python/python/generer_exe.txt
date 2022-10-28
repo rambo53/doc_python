@@ -1,0 +1,33 @@
+//////////////////////////// GENERER EXE //////////////////////////////////
+
+pip install PyInstaller
+
+Vérifier installation avec commande :
+
+pyinstaller --version
+
+Ensuite avec le terminal se placer dans le dossier que l'on veut transformer en .exe :
+
+- cd nomdudossier
+
+Puis j'utilise la cmd :
+
+- pyinstaller nomdemonprogramme.py
+
+Il va générer un dossier dist dans lequel j'aurais un fichier du nom de mon programme en .exe.
+
+//////////////////////////////////
+
+A chaque fois que je modifie mon programme je dois refaire l'opération :
+
+- pyinstaller nomdemonprogramme.py
+
+Si je veux un seul fichier exe qui contient tout, je rentre cette commande :
+
+- pyinstaller --onefile nomdemonprogramme.py
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+Pour une apli flask :
+
+- pyinstaller -w -F --add-data "templates;templates" --add-data "static;static" main.py		

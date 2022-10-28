@@ -1,0 +1,56 @@
+//////////////////////////// PDF //////////////////////////////////
+
+D'abord j'installe les dépendances :
+
+- pip install PyPDF2==1.26.0			**a voir pour num version dépendance**
+
+//////////////////////////////////
+
+Pour combiner des fichiers PDF je dois d'abord m'assurer qu'ils sont bien dispo dans mon dossier, puis je fais mon import :
+
+
+from PyPDF2 import PdfFileWriter, PdfFileReader
+
+contenu_sortie = PdfFileWriter()
+
+pdf_1 = open("pdf_1.pdf", "rb")			** rb est pour read binary car un pdf n'est pas un txt**
+pdf_2 = open("pdf_2.pdf", "rb")
+
+read_pdf1 = PdfFileReader(pdf_1)
+read_pdf2 = PdfFileReader(pdf_2)
+
+read_pdf1.getNumPages()				**pour connaitre nombre de pages du PDF**
+
+read_pdf1.getPage(0)				**pour select la page à l'index 0**	
+
+contenu_sortie.addPage(read_pdf1.getPage(0))	**j'ajoute à mon PDF final la page index 0 de mon premier PDF**
+
+contenu_sortie.addPage(read_pdf2.getPage(0))	**puis la page index 0 de mon second**
+
+
+fichier_final = open("pdf_combine.pdf", "wb")	**wb pour write binary**
+
+contenu_sortie.write(fichier_final)		**attention en je passe en param le fichier dans lequel je veux écrire**
+
+fichier_final.close()
+
+pdf_1.close()
+pdf_2.close()
+
+//////////////////////////////////
+
+Pour extraire du texte d'un PDF :
+
+pdf_1 = open("pdf_1.pdf", "rb")
+
+read_pdf1 = PdfFileReader(pdf_1)
+
+page = read_pdf1.getPage(0)
+texte = page.extractText()			**j'extrait le texte, mais je peux avoir des erreurs d'encodage avec certains char**
+
+texte = texte.replace("à", "a")			**pour remplacer les erreurs d'encodage j'utilise replace sur les char qui ne se lisent pas 						correctement, et je peux chainer les replace**
+
+pdf_1.close()
+
+
+

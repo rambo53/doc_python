@@ -1,0 +1,66 @@
+//////////////////////////// ASYNCH //////////////////////////////////
+
+Avec la lib threading :
+
+
+import os
+import subprocess
+import re
+import threading
+
+regex = re.compile(r"(?P<received>\d+) received")
+
+class Ping(threading.Thread):
+
+    def __init__(self, hostname):
+        threading.Thread.__init__(self)
+        self.hostname = hostname
+
+    def run(self):
+        p = subprocess.Popen(["ping", "-c1", "-w100", self.hostname], stdout=subprocess.PIPE).stdout.read()
+        r = regex.search(p.decode())
+        try:
+            if(r.group("received") == "1"):
+                print("L'adresse %s existe!" % self.hostname) 
+        except:
+            pass
+
+for i in range(254):
+    hostname = "192.168.0.%i" % (i+1)
+    background = Ping(hostname)
+    background.start()
+
+/////////////////////////////////
+
+Depuis python 3.7
+
+import asyncio
+
+async def function_a():
+	task1 = asyncio.create_task(function_b)		**crée tâche async**
+	print("écrit en premier")
+	print(task1)
+
+
+async def function_b():
+	return "deuxième"
+
+/////////////////////////////////
+
+import asyncio
+
+async def function_1():
+	return "ok"
+
+task_1 = await function_1()				**déclenche le traitement asynchrone vers function_1**
+task_2 = await function_1()
+
+print(f"{task_1} {task_2}")				**attend le retour des deux appels précédents pour l'afficher**
+
+
+
+
+
+
+
+

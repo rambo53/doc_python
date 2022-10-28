@@ -1,0 +1,13 @@
+//////////////////////////////////// LANCEMENT ////////////////////////////////////
+
+C:\Users\user\Desktop\essais\flask_project>python app.py
+
+ou main.py
+
+Dans invit command pour lancer projet actuel
+
+//////////////////////////////
+
+pip freeze
+
+pour voir les librairies installées.

@@ -1,0 +1,58 @@
+//////////////////////////////////// METHODES UTILES ////////////////////////////////////
+
+A utiliser sur un objet Series :
+
+import pandas as pd
+
+data_thanks = pd.read_csv("thanksgiving.csv",encoding='latin-1')
+
+print(data_thanks["Do you celebrate Thanksgiving?"].value_counts())		**permet de faire ressortir les différentes répoonses et de 												les compter au sein d'une colonne**
+
+Yes    980
+No      78
+Name: Do you celebrate Thanksgiving?, dtype: int64
+
+////////////////////////////////////
+
+def manip_age(row):
+    
+    data=row["Age"]
+    if pd.isnull(data):
+        return None
+    elif '+' in data:
+        return int(data.replace("+",""))			**ici ma méthode manipule les valeurs de la colonne Age puis convertit en int**
+    else:
+        return int(data.split(" ")[0])
+
+
+
+data_thanks=data_thanks.apply(manip_age,axis=1)
+
+data_thanks.describe()
+
+count    947.000000
+mean      40.089757
+std       15.352014
+min       18.000000
+25%       30.000000
+50%       45.000000
+75%       60.000000
+max       60.000000
+dtype: float64
+
+////////////////////////////////////
+
+import pandas as pd
+
+data=pd.read_csv("unrate.csv")
+
+data['DATE']=pd.to_datetime(data['DATE'])			**pour convertir une string en datetime**
+
+data
+
+
+	DATE		UNRATE
+0	1948-01-01	3.4
+1	1948-02-01	3.8
+2	1948-03-01	4.0
+3	1948-04-01	3.9...

@@ -1,0 +1,48 @@
+//////////////////////////////////// MODIFIER INDEX DATAFRAME ////////////////////////////////////
+
+data_fandango = pd.read_csv("fandango_score_comparison.csv")
+
+data_fandango.set_index(data_fandango["FILM"], inplace = True, drop=False)	
+	
+**le nouvel index sera la colonne FILM, inplace indique si je veux créer un nouveau dataframe ou si je modifie l'existant, drop est pour indiquer si je conserve dans mon dataframe la colonne qui me sert d'index, ici FILM**
+
+Par défaut inplace est à False.
+
+
+dt=data_fandango.set_index(data_fandango["FILM"], inplace=False,drop=False)
+
+dt
+	
+Avengers: Age of Ultron (2015)	Avengers: Age of Ultron (2015)	74	86	66	7.1	7.8	5.0	4.5	3.70	4.30	...
+
+////////////////////////////////////
+
+Ici inplace est à True c'est donc data_fandango que je modifie directement :
+
+data_fandango = pd.read_csv("fandango_score_comparison.csv")
+
+data_fandango.set_index(data_fandango["FILM"], inplace=True,drop=False)		
+
+data_fandango
+
+Avengers: Age of Ultron (2015)	Avengers: Age of Ultron (2015)	74	86	66	7.1	7.8	5.0	4.5	3.70	4.30	...
+
+////////////////////////////////////
+
+Pour rechercher une ligne avec mon nouvel index :
+
+dt=data_fandango.set_index(data_fandango["FILM"], inplace=False,drop=False)
+
+dt.loc["Avengers: Age of Ultron (2015)"]
+
+////////////////////////////////////
+
+Pour rechercher plusieurs lignes avec mon nouvel index :
+
+dt["Avengers: Age of Ultron (2015)":"Mr. Holmes (2015)"]
+
+////////////////////////////////////
+
+Pour rechercher seulement ces films :
+
+dt.loc[["Avengers: Age of Ultron (2015)","Mr. Holmes (2015)"]]

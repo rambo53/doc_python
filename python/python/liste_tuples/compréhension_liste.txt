@@ -1,0 +1,23 @@
+//////////////////////////// COMPREHENSION LISTE //////////////////////////////////
+
+Equivalent map ou grep.
+
+Si je veux par exemple récupérer la longueur de mes string et stocker ça dans une new liste :
+
+noms = ["Marc","Maxime","Cam"]
+
+longueur_noms = [len(nom) for nom in noms]		**4,6,3**
+
+//////////////////////////////////
+
+Je peux rajouter des conditions :
+
+noms = ["Marc","Maxime","Cam"]
+
+longueur_noms = [len(nom) for nom in noms if len(nom)>3]		**4,6 uniquement si la longueur de noms > 3**
+
+Ici je crée une nouvelle liste de noms uniquement si la longueur de noms > 3 :
+
+noms = ["Marc","Maxime","Cam"]
+
+longueur_noms = [nom for nom in noms if len(nom)>3]		**"Marc","Maxime"**

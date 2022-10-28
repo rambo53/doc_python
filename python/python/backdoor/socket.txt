@@ -1,0 +1,61 @@
+//////////////////////////// SOCKET //////////////////////////////////
+
+Echange avec un serveur, envoie requête HTTPS, la communication réseau se fait via une socket via le protocole TCP pour l'échange de données.
+Les échanges se feront en binaire.
+
+Peer to peer pour un échange entre 2 machines.
+
+Notre machine peut faire office de serveur et l'autre de client, le serveur écoute sur un port.
+Le client se connecte sur notre port.
+
+//////////////////////////////////
+
+Pour créer un server :
+
+import socket
+
+s = socket.socket()
+
+s.setsockopt(socket.SOL_SOCKET, socket.SO_REUADDR, 1)		**si affiche erreur 'already used' pour ma socket, permet de lui dire qu'il 								peut réutiliser la même**
+
+s.bind(("127.0.0.1", 32000))			**je crée ma socket avec ma méthode bind pour établir le point de communication, pour cela 							le premier param de mon tuple est l'adresse ip de la machine avec laquelle on va communiquer, 							et le deuxième est le port sur lequel on écoute, attention le port 80 et 443 sont réservé pour 							les communications HTTP et HTTPS**
+
+s.listen()					**précise que cette socket est pour l'écoute**
+connection_socket, client_adress = s.accept()	**en attente de connection, et me retourne la socket de connection et l'adresse de client**
+
+
+//////////////////////////////////
+
+Côté client :
+
+while True:
+	try:
+		s_client = socket.socket()
+
+		s_client.connect(("127.0.0.1", 32000))		**toujours mes infos dans un tuple**
+
+	except ConnectionRefusedError:
+		print("erreur serveur non démarré")
+		time.sleep(3)					**si j'ai une erreur j'attend 3 secondes et je retente la connection avec une 								nouvelle socket car en cas d'erreur ma socket précédente est perdue**
+	else:
+		break						**si la connection  s'est bien passée alors je sort de ma boucle while**
+		
+c_client.close()				**je ferme la connection**
+
+//////////////////////////////////
+
+Envoyer données entre les deux, côté serveur :
+
+texte ="bonjour"
+
+connection_socket.sendall(texte.encode())		**encode pour convertir en binaire**
+
+
+
+Recevoir données, côté client :
+
+DATA_SIZE = 1024			**pour fixer le nombre de char max à recevoir, je peux mettre la valeur que je veux**
+
+message_recu = s_client.recv(DATA_SIZE)		**je récupère le message envoyé par mon serveur ici "bonjour"**
+
+print(message_recu.decode())			**décoder le binaire**

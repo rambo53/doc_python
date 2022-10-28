@@ -1,0 +1,122 @@
+//////////////////////////// FONCTION STRING FORMAT //////////////////////////////////
+
+def user_detail(nom, taille=0):					**je peux affecter des valeurs par défaut à mon param si cette valeur n'est 								pas renseigné lors de l'appel de fonction**
+	print("tu t'appelles "+nom+" tu mesures "+taille) 
+
+
+user_detail("boris")				**ici il n'y a que le param nom de renseigné**
+
+Si je passe un seul param et qui n'est pas dans l'ordre des param de ma fonction :
+
+user_detail(taille="1m85")			**je précise que c'est le param taille que j'ai envoyé en première place et non nom** 
+
+//////////////////////////////////
+
+Je peux limiter l'usage du else :
+
+def bonneReponse(tab_num, operande):
+	if operande=='+':
+            return tab_num[0]+tab_num[1]
+        return tab_num[0]*tab_num[1]			**a partir du moment où j'ai un return la suite n'est pas exécuté**
+
+//////////////////////////////////
+
+En python on peut utiliser le retour multiple:
+
+def retourne_numero():
+	num1=15
+	num2=2
+	return num1,num2				**je sépare mes valeurs retournés par une virgule**
+
+num1, num2 = retourne_numero()				**lors de l'appel de fonction je sépare mes variables par une virgule et je déclare  							autant de variable que de valeurs retournées**
+
+//////////////////////////////////
+
+Une bonne pratique est aussi d'indiquer le type des params de ma fonction ainsi que le type de retour de celle ci :
+
+def retourne_bool(age: int) -> bool:
+	if age<18:
+		return False
+	return True
+
+majeur=retourne_bool(15)
+
+//////////////////////////////////
+
+Pour utiliser des callbacks en python je stock ma fonction dans une var sans les parenthèses :
+
+def une_fonction():
+	print("motherfucker")
+
+varFonction = une_fonction			**si je ne met pas de () alors je stock ma fonction pour l'utiliser plus tard, si je rajoute 						les () alors je l'appelle pour qu'elle s'exécute**
+
+//////////////////////////////////
+
+def calcul(num1, operande, num2, calc_cbk):				**ma fonction attend une fonction de callback en param**
+	print(f"{num1} {operande} {num2} = {calc_cbk(num1, num2)}")	**elle appelle la fonction en lui passant des params**
+
+def mult_callback(num1, num2):			**ici ma fonction callback qui renvoie le résultat**
+	return num1*num2
+
+calcul(1,"x",2,mult_callback)			**ici j'appel ma fonction en lui passant en param la callback sans ()**
+
+//////////////////////////////////
+
+Pour les lambdas :
+
+def calcul(num1, operande, num2, calc_cbk):				
+	print(f"{num1} {operande} {num2} = {calc_cbk(num1,num2)}")
+
+calcul(1,"x",2, lambda a,b : a*b)		**j'ajoute le mot clé lambda, a et b correspondent à num1 et num2 dans ma fonction**
+
+//////////////////////////////////
+
+Pour récupérer un nombre inconnue de param dans une fonction :
+
+def somme(*nombres):			**avec  le symbole * j'indique que je passe un nombres d'arguments inconnue, ici plusieurs chiffres**
+	result = 0
+	for n in nombres:
+		result += n
+	return result
+
+print(somme(3,5,4))
+
+/////////////
+
+def somme(titre,*nombres):			**si j'ai des arguments fixes je les mets avant**
+	print(titre)
+	result = 0
+	for n in nombres:
+		result += n
+	return result
+
+print(somme("toto",3,5,4))
+
+/////////////
+
+def somme(titre,**nombres):			**avec le symbole ** je récupère toujours un nombres d'args variables mais cette fois sous 						forme paire clé-valeurs**
+	print(titre)
+	result = 0
+	for n in nombres.values():
+		result += n
+	return result
+
+print(somme("toto", sport=3, anglais=5, maths=4))
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Pour formater mes string au lieu de les concaténer :
+
+- print(f"tu t'appelles {nom} tu mesures {taille}")		**je précise f devant pour format**
+
+- print("tu t'appelles %s tu mesures %s" %(nom,age)) 
+
+L'avantage est que je n'ai pas besoin de cast un int en string, il le fait automatiquement.
+
+//////////////////////////////////
+
+Pour récupérer des infos entré par mon utilisateur en console :
+
+- nom = input("Quel age?")		**convertit automatiquement la valeur entrée par mon utilisateur en string et l'affecte à nom**

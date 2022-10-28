@@ -1,0 +1,39 @@
+//////////////////////////// SCRAPPING //////////////////////////////////
+
+Pour extraire des données depuis un fichier html :
+
+pip install requests
+pip install bs4				**beautiful soup**
+
+import requests
+from bs4 import BeautifulSoup
+
+f = open("mon_fichier_html", "r")				**r pour read**
+
+html_content = f.read()						**je li et récupère le contenu**
+
+f.close()
+
+soup = BeautifulSoup(html_content, "html.parser")		**le 2ieme param est le format des données reçus**
+
+h1 = soup.find("h1")						**je récupère l'élément h1 de mon site**
+
+h1_text = h1.text						**je récupère le text de mon h1**
+
+desc = soup.find("div", class_="description")			**recup élément avec la classe "description" attention au tiret du 8 "_" **
+
+lst_div = soup.find_all("p")					**récupère tous les éléments paragraphe**
+
+img = soup.find("img")
+
+img_jpg = img["src"]						**je récupère le contenu de l'attribut src de ma balise img**
+
+//////////////////////////////////
+
+Pour extraire des données depuis une page web :
+
+page = requests.get("adresse_du_site.fr")
+
+soup = BeautifulSoup(page.text, 'html.parser')
+
+lst_p = soup.find_all('p')

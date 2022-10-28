@@ -1,0 +1,75 @@
+//////////////////////////////////// JINJA2 ////////////////////////////////////
+
+Moteur de rendu HTML de Flask
+
+Je crée un dossier templates à l'intérieur duquel je crée un fichier HTML de la page à afficher, ici homepage.
+
+Dans mes views je fais un import :
+
+- from flask import render_template
+
+@app.route("/")
+def homepage():
+    return render_template('homepage.html')
+
+//////////////////////////////////
+
+Pour le renvoie de variables :
+
+@app.route("/")
+def homepage():
+    name = request.args.get('name') 
+    if not name:
+        name = "inconnu"
+    return render_template('homepage.html', name=name)		**je passe la valeur de ma variable à la suite de ma page à retourner**
+
+Dans mon HTML :
+
+    <h1>Homepage</h1>
+    <p>Bienvenue {{ name }}</p>
+
+//////////////////////////////////
+
+Je peux taper l'url :
+
+http://127.0.0.1:5000/?name=toto
+
+Ma méthode de controller récupère la valeur de name grâce à request.
+
+//////////////////////////////////
+
+Pour une liste :
+
+@app.route("/")
+def homepage():
+    name = request.args.get('name') 
+    number = 5
+    if not name:
+        name = "inconnu"
+    test_var = [name,number]
+    print(test_var)
+    return render_template('homepage.html', test_var=test_var)
+
+Dans HTML :
+
+    <h1>Homepage</h1>
+    <p>Bienvenue {{ test_var[0] }}</p>
+
+//////////////////////////////////
+
+Pour un dictionnaire :
+
+@app.route("/")
+def homepage():
+    name = request.args.get('name') 
+    number = 5
+    if not name:
+        name = "inconnu"
+    test_var = {'name':name,'number':number}
+    print(test_var)
+    return render_template('homepage.html', test_var=test_var)
+
+Dans HTML :
+
+    <h1>Homepage</h1>
+    <p>Bienvenue {{ test_var.name }}</p>

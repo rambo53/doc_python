@@ -1,0 +1,34 @@
+//////////////////////////// SUBPROCESS //////////////////////////////////
+
+Pour exécuter des commandes dans le shell depuis un script pyhon.
+
+import subprocess
+
+subprocess.run("dir", shell=True)		**sous PC dir est pour afficher les fichiers d'un répertoire, je passe le param shell pour 						lui indiquer que c'est une cmd pour le terminal**
+
+resultat = subprocess.run("dir", shell=True, capture_output=True)		**stock résultat dans variable**
+
+print(resultat.stdout.decode("utf-8", errors="ignore"))		**afiche binaire décodé pour PC**
+
+
+Pour faire en sorte que cela fonctionne sur un maximum de machine :
+
+resultat = subprocess.run("dir", shell=True, capture_output=True, universal_newlines=True)	**avec universal décode d'office le résultat 												peut importe la machine**
+
+print(resultat.stdout)
+
+print(resultat.stderr)		**param pour afficher le message d'erreur en cas de pbm de cmd**
+
+//////////////////////////////////
+
+En l'état actuel je ne peux faire des manip avec mes cmd uniquement sur le répertoire courant, je ne peux pas accéder à d'autres répertoire avec par exemple "cd mon_rep".
+
+import os
+
+commande = input(os.getcwd()+" > ")		**getcwd récupère le répertoire actuel pour l'afficher ex : C:\User\stef...**
+
+lst_cmd=commande.split(" ")			**avec split je vais pouvoir vérifier si j'ai bien 2 éléments et que le premier est bien cd**
+
+if len(lst_cmd) == 2 and lst_cmd[0] == "cd":
+	os.chdir(lst_cmd[1])			**avec chdir je lui indique de changer de répertoire**
+

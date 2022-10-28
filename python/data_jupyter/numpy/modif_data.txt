@@ -1,0 +1,45 @@
+//////////////////////////////////// MODIF DATA ////////////////////////////////////
+
+Avant :
+
+[['1986' 'Africa' 'Algeria' 'Wine' '0.1']
+ ['1986' 'Africa' 'Algeria' 'Spirits' '0.01']
+ ['1986' 'Africa' 'Algeria' 'Beer' '0.18']
+ ['1986' 'Africa' 'Algeria' 'Other' '0']]
+
+/////////////////////////////////////////////
+
+Après : 
+
+import numpy as np
+
+data_alcool = np.genfromtxt("world_alcohol.csv", delimiter=',', dtype="U75", skip_header=1)
+
+algeria = (data_alcool[:,2]=='Algeria') & (data_alcool[:,0]=='1986')
+country = data_alcool[algeria]
+country[:,0]='2020'								**je modifie les valeurs dans la colonne 0 par '2020'**
+
+print(country)
+
+[['2020' 'Africa' 'Algeria' 'Wine' '0.1']
+ ['2020' 'Africa' 'Algeria' 'Spirits' '0.01']
+ ['2020' 'Africa' 'Algeria' 'Beer' '0.18']
+ ['2020' 'Africa' 'Algeria' 'Other' '0']]
+
+/////////////////////////////////////////////
+
+Modifier directement les valeurs dans mon tableau complet :
+
+conso_none = data_alcool[:,4]==''
+data_alcool[conso_none,4]='0'
+
+Maintenant toutes les données de conso moyenne de mon tableau qui avaient la valeur '' ont la valeur '0'
+
+/////////////////////////////////////////////
+
+conso = data_alcool[:,4]					**je récupère la colonne avec la conso d'alcool**
+conso = conso.astype(float)					**je convertit en float les valeurs à l'intérieur de celui ci**
+
+print(conso)
+
+[0.   0.5  1.62 ... 2.54 0.   5.15]

@@ -1,0 +1,61 @@
+//////////////////////////////////// LOC OU ILOC ////////////////////////////////////
+
+survivor = data_titanic.loc[0]
+
+La fonction loc va récupérer les valeurs de la ligne ou l'indice est 0 par exemple :
+
+	pclass	survived	name				age
+0	1.0	1.0	Allen, Miss. Elisabeth Walton		55
+1	1.0	1.0	Allison, Master. Hudson Trevor		2
+2	1.0	0.0	Allison, Miss. Helen Loraine		30
+
+Mais si j'applique un traitement à mon dataframe avec par exemple un tri par ordre croissant de l'âge :
+
+
+	pclass	survived	name				age
+1	1.0	1.0	Allison, Master. Hudson Trevor		2
+2	1.0	0.0	Allison, Miss. Helen Loraine		30
+0	1.0	1.0	Allen, Miss. Elisabeth Walton		55
+
+Si je veux récupérer la première valeur de ce nouveau dataframe ce n'est plus 0 mais 1, pour palier à ce problème j'utilise "iloc" : 
+
+survivor = data_titanic.iloc[0]
+
+	pclass	survived	name				age
+1	1.0	1.0	Allison, Master. Hudson Trevor		2
+
+Il me retourne bien la première valeur de mon nouveau dataframe.
+
+Et je peux aussi bien sûr l'utiliser pour afficher par exmple les 2 premières valeurs :
+
+survivor = data_titanic.iloc[0:1]
+
+	pclass	survived	name				age
+1	1.0	1.0	Allison, Master. Hudson Trevor		2
+2	1.0	0.0	Allison, Miss. Helen Loraine		30
+
+////////////////////////////////////
+
+Pour les colonnes c'est le même principe :
+
+survivor = data_titanic.iloc[:,0:2]				**toutes les colonnes de mon nouveau dataframes de l'index 0 à 2 inclus**
+
+	pclass	survived	name				
+1	1.0	1.0	Allison, Master. Hudson Trevor		
+2	1.0	0.0	Allison, Miss. Helen Loraine
+
+////////////////////////////////////
+
+Pour extraire les 5 premières lignes avec les valeurs des 3 premières colonnes, mais attention c'est par index de 0 à 5 non inclus comme pour les colonnes de 0 à 3 non inclus :
+
+cinq = data_titanic.iloc[0:5,0:3]
+
+   pclass  survived                                             name
+0     1.0       1.0                    Allen, Miss. Elisabeth Walton
+1     1.0       1.0                   Allison, Master. Hudson Trevor
+2     1.0       0.0                     Allison, Miss. Helen Loraine
+3     1.0       0.0             Allison, Mr. Hudson Joshua Creighton
+4     1.0       0.0  Allison, Mrs. Hudson J C (Bessie Waldo Daniels)
+
+
+

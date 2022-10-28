@@ -1,0 +1,63 @@
+//////////////////////////////////// MANIP DATA ////////////////////////////////////
+
+Pour modifier directement toutes les valeurs d'une colonnes :
+
+sod_g = data_food["Sodium_(mg)"] / 1000
+
+////////////////////////////////////
+
+Je peux aussi faire des opérations entre les valeurs de plusieurs colonnes :
+
+test = data_food["Sodium_(mg)"] - data_food["Sugar_Tot_(g)"] 
+
+////////////////////////////////////
+
+Pour retrouver la valeur max d'une colonne :
+
+test = data_food["Sodium_(mg)"].max()
+
+Pour le minimal :
+
+test = data_food["Sodium_(mg)"].min()
+
+////////////////////////////////////
+
+Si besoin pour normaliser les données d'une colonne :
+
+prot_max = data_food["Protein_(g)"].max()
+
+prot_norm = data_food["Protein_(g)"] / prot_max
+
+////////////////////////////////////
+
+Pour ajouter une nouvelle colonne avec les data que l'on vient de créer :
+
+prot_max = data_food["Protein_(g)"].max()
+
+prot_norm = data_food["Protein_(g)"] / prot_max
+
+data_food["prot_norm"]=prot_norm				**j'ajoute à la fin de mon tableau la colonne qui porte le nom de "prot_norm"**
+
+////////////////////////////////////
+
+Pour le tri des data dans ma colonne :
+
+data_food["indice_nut"].sort_values()				**par défaut en ordre ascendant**
+
+Pour le tri de mon dataframe en fonction d'une colonne :
+
+data_food.sort_values("indice_nut")
+
+Pour remplacer mon dataframes de base par le nouveau trié :
+
+data_food.sort_values("indice_nut", inplace=True)
+
+Pour remplacer mon dataframes de base par le nouveau trié et trié par ordre descendant cette fois :
+
+data_food.sort_values("indice_nut", inplace=True, ascending=False)
+
+
+
+
+
+

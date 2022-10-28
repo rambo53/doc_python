@@ -1,0 +1,117 @@
+//////////////////////////////////// NUMPY ARRAY ////////////////////////////////////
+
+Les tableaux avec numpy, 1 dimensions = vecteur, plusieurs = matrice.
+
+import numpy as np			**j'importe la librairie**
+
+vector = np.array([1, 2, 3])
+
+matrix = np.array([[1, 2], [25, 35], [555, 666]])
+
+////////////////////////////////////////////////////////////////////////////////
+
+Pour connaitre la taille de mon tableaux numpy :
+
+print(vector.shape)
+
+affichera : (3,)		**1 seul dimension avec 3 éléments**
+
+print(matrix.shape)
+
+affichera : (3,2)		**3 lignes avec 2 colonnes **
+
+//////////////////////////////////////////////////////////////////////////////
+
+Pour pouvoir créer un dataset à partir d'un fichier csv, mon fichier doit impérativement se trouver dans le même dossier. 
+
+import numpy as np
+
+data_alcool = np.genfromtxt("world_alcohol.csv", delimiter=',')		**méthode pour générer un dataset à partir d'un fichier csv**
+									**en premier param le nom du fichier et en deuxième le délimiteur**
+
+print(type(data_alcool))
+
+//////////////////////////////////////////////////////////////////////////////
+
+data_alcool.dtype				**pour connaitre le type de données de mon tableau**
+
+dtype('float64')
+
+//////////////////////////////////////////////////////////////////////////////
+
+Pour lire les données de mon tableau j'utilise la méthode genfromtxt avec un param supplémentaire le dtype :
+
+data_alcool = np.genfromtxt("world_alcohol.csv", delimiter=',', dtype="U75")			**Unicode 75 bits**
+print(data_alcool) 
+
+[['Year' 'WHO region' 'Country' 'Beverage Types' 'Display Value']
+ ['1986' 'Western Pacific' 'Viet Nam' 'Wine' '0']
+ ['1986' 'Americas' 'Uruguay' 'Other' '0.5']
+ ...
+ ['1986' 'Europe' 'Switzerland' 'Spirits' '2.54']
+ ['1987' 'Western Pacific' 'Papua New Guinea' 'Other' '0']
+ ['1986' 'Africa' 'Swaziland' 'Other' '5.15']]	
+
+//////////////////////////////////////////////////////////////////////////////
+
+data_alcool = np.genfromtxt("world_alcohol.csv", delimiter=',', dtype="U75", skip_header=1)		
+			
+		**pour lire le fichier sans l'entête, je peux mettre autant de ligne que je veux ignore en valeur de skip_header**
+
+//////////////////////////////////////////////////////////////////////////////
+
+Si besoin extraire un vecteur d'une matrice :
+
+print(data_alcool[0,0:3])			**élément position y=0 et x=0 et je prend uniquement les valeurs juqu'à l'index 3 exclu**
+
+['1986' 'Western Pacific' 'Viet Nam']
+
+Pour un vecteur :
+
+print(data_alcool[0:3])
+
+
+Pour récupérer les valeur d'une colonne pour créer un vecteur :
+
+data = np.array([[5,15,25],[45,55,65]])
+
+print(data[:,2])				**extraira la colonne complète à l'index 2**
+
+25,65
+
+print(data[1,:])				**extraira la ligne complète à l'index 1**
+
+45,55,65
+
+print(data[0:2,1])				**extraira les données de la colonne index 1, seulement les valeurs de 0 à 2 exclu**
+
+15,55
+
+//////////////////////////////////////////////////////////////////////////////
+
+Pour récupérer les valeur d'une matrice pour créer une nouvelle matrice :
+
+data = np.array([[5,15,25],[45,55,65],[85,95,105]])
+
+print(data[:,0:2])				**pour extraire les colonnes d'index 0 à 2 exclu de toutes mes lignes**
+
+5,15
+45,55
+85,95
+
+print(data[0:2,:])				**pour extraire toutes les valeurs des lignes 0 à 2 exclu**
+
+5,15,25
+45,55,65
+
+print(data[0:2,0:2])				**pour extraire les valeurs des lignes 0 à 2 exclu et les lignes 0 à 2 exclu**
+
+5,15
+45,55
+
+			
+
+
+
+
+

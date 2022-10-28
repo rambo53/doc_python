@@ -1,0 +1,46 @@
+//////////////////////////// COPY //////////////////////////////////
+
+En python on peut utiliser une copie superficielle ou une copie profonde.
+
+
+//////////////////////////// DEEP COPY //////////////////////////////////
+
+La différence étant qu'avec une copie profonde l'objet qui a été copié ne sera pas affecté par une éventuelle modification de la copie.
+
+ex :
+
+import copy 
+  
+li1 = [1, 2, [3,5], 4] 
+  
+li2 = copy.deepcopy(li1) 
+
+li2[2][0] = 7
+
+Ici il n'y a que li2 qui aura sa valeur modifié.
+
+li1 = [1, 2, [3,5], 4] 
+
+li2 = [1, 2, [7,5], 4] 
+
+
+//////////////////////////// SHALLOW COPY //////////////////////////////////
+
+Une copie superficielle elle impactera aussi l'objet qui à été copié.
+
+ex :
+
+import copy 
+  
+li1 = [1, 2, [3,5], 4] 
+  
+li2 = copy.copy(li1) 
+
+li2[2][0] = 7
+
+Ici il n'y a que li2 qui aura sa valeur modifié.
+
+li1 = [1, 2, [7,5], 4] 
+
+li2 = [1, 2, [7,5], 4] 
+

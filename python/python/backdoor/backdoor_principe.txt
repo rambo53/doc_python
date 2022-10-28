@@ -1,0 +1,13 @@
+//////////////////////////// BACKDOOR PRINCIPE //////////////////////////////////
+
+Le principe de la backdoor exploite les sockets et les subprocess, une fois la connection établie avec une socket entre ma machine serveur et la machine attaqué client, j'utilise ma socket pour envoyé des subprocess sur la machine client attaqué pour exécuté des commandes sur sa machine et récupérer le résultat dans la mienne.
+C'est ce qu'on appel "reverse shell".
+
+Je peux télécharger n'importe quel fichier, dossier, photo... stocké sur la machine attaqué.
+
+Je peux aussi faire des captures d'écran de la machine attaqué avec :
+
+- capture c1
+
+
+

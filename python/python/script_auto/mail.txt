@@ -1,0 +1,53 @@
+//////////////////////////// MAIL //////////////////////////////////
+
+Avec un compte gmail, configurer mon compte aller sur :
+
+- sécurité
+- connexion à google
+- activer validation en 2 étapes si ce n'est pas fait
+- mot de passe des applications
+- sélectionner une applications, cliquer sur autres, puis donner un nom 
+- cliquer sur générer
+- récupérer le mdp de 16 char
+
+
+//////////////////////////////////
+
+On stock ensuite divers param dans des var :
+
+- notre adresse mail gmail 
+- le mdp que l'on a récupéré auparavant
+- gmail smtp configuration, je récupère le SMTP server et le SMTP port
+
+//////////////////////////////////
+
+Puis j'importe smtplib et je crée ma fonction :
+
+import smtplib
+
+def envois_mail(mail_destinataire, message):
+	
+	serveur_mail = smtplib.SMTP(SMTPserver, SMTPport)
+	serveur_mail.starttls()
+	serveur_mail.login(mon_adresse_gmail, mdp_donner_par_google)		**1er param est le login, si je n'utilise pas mon mail je le 										modifie en conséquence**
+	serveur_mail.sendmail(mon_adresse_gmail, mail_destinataire, message)
+	serveur_mail.quit()
+
+
+envois_mail("cam@gmail.com", "hello")		**j'appel ma fonction**
+
+//////////////////////////////////
+
+Pour des mails plus complexe j'importe :
+
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+Puis dans ma focntion je définit mes différents param:
+
+message = MIMEMultipart()
+message["Subject"] = "bonjour!"
+message["From"] = "stef@gmail"
+message["To"] = "cam@gmail.com"
+
+message.attach(MIMEText("mon message à envoyer", "plain"))		**le 2ieme param est plain si c'est du texte, si c'est un template 									html ce sera "html"**

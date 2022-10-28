@@ -1,0 +1,28 @@
+//////////////////////////////////// VECTORIZE ////////////////////////////////////
+
+La vectorisation permet d'effectuer des calculs sur des Series ou des DF de façon ultra rapide, plus que iterrows ou apply.
+
+
+
+
+Exemple sur des objet Series : 
+
+Première façon pour des fonctions de taille plus conséquentes :
+
+////////////////////////////////////
+
+def get_lst_access(id_access):
+    return id_access.str.split("\n")
+
+
+lst_access = get_lst_access(df_access["A intégrer PIM"])
+
+////////////////////////////////////
+
+Deuxième façon avec la même fonction plus simple :
+
+////////////////////////////////////
+
+lst_access = df_access["A intégrer PIM"].str.split("\n")
+
+////////////////////////////////////

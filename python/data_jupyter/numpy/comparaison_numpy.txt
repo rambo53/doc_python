@@ -1,0 +1,53 @@
+//////////////////////////////////// COMPARAISON NUMPY ////////////////////////////////////
+
+
+algeria = data_alcool[:,2]=='Algeria'				**va filtrer avec un bool les colonnes dont le nom du pays est algeria**
+country = data_alcool[algeria]					**récupère les lignes avec le filtre du dessus où le bool est True**
+print(country)
+
+[['1984' 'Africa' 'Algeria' 'Spirits' '0.01']
+ ['1987' 'Africa' 'Algeria' 'Beer' '0.17']
+ ['1987' 'Africa' 'Algeria' 'Spirits' '0.01']
+ ['1986' 'Africa' 'Algeria' 'Wine' '0.1']
+...
+['1987' 'Africa' 'Algeria' 'Wine' '0.1']]
+
+////////////////////////////////////////////////////////////////////////
+
+years = data_alcool[0:10,0]=='1984'				**récupère un tableau avec les 10 premières lignes dans la première colonne**
+print(years)
+
+[False False False False False False False False False  True]	**True uniquement où la valeur est == à 1984**
+
+**attention c'est des string**
+
+////////////////////////////////////////////////////////////////////////
+
+years = data_alcool[0:10,0]				**je crée un tableau avec uniquement les 10 premières lignes de la 1ere colonne**
+year = years =='1984'					**je crée un filtre sur le tableau que j'ai créé au dessus**
+y = years[year]						**je filtre sur le tableau créé sur ma première ligne**
+print(y)
+
+['1984']
+
+////////////////////////////////////////////////////////////////////////
+
+years = data_alcool[0:10,:]				**je crée un tableau avec uniquement les 10 premières lignes**
+year = years[:,0] =='1984'				**je crée un filtre sur le tableau que j'ai créé au dessus sur la colonne index 0**
+y = years[year]						**je filtre sur le tableau créé sur ma première ligne**
+print(y)
+
+[['1984' 'Africa' 'Nigeria' 'Other' '6.1']]
+
+////////////////////////////////////////////////////////////////////////
+
+comparaisons multiples :
+
+algeria = (data_alcool[:,2]=='Algeria') & (data_alcool[:,0]=='1986')
+country = data_alcool[algeria]
+print(country)
+
+[['1986' 'Africa' 'Algeria' 'Wine' '0.1']
+ ['1986' 'Africa' 'Algeria' 'Spirits' '0.01']
+ ['1986' 'Africa' 'Algeria' 'Beer' '0.18']
+ ['1986' 'Africa' 'Algeria' 'Other' '0']]

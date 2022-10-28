@@ -1,0 +1,50 @@
+//////////////////////////// EXCEL //////////////////////////////////
+
+Attention à la version d'excel installé sur la machine.
+
+
+Installer la dépendance :
+
+- pip install openpyxl==2.6.2			**à voir pour la version**
+
+J'importe :
+
+import openpyxl
+
+fichier_excel = openpyxl.load_workbook("mon_fichier_excel.xlsx", data_only = True)	**data_only permet de récupérer uniquement les 											valeurs dans les cellules pas les formules**
+
+print(fichier_excel.sheetnames)		**affiche le nom des feuilles de mon fichier excel, ex: feuil1 **
+
+sheet = fichier_excel["feuil1"]		**je récupère le contenu de ma feuil1 de mon fichier excel**
+
+
+sheet = wb.active			**pour récupérer la feuille active, la feuille ouverte, si je ne veux pas utiliser la méthode sur la 					ligne du dessus**
+
+cell = sheet["A1"].value		**récupère la valeur de la cellule**	
+
+//////////////////////////////////
+
+Pour récupérer les valeurs de mes cellules sans passer par le nom en dur :
+
+cell = sheet.cell(5,2)		**en premier param la ligne et en second la colonne**		
+
+Si la cellule est vide retourne "None".
+
+Pour récupérer le nombre max de colonne remplis ou le nombre de lignes :
+
+print(sheet.max_row)
+print(sheet.max_column)
+
+//////////////////////////////////
+
+Pour générer un nouveau fichier excel :
+
+excel_sortie = openpyxl.Workbook()
+
+sheet = excel_sortie.active
+
+sheet["A1] = "Articles"
+
+excel_sortie.save("mon_nouveau_excel.xlsx")
+
+

@@ -1,0 +1,49 @@
+////////////////////////////////////////// DIAGRAMME EN BARRE //////////////////////////////////////////
+
+
+import pandas as pd
+%matplotlib inline
+import matplotlib.pyplot as plt
+from numpy import arange				**j'importe la méthode arange de numpy**
+
+data=pd.read_csv('fandango_scores.csv')
+
+data = data[["FILM","RT_user_norm","Metacritic_user_nom","IMDB_norm","Fandango_Ratingvalue","Fandango_Stars"]]
+
+fig,axe = plt.subplots()			**je déclare mes deux objets même fig**
+
+bar_pos = arange(5)+1				**je définit le nombre de colonnes souhaités et le +1 permet que la valeur x de ma première 						colonne ne soit pas à 0**
+
+cols = data[["RT_user_norm","Metacritic_user_nom","IMDB_norm","Fandango_Ratingvalue","Fandango_Stars"]].iloc[0].values
+
+**ici je précise les valeurs des colonnes que je veux récupérer, au nombres de 5 puis la ligne que je veux récupérer, ici celle à l'index 0, et enfin ses valeurs grâce à values**
+
+axe.bar(bar_pos, cols, 0.5)			**je passe en param de la méthode bar mes variables du dessus, le 0.5 est pour la largeur de 						mes barres, par défaut il est à 0.8**
+
+plt.show()
+
+//////////////////////////////////////////
+
+Je peux bien sûr modifier les légendes de mon axe x :
+
+nom_bar=["RT_user_norm","Metacritic_user_nom","IMDB_norm","Fandango_Ratingvalue","Fandango_Stars"] 	**tableau de légendes pour chaques 													barres**
+
+axe.set_xticks(range(1,6))					**ici je lui indique que mes légendes commences sur la barre position 1 								jusqu'à 5, car 6 non inclus**
+
+axe.set_xticklabels(nom_bar, rotation=90)			**puis je passe la liste de mes légendes que j'afficherais avec une rotation 								de 90°**
+
+//////////////////////////////////////////
+
+Je définis mon titre et les noms de x et y :
+
+axe.set_xlabel("Sites de notation")
+
+axe.set_ylabel("Notes sur 5")
+
+axe.set_title("Age of ultron")
+
+//////////////////////////////////////////
+
+Pour un diagramme à barre horizontale :
+
+axe.barh(bar_pos, cols,0.5)			**j'utilise cette fois la méthode barh**

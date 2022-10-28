@@ -1,0 +1,47 @@
+//////////////////////////// SCHEDULE TASK //////////////////////////////////
+
+Librairie pour pour programmer des taches comme un cron, pour python.
+Attention à ne pas nommer mon fichier python "schedule.py" autrement cela lèvera une erreur.
+Installer la lib :
+
+- pip install schedule
+
+Import dans ma classe :
+
+- import schedule
+
+Ensuite je déclare une fonction que je souhaite appeler de façon récurrente :
+
+def test():
+	print("hello")
+
+** appelé toutes les 10 secondes **
+schedule.every(10).seconds(test)
+
+** appelé toutes les 10 min **
+schedule.every(10).minutes.do(test)
+ 
+** appelé toutes les heures **
+schedule.every().hour.do(test)
+
+** appelé tous les jours à minuit ** 
+schedule.every().day.at("00:00").do(test)
+ 
+** appelé tous les lundis **
+schedule.every().monday.do(test)
+ 
+** appelé tous les mardis à 18h **
+schedule.every().tuesday.at("18:00").do(test)
+
+//////////////////////////////////
+
+Pour ensuite déclencher la vérification si il y a des tasks à effectuer :
+
+Import time
+
+while True:
+
+    schedule.run_pending()
+    time.sleep(1)
+
+** ici on relancera la vérification des tâches à effectuer toutes les secondes **

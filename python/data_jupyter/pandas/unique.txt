@@ -1,0 +1,34 @@
+//////////////////////////////////// UNIQUE ////////////////////////////////////
+
+Pour récupérer une liste de valeurs unique dans une colonne avec des doublons :
+
+data_ages = pd.read_csv("all-ages.csv")
+
+data_ages["Major_category"].unique()				**c'est unique qui effectuera le tri sur la colonne "Major_category"**
+
+array(['Agriculture & Natural Resources', 'Biology & Life Science',
+       'Engineering', 'Humanities & Liberal Arts',
+       'Communications & Journalism', 'Computers & Mathematics',
+       'Industrial Arts & Consumer Services', 'Education',
+       'Law & Public Policy', 'Interdisciplinary', 'Health',
+       'Social Science', 'Physical Sciences', nan,
+       'Psychology & Social Work', 'Arts', 'Business'], dtype=object)
+
+////////////////////////////////////
+
+data_ages = pd.read_csv("all-ages.csv")
+
+categories_list_with_nan=data_ages["Major_category"].unique()
+categories_list = [x for x in categories_list_with_nan if pd.isnull(x) == False]		**ici je filtre pour retirer les valeurs nan**
+dic_cat={}
+
+for categorie in categories_list:
+    cat_filter=data_ages["Major_category"]==categorie
+    number_by_cat = data_ages[cat_filter].Total.sum()				**ici j'additionne les valeurs de Total pour mon dico**
+    dic_cat[categorie]=number_by_cat
+    
+dic_cat
+
+{'Agriculture & Natural Resources': 632437.0,
+ 'Biology & Life Science': 1338186.0,
+ 'Engineering': 3576013.0,...

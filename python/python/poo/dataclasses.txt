@@ -1,0 +1,54 @@
+//////////////////////////// DATACLASSES //////////////////////////////////
+
+Les dataclasses ne sont disponibles qu'à partir de python 3.6.
+
+Permet de simplifier la création de class en important et gérant automatiquement un constructeur pour celle ci et une méthode "__repr__" qui est équivalent à la méthode "__str__".
+
+////////////////////////////////
+
+from dataclasses import dataclass, field				**j'importe dataclass pour utiliser son décorateur**
+
+**frozen n'est pas obligatoire mais si je le passe à True, une fois mon objet instancié je peux plus modifier ses valeurs dans mon code, par défaut il est à False**
+
+@dataclass(frozen=True)	
+class MetalBand:
+
+    name:str								**je liste les attributs de ma classe ainsi que le type**
+    style:str
+    									**attention les attribut sans valeur assigné par défaut doivent 											toujours précéder ceux avec valeur par défaut**
+    members_names:list[str] = field(default_factory = list)	
+    number_of_albums:int = 0
+    split:bool = False
+    id:str = field(init = False, default_factory = generate_id)			**je peux utiliser une méthode pour générer une valeur**
+										**init = False indique que cette valeur ne peut pas être 												valorisé lors de l'instanciation**
+    _search_string:str = field(init = False, repr = False)		**le tiret du 8 permet visuellement de savoir de suite que cette 											variable est instancié à part via la méthode "__post_init__" et de la 											rendre en statut protected, repr à False indique que la valeur de ma 											variable n'apparaitra pas lors de l'appel de la méthode "__repr__"**
+
+	def generate_id() ->str:
+		return "".join(random.choices(string.ascii_uppercase, k=12))	**crée un id aléatoire de 12 lettres majuscules**
+
+	def __post_init__(self) ->None:
+		self._search_string = f"{self.name}"
+
+
+////////////////////////////////
+
+Lors de l'instanciation de mon objet je peux bien sûr affecter des valeurs à mes attributs avec des valeurs par défaut, ceux ci supplanteront ceux par défaut.
+
+Dans mon MAIN :
+
+from metal_band import MetalBand
+
+if __name__ == "__main__":
+    print("hello")
+    band1=MetalBand(name="Megadeth",style="thrash",number_of_albums=10)
+    print(band1)
+    print(band1.name)
+
+//////////////////
+
+result : 
+
+hello
+MetalBand(name='Megadeth', style='thrash', number_of_albums=10)
+Megadeth
+

@@ -1,0 +1,40 @@
+//////////////////////////////////// FILTRER TYPE DATA COLONNE ////////////////////////////////////
+
+data_fandango = pd.read_csv("fandango_score_comparison.csv")
+
+float_num=data_fandango.dtypes 
+
+fl=float_num[float_num.values == 'float64'].index				**je récupère uniquement les colonnes de types float64**
+
+d=data_fandango[fl]
+
+d
+
+	Metacritic_User	IMDB	Fandango_Stars	Fandango_Ratingvalue	
+
+0		7.1			7.8		5.0	
+1		7.5			7.1		5.0	
+2		8.1			7.8		5.0	
+
+////////////////////////////////////
+
+d.apply(lambda x: np.std(x))				**calcul ecart type sur toute mes colonnes**
+
+Metacritic_User               1.505529
+IMDB                          0.955447
+Fandango_Stars                0.538532
+Fandango_Ratingvalue          0.501106
+RT_norm                       1.503265...
+
+////////////////////////////////////
+
+row=d[["RT_user_norm","Metacritic_user_nom"]]
+
+test=row.apply(lambda x: np.mean(x),axis=1)			**pour calculer la moyenne entre 2 notes sur chaques lignes**
+
+test
+
+0      3.925
+1      3.875
+2      4.275
+3      3.275...

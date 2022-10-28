@@ -1,0 +1,57 @@
+//////////////////////////////////// IPYTHON ////////////////////////////////////
+
+Dans terminal de commande "pip install ipython".
+
+Ensuite je l'active avec la commande "ipython".
+
+Je rentre la commande "from models import *"
+
+Puis je peux consulter les infos sur mes objets avec le nom de l'objet suivit du point d'interrogation : "Entry?"
+
+/////////////////////////////////
+
+Je peux directement créer des données en ligne de commande :
+
+first_entry = Entry(title="mon titre", body="test via ligne de commande")
+
+db.session.add(first_entry)			**je l'enregistre dans la session de ma db**
+
+db.session.commit()				**je fais un commit de ma session pour l'enregistrer en bdd**
+
+/////////////////////////////////
+
+Je peux ajouter plusieurs objets d'un coup avec un add_all et un tableau :
+
+- db.session.add_all([first_entry, second_entry])
+
+Et bien sûr je n'oublis pas le commit.
+
+/////////////////////////////////
+
+Je peux vérifier les infos de ma bdd en tapant "db".
+
+Puis consulter les infos sur mes objets :
+
+"first_entry.id"
+
+/////////////////////////////////
+
+Pour faire des updates :
+
+- first_entry = Entry.query.get(1)
+
+- first_entry.body = "je modifie mon body"
+
+- db.session.commit()
+
+/////////////////////////////////
+
+Suppression d'une entry :
+
+- db.session.delete(1)		**soit j'utilise l'id soit le nom de la variable que j'ai créé ici "first_entry"**
+
+/////////////////////////////////
+
+Pour parcourir toutes mes entry :
+
+- Entry.query.all()

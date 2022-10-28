@@ -1,0 +1,9 @@
+//////////////////////////// CAPTURE ECRAN //////////////////////////////////
+
+from PIL import ImageGrab
+
+image=ImageGrab.grab()
+image.show()					**pour afficher la capture**
+
+image.save("nom_capture.png", "PNG")		**le format souhaité en majuscule**
+

@@ -1,0 +1,35 @@
+//////////////////////////////////// BOUCLES/CONDITIONS ////////////////////////////////////
+
+{% if number %}
+	<p>Le nombre est {{ number }}</p>
+{% else %}
+	<p>Pas de nombre renseigné</p>
+{% endif %}
+
+//////////////////////////////////////
+
+{% if number|int is divisibleby 2 %}
+
+//////////////////////////////////////
+
+{% for i in range(number|int) %}		**cast mon string en int**
+	<p>{{ i }}</p>
+{% endfor %}
+
+//////////////////////////////////////
+
+<h1>Members</h1>
+	<ul>
+	{% for user in users %}
+  			<li>{{ user.username|e }}</li>
+	{% endfor %}
+</ul>
+
+//////////////////////////////////////
+
+<dl>
+	{% for key, value in my_dict.items() %}
+    		<dt>{{ key|e }}</dt>
+    		<dd>{{ value|e }}</dd>
+	{% endfor %}
+</dl>

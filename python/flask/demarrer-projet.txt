@@ -1,0 +1,27 @@
+//////////////////////////////////// DEMARRER PROJET ////////////////////////////////////
+
+Créer un dossier pour mon projet, par exemple "test-flask".
+
+Avec terminal aller à sa racine, créer venv :
+
+- python3 -m venv venv
+
+Activer venv :
+
+- . venv/bin/activate
+
+Charger Flask :
+
+- pip install Flask
+
+////////////////////////////////////
+
+Pour utiliser des requêtes json avec flask :
+
+- pip install Flask-JSON
+
+
+
+
+
+

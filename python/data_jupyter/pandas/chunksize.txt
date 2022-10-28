@@ -1,0 +1,12 @@
+//////////////////////////////////// CHUNKSIZE ////////////////////////////////////
+
+Le paramètre chunksize est utile pour traiter de gros DF, il permet de tronquer ce dernier selon une certaine taille afin de prendre moins de mémoire en RAM.
+
+- pd.read_csv('big.csv', chunksize=10)
+
+Ici on prendra les lignes 10 par 10.
+
+On peut bien sûr boucler sur ces df tronquer afin d'appliquer un traitement :
+
+for df in pd.read_csv('big.csv', chunksize=10):
+	print(df)

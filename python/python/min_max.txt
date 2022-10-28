@@ -1,0 +1,25 @@
+//////////////////////////// MIN MAX //////////////////////////////////
+
+Les focntions min et max retourne la valeur la plus élevé dans une collection de int :
+
+liste = [3,5,8,9]
+
+max(liste)
+
+9
+
+min(liste)
+
+3
+
+Mais pour le cas des string, il retournera la chaine de caractères ayant la somme la plus élevé en caractères ASCII :
+
+lst=["zzz","aaaa"]
+
+print(max(lst))			**ici il retourne "zzz" car en ASCII 3 z sont plus élevé que 4 a**
+
+Si je veux lui demander de retourner la chaine ayant le plus de caractères ("aaaa") je précise la key de comparaison :
+
+lst=["zzz","aaaa"]
+
+print(max(lst, key=len))		**en précisant key=len, je lui indique qu'il doit se baser sur la taille en nombre de char**

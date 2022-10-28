@@ -1,0 +1,33 @@
+////////////////////////////////////////// BASE //////////////////////////////////////////
+
+Pour charger matplotlib, utiliser la ligne de commande annaconda prompt avec la commande : "conda install matplotlib".
+
+Pour afficher nos graphs sous nos cellules :
+
+%matplotlib inline
+
+Puis :
+
+import matplotlib.pyplot as plt
+
+////////////////////////////////////////// 
+
+Je peut utiliser les méthodes :
+
+plt.plot()					**pour générer un graphique vide avec juste les axes**
+plt.show()					**pour afficher mon graph**
+
+plt.plot(data.head(12)['DATE'],data.head(12)['UNRATE'])		**en premier param les valeurs de x, et en deuxième les valeurs de y**
+plt.show()
+
+plt.plot(data.head(12)['DATE'],data.head(12)['UNRATE'])
+plt.xticks(rotation=90)						**xticks avec l'argument rotation permet d'appliquer une rotation d'un certain 								nombre de degrés sur les légendes de mon axe x**
+plt.show()
+
+plt.yticks(rotation=90)			**pareil mais pour y**
+
+////////////////////////////////////////// 
+
+plt.xlabel("Année 1948")
+plt.ylabel("Taux de chômage")			**pour les légendes de mes axes x et y**
+plt.title("Aux USA")				**pour le titre de mon graphique**

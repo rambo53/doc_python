@@ -1,0 +1,54 @@
+//////////////////////////////////// FIGURE ////////////////////////////////////
+
+Un objet figure est un ensemble de graphiques.
+
+fig=plt.figure()		**je crée mon objet**
+
+graph1 = fig.add_subplot(1,2,1)		**je crée un  premier graph avec en premier param le nombre de lignes dont dispose mon objet figure, 					en deuxième param c'est le nombres de colonnes, et en dernier param c'est le numéro de mon graph**
+graph2 = fig.add_subplot(1,2,2)
+
+////////////////////////////////////
+
+fig=plt.figure()
+
+graph1 = fig.add_subplot(2,1,1)
+graph2 = fig.add_subplot(2,1,2)
+
+graph1.plot(data.loc[12:23]['DATE'],data.loc[12:23]['UNRATE'])		**j'injecte les données dans le graph1 de mon objet fig**
+graph1.set_title("Chômage en 1949")
+
+graph2.plot(data.head(12)['DATE'],data.head(12)['UNRATE'])		**j'injecte les données dans le graph2 de mon objet fig**
+graph2.set_title("Chômage en 1949")					**je donne un titre à mon  graph**
+
+plt.show()				**j'affiche mes deux graph**
+
+////////////////////////////////////
+
+fig=plt.figure(figsize=(15,8))				**je peux donner une taille à mes différents graphiques lors de l'intanciation de ma 							figure avec figsize en param qui prend en premier la largeur et en suite la hauteur**
+
+////////////////////////////////////
+
+Pour afficher plusieurs courbes au sein du même graph :
+
+fig2=plt.figure(figsize=(15,15))
+
+data['MONTH']=data['DATE'].dt.month					**je récupère uniquement le mois en chiffre de mon datetime et stock 									mes valeurs dans une colonnes que je crée "MONTH"**
+
+plt.plot(data.head(12)['MONTH'], data.head(12)['UNRATE'])
+plt.plot(data.loc[12:23]['MONTH'], data.loc[12:23]['UNRATE'])
+
+plt.show()
+
+////////////////////////////////////
+
+Je peux rajouter un param pour définir la couleurs de mon tracé :
+
+plt.plot(data.head(12)['MONTH'], data.head(12)['UNRATE'], c='red')		**c est pour color**
+
+////////////////////////////////////
+
+Je peux rajouter une légende aussi avec :
+
+plt.plot(data.head(12)['MONTH'], data.head(12)['UNRATE'], c='red', label="1948")
+
+plt.legend(loc="upper left")				**attention si j'oublie cette instruction la légende ne s'affiche pas**

@@ -1,0 +1,51 @@
+//////////////////////////// FICHIER //////////////////////////////////
+
+fichier = open("data.txt", "r")
+
+fichier.close()
+
+r, pour une ouverture en lecture (READ).
+w, pour une ouverture en écriture (WRITE), à chaque ouverture le contenu du fichier est écrasé. Si le fichier n'existe pas python le crée.
+a, pour une ouverture en mode ajout à la fin du fichier (APPEND). Si le fichier n'existe pas python le crée.
+b, pour une ouverture en mode binaire.
+t, pour une ouverture en mode texte.
+x, crée un nouveau fichier et l'ouvre pour écriture
+
+////////////////////////////
+
+fichier = open("data.txt", "r")
+print fichier.read()
+fichier.close()			**pour afficher le contenu d'un fichier**
+
+////////////////////////////
+
+fichier = open("data.txt", "a")
+fichier.write("Bonjour monde")		**pour écrire à la suite et rajouter "\n" pour saut de ligne si besoin**
+fichier.close()
+
+////////////////////////////
+
+fichier = open("data.txt", "w")
+
+lst=["une phrase","une autre","une dernière"]
+
+fichier.writelines(lst)		**avec writelines on va boucler sur la liste pour écrire toutes les phrases de ma liste les une à la suite 				des autres en insérant un espace**
+fichier.close()
+
+////////////////////////////
+
+with open("data.txt", "r") as fichier:		**with pour éviter de rajouter à chaque fois le close**
+	print fichier.read()
+
+	print fichier.read(5)			**lira uniquement les 5 premiers char**
+
+	print fichier.readline()		**sans s lira une seule ligne**
+
+	print fichier.readlines()		**avec s lira toutes les lignes et les stockera dans un tableau avec un "\n" à la fin de 						chaque lignes**
+
+
+
+
+
+
+

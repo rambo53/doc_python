@@ -1,0 +1,35 @@
+//////////////////////////// ISINSTANCE COMPARAISON //////////////////////////////////
+
+
+Pour tester si un objet ou une variable est bien du type attendu par une méthode :
+
+if isinstance(age, int):
+	print(f"l'age est de {age}")
+
+Ici je teste si ma variable age est bien un int et pas un string, en premier param mon objet à tester et en deuxième le type d'objet attendu.
+
+//////////////////////////////////
+
+Pour comparer 2 objets :
+
+user1 = User("marc",22)
+user2 = User("Joe",24)
+
+if user1 is user2:		**avec is on compare les instances**
+	print("Non")
+
+
+user1 = User("marc",22)
+user2 = user1			**ici je pointe vers user1 donc mes objets sont similaires**
+
+Je peux redéfinir ma méthode equal mais ici cela fonctionnera qu'avec le "==" et non le "is":
+
+def __eq__(self,other):
+	return self.nom==other.nom and self.age==other.age	**si le nom et l'age sont égaux on considère que les deux objets sont égaux**
+
+Si je n'ai pas accés à ma classe mais que je veux tester l'égalité des valeurs :
+
+user1.__dict__ == user2.__dict		**la méthode __dict__ renvoie le dico des valeurs de mon objet et comparera les valeurs des variables 					de mes 2 objets** 
+
+
+

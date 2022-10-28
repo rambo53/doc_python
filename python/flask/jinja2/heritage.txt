@@ -1,0 +1,41 @@
+//////////////////////////////////// HERITAGE ////////////////////////////////////
+
+Mon template parent :
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %} {% endblock %} | blog</title>
+
+    {% block extra_styles %} {% endblock %}					**Si besoin ajout css par page**
+</head>
+<body>
+
+<nav>Ma navbar</nav>
+
+<main class="container">
+{% block content %} 								**espace pour afficher mes pages enfants**
+
+{% endblock %}
+</main>
+
+</body>
+</html>
+
+///////////////////////////////////////
+
+{% extends "base.html" %}							**précise template parent**
+
+{% block title %} Welcome {% endblock %}					**valeur à écrire dans block title template parent**
+
+{% block content %} 
+
+
+<h1>Homepage</h1>
+<p>Bienvenue {{ test_var.name }}</p>						**tout le contenu de ma page**
+
+{% endblock %}

@@ -1,0 +1,28 @@
+//////////////////////////// JSON //////////////////////////////////
+
+Je dois d'abord importer json :
+
+import json
+
+user = {"nom": "marc",
+	"age": 25,
+	"amis": ["paul","jo","flo"]
+	}
+
+user_json = json.dumps(user)			**convertit mon json en str pour l'enregistrer dans mon fichier**
+
+    f= open("test.txt", "w")
+
+    f.write(user_json)
+
+    f.close()
+
+//////////////////////////////////
+
+Pour l'inverse, désérialiser du json en objet :
+
+donnees_json = fichier.read()
+
+user = json.loads(donnees_json)
+
+print(user["nom"])			**pour lire les données j'utilise la synthaxe du dict en python**

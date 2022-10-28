@@ -1,0 +1,49 @@
+//////////////////////////// CLASS //////////////////////////////////
+
+En python je ne déclare pas de variables globales de class sauf si nécessaire, je place les variables de mon instance dans mon constructeur directement :
+
+class Personne:
+	
+	ESPECE = "Humain"				**espece est une variable de classe, sa valeur sera la même pour toutes mes personnes**
+
+	def __init__(self, nom: str="", age: int=0):		**la méthode __init__ est mon constructeur, self est mon objet à instancier**
+		self.nom=nom
+		self.age=age
+
+	def SePresenter(self):				**dans mes méthodes d'instance je passe toujours self en param pour récup ses valeurs**
+		print(f"hello i'm {self.nom} et je suis un {self.ESPECE}.)"
+
+	def Action():
+		print("Go!")				**pas besoin de self pour les méthodes de classes**
+
+
+//////////////////////////////////
+
+Pour l'héritage :
+
+class Femme(Personne):			**ici j'indique que Femme hérite de Personne**
+
+	def __init__(self, nom: str, age: int, enceinte: bool=False):
+		super().__init__(nom,age)				**j'appel mon constructeur parent qui possède déjà des valeurs par 
+		self.enceinte = enceinte				défaut pour nom et age**
+
+	def Action():
+		super().Action()
+		print("motherfucker")			**j'appel la méthode Action du parent et ensuite j'affiche "motherfucker"**
+
+
+//////////////////////////////////
+
+En python on peut faire de l'héritage multiple :
+
+class EtreVivant:
+	def infos():
+		print("j'existe")
+
+class Predateur:
+	def chasse():
+		print("je chasse")
+
+class Chat(EtreVivant, Predateur):			**ici chat hérite de EtreVivant et Predateur**
+	def crie():
+		print("miaou")

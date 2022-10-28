@@ -1,0 +1,50 @@
+//////////////////////////// HANDSHAKE //////////////////////////////////
+
+Parfois le max_data_size est trop petit pour afficher le résultat de notre commande, alors plutôt que de constament le modifier pour qu'il colle avec les data reçus, on renvois d'abord la taille de la reponse avant la réponse, et on détermine une taille en octet à respecter pour le transfert.
+
+3 000 représente 3000 octets.
+
+1 000 000 000 000 représente 1 Terra = 13 octets en longueur data.
+
+Pour renvoyer la taille avant la réponse :
+
+header = str(len(reponse)).zfill(13)		**len est un int donc je le convertit en str avant transfert, et la méthode zfill sert à 						ajouter des 0 avant si la reponse en plus petite que 1 terra**
+
+Ex : 
+
+reponse = "no"		**2 octets(2 char)**
+
+header = str(len(reponse.encode())).zfill(13)
+
+print(header)
+
+0 000 000 000 002	**j'ai déterminer une longueur de data de 13 donc zfill remplira automatiquement avec 12 0 avant mon 2**
+
+s.sendall(header.encode())		**s étant ma socket**
+
+//////////////////////////////////
+
+Si mes données sont trop importantes alors je passe par une fonction :
+
+
+def socket_receive_all_data(socket_p, data_len):		**socket_p est la connection socket et data len est par exemple ici 4000**
+
+	current_data_len = 0
+	total_data = None
+
+	while current_data_len < data_len:			**0 plus petit que 4000**
+		chunk_len = data_len - current_data_len		**4000 - 0 pour chunk_len au premier tour de boucle**
+
+		if chunk_len > MAX_DATA_SIZE:			**si 4000 est plus grand que 1024**
+			chunk_len = MAX_DATA_SIZE		**on limite le chunk_len(4000 ici) à 1024**
+		data = socket_p.recv(chunk_len)			**ici je récupère une première partie de mes data (1024)**
+
+		if not data:
+			return None				**si data n'a rien alors je renvoie None**
+		if not total_data:				**total_data n'est pas instancié (lors du premier passage) alors j'ajoute les 								data reçues au dessus**
+			total_data = data
+		else :						**sinon je cumule avec les données reçus précédemment (concatène 1024 char 								avec mes 1024 char reçus avant**
+			total_data += data
+		current_data_len += len(data)			**ici je cumule la longueur des data reçus total soit 1024+1024**
+
+	return total_data					**une fois tout finit je renvoie ma str total**

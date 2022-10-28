@@ -1,0 +1,14 @@
+//////////////////////////// RECUP IMAGE //////////////////////////////////
+
+import requests
+
+reponse = requests.get("mon_adresse_url.fr")
+
+if reponse.status_code == 200:
+	f = open("mon_image.jpg", "wb")			**wb car je récupère un contenu en binaire**
+	
+	f.write(reponse.content)
+
+	f.close()
+else:
+	print("erreur")

@@ -1,0 +1,55 @@
+//////////////////////////////////// GROUPBY ////////////////////////////////////
+
+Rassemble les données comme en SQL, ici un df avec des doublons dans la colonne bandeau :
+
+	bandeau		Address	ID	Sell
+0	plomberie	Patna	20123	140000
+1	plomberie	Delhi	20124	300000
+2	electricite	Coimba	20145	600000
+3	electricite	Greater 	20146	200000
+4	gaz		Patna	20147	600000
+
+df = df.groupby(["bandeau"])
+
+Ici je rassemble mes données en les groupant selon la valeur de ma colonne "bandeau", mais si j'essaye de les afficher, il m'affichera uniquement l'adresse mémoire.
+
+////////////////////////////////////
+
+Pour afficher le contenu de mon groupie, je peux utiliser "get_group" :
+
+- df.get_group("electricite")
+
+
+	bandeau		Address	ID	Sell
+2	electricite	Coimba	20145	600000
+3	electricite	Greater 	20146	200000
+
+////////////////////////////////////
+
+Pour récupérer l'ensemble des key de mon groupby, ici "'plomberie','electricite','gaz'" :
+
+- df.groups.keys()
+
+Attention ils ne seront pas dans l'ordre d'apparition dans ma colonne.
+
+////////////////////////////////////
+
+A la suite de groupie je peux ajouter des méthodes telles que "sum, mean, avg..."
+Et je peux lui indiquer les colonnes sur lesquelles je veux qu'il applique cette méthode :
+
+- df.groupby("electricite")["Sell"].sum()
+
+800000			** il additionne les valeurs dans la colonne Sell du df électricité**
+
+////////////////////////////////////
+
+Je peux aussi passer en param plusieurs critères de regroupement, ici sur un autre df je veux récupérer le nombre de députés par état aux US et les compter en fonction de leur sexe :
+
+- df.groupby(["state", "gender"])["last_name"].count()
+
+state  gender
+AK     F           0
+       M          16
+AL     F           3
+       M         203
+

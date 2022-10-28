@@ -1,0 +1,81 @@
+//////////////////////////////////// MATH NUMPY ////////////////////////////////////
+
+Avec un vecteur (tab 1 dimensions)
+
+conso_none = data_alcool[:,4]==''		**je crée mon filtre**
+data_alcool[conso_none,4]='0'			**je filtre mon tableau sur la colonne désirée pour remplacer les valeurs non renseignées**
+
+conso = data_alcool[:,4]			**je récupère l'intégralité des valeurs de ma colonne**
+conso = conso.astype(float)			**je convertis en float ces valeurs**
+
+conso.mean()					**avec mean j'affiche la moyenne de ces valeurs**
+
+1.2001719373656738
+
+conso.max()					**avec max j'affiche la valeur la plus grande de la colonne**
+
+13.5
+
+conso.sum()					**avec sum j'affiche la somme totale de mes lignes**
+
+3908.96
+
+////////////////////////////////////
+
+Avec des matrices (tab 2 dimensions)
+
+matrix = np.array([[5,10,15], [2,3,4], [1,1,1]])
+([[5,10,15],
+  [2,3,4],
+  [1,1,1]])
+
+Avec sum(axis=1) j'additionne les valeurs de toutes mes lignes. Ici :
+
+matrix.sum(axis=1)
+
+30, 9, 3
+
+Avec axis à 0 j'additionne toutes les valeurs de mes colonnes. Ici :
+
+matrix.sum(axis=0)
+
+8, 14, 20
+
+////////////////////////////////////
+
+conso_canada_1986_filter = (data_alcool[:,0]=='1986') & (data_alcool[:,2]=='Canada')	**filtre sur année et pays**
+conso_canada_1986 = data_alcool[conso_canada_1986_filter]				**je récupère les données dans mon dataset complet**
+canada_conso = conso_canada_1986[:,4].astype(float)					**je convertis les données en float et les stock**
+
+print(conso_canada_1986[:,3])
+print(canada_conso[:])
+print(canada_conso.sum())
+
+['Other' 'Spirits' 'Beer' 'Wine']
+[0.   3.11 4.87 1.33]
+9.31
+
+////////////////////////////////////
+
+Utilisation dictionnaire pour stocker conso total de chaque pays :
+
+data_year_1989_filter = data_alcool[:,0]=='1989'			**je crée un filtre sur l'année, auparavant j'ai valorisé les chaine 									vide pour consomation à '0'**
+data_year_1989 = data_alcool[data_year_1989_filter,:]			**je récupère les données filtrées**
+lst_countries = data_year_1989[:,2]					**je récupère le nom des différents pays**
+lst_countries_uniq = []							**j'instancie un tableau pour récupérer les nom de pays sans doublons**
+dic_conso = {}								**j'instancie un dictionnaire pour stocker mes données**
+
+
+for country in lst_countries:						**je boucle sur ma liste de nom de pays pour récupérer les nom de pays 											sans doublons**
+    if country not in lst_countries_uniq:
+        lst_countries_uniq.append(country)
+
+
+for country in lst_countries_uniq:					**je boucle sur ma liste sans doublon, je filtre avec le nom de pays**
+    current_country = data_year_1989[:,2]==country
+    conso_current_country = data_year_1989[current_country,4].astype(float)		**je convertis en float**
+    dic_conso[country] = conso_current_country.sum()			**je stocke la valeur dans la clées avec le nom du pays et en valeur 									la somme des consommation d'alcool**
+
+print(dic_conso)
+
+{'Guatemala': 2.47, 'Seychelles': 3.3000000000000003, 'Costa Rica': 5.3999999999999995...

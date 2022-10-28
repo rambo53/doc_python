@@ -1,0 +1,14 @@
+//////////////////////////// PLATFORM //////////////////////////////////
+
+Platform me permet de récupérer les infos sur la machine de mon utilisateur , par exemple si s'est un mac, pc ,linux...
+
+import platform
+import os
+
+p = platform.platform()		**renvoie les infos de la machine de mon utilisateur**
+	
+r = os.getcwd()			**renvoie répertoire courant**
+
+print(p+" "+r+" >")
+
+macOS-10.16-64bit C:\User\stef... >		**pour exemple**

@@ -1,0 +1,178 @@
+//////////////////////////// LISTE //////////////////////////////////
+
+En python les listes peuvent contenir différents type de données, ex : int et string.
+Je les déclare avec des crochets.
+
+animaux = ["girafe", "tigre", "singe", "souris"]
+tailles = [5, 2.5, 1.75, 0.15]
+mixte = ["girafe", 5, "souris", 0.15]
+
+En python je peux utiliser des index négatifs ex :
+
+animaux = ["girafe", "tigre", "singe", "souris"]
+
+print(animaux[-1]) 	**affichera "souris"**
+
+liste[-2:]  		**Affiche les 2 dernières occurrences ("singe", "souris")**
+
+liste[:] 		**Affiche toutes les occurences**
+
+liste[::2]		**affiche 1 occurence sur 2 en partant de 0**
+
+liste[::-1] 		**affiche toutes les occurences en partant de la dernière**
+
+liste[1:3] = ["rat", "gerboise"]	**modifie depuis index 1 compris juqu'à index 3 non compris (animaux = ["girafe", "rat", "gerboise", 							"souris"])**
+
+liste[:] = []  		**vide la liste**
+
+
+//////////////////////////// METHODES DE LISTE //////////////////////////////////
+
+liste = []
+liste.append(1)		**j'ajoute à la suite des valeurs dans ma liste**
+
+Cependant si j'ai une liste à laquelle je veux ajouter les valeurs d'une autre liste, il insérera la liste et non pas mes valeurs une par une:
+
+liste=[1,2,3]
+
+liste2 = [4,5,6]
+
+liste.append(liste2)
+
+[1,2,3[4,5,6]]		**en sortie j'aurais une liste dans une liste et non pas une seule liste**
+
+/////////////////////////
+
+liste=[1,2,3]
+
+liste2 = [4,5,6]
+
+liste.extend(liste2)	**avec extend j'ai bien mes valeurs ajouter les unes après les autres**
+
+[1,2,3,4,5,6]
+
+Le "+=" à le même comportement:
+
+liste=[1,2,3]
+
+liste2 = [4,5,6]
+
+liste += liste2	
+
+[1,2,3,4,5,6]
+
+//////////////////////////////////
+
+liste = [1,2,3,4]
+
+num = 7
+
+liste.insert(0,num)		**en premier param c'est l'index ici position 0, et en deuxième la valeur que je veux insérer**
+
+[7,1,2,3,4]
+
+//////////////////////////////////
+
+liste = ["a", "b", "c"]
+del liste[1]		**supprime de la liste via son index ici 1 donc "b"**
+
+/////////////////////////
+
+liste = ["a", "b", "c"]
+liste.remove("a")	**supprime de la liste via sa valeur ici "a"**
+
+/////////////////////////
+
+liste = ["a", "b", "c"]
+liste.reverse()		**inverse les valeur au sein de la liste ("c" "b" "a")**
+
+/////////////////////////
+
+liste = [1,2,3,5,10]
+len(liste)		**compte la taille de la liste (ici 5)**
+
+/////////////////////////
+
+liste = ["a","a","a","b","c","c"]
+liste.count("a")	**compte le nombre d'occurence d'un élément dans une liste (ici 3)**
+
+liste = [1,2,3]
+min(liste)	**1**
+
+liste = [1,2,3]
+max(liste)	**3**
+
+liste = [1,2,3]
+sum(liste)	**6**
+
+/////////////////////////
+
+liste = ["a","a","a","b","c","c"]
+liste.index("b")	**retourne l'index d'un élément (ici 3), retourne uniquement le premier index si l'élément est en double dans ma 			liste, sinon je peux préciser un index de début ou de fin**
+
+/////////////////////////
+
+Si je veux rechercher dans une string : 
+
+nom="Jean-Pierre"
+
+var=nom.find("Pierre")
+
+print(var)		**5 car Pierre à été trouvé à partir de l'index 5, si Pierre n'était pas présent retourne -1**
+
+//////////////////////////////////
+
+ma_chaine = "Olivier:ENGEL:Strasbourg"
+new_chaine = ma_chaine.split(":")		**transforme une string en liste avec un séparateur**
+
+new_chaine = ['Olivier', 'ENGEL', 'Strasbourg']
+
+/////////////////////////
+
+liste = ["Olivier","ENGEL","Strasbourg"]
+new_chaine = ":".join(liste)			**transforme une liste en string avec un séparateur (ici ":")**
+
+new_chaine = 'Olivier:ENGEL:Strasbourg'
+
+/////////////////////////
+
+liste = [1,2,3,5,10]
+
+3 in liste		**renvoie un boolean si valeur dans liste**
+True
+
+11 in liste
+False
+
+/////////////////////////
+
+pour swipper des valeurs dans une liste en une ligne :
+
+liste=[1,2,3]
+
+liste[0], liste[-1] = liste[-1],liste[0]	**ici il récupère d'abord les valeurs à bouger, puis les attribut aux places souhaités**
+
+//////////////////////////////////
+
+range(5)
+[0, 1, 2, 3, 4]		**renvoie une liste de suite de nombres à partir de 0 juqu'à 4**
+
+/////////////////////////
+
+languages = ['French']				**liste**
+
+languages_tuple = ('Spanish', 'Portuguese')	**tuple**
+
+languages.extend(languages_tuple)
+
+print('New Language List:', languages)		**avec extend je peux combiner un tuple avec une liste pour récupérer une liste**
+
+/////////////////////////
+
+from itertools import permutations
+list(permutations(['a', 'b', 'c']))
+[('a', 'b', 'c'), ('a', 'c', 'b'), ('b', 'a', 'c'), ('b', 'c', 'a'), ('c', 'a', 'b'), ('c', 'b', 'a')]
+
+**renvoie toutes les combinaisons possible d'une listes**
+
+

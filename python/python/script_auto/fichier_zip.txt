@@ -1,0 +1,26 @@
+//////////////////////////// ZIP //////////////////////////////////
+
+import zipfile
+
+zip = zipfile.ZipFile("mes_fichier_zip.zip", "w", zipfile.ZIP_DEFLATED)		**w pour écrire, créer notre zip, et deflated pour le 										compresser**
+
+zip.write("mon_zip1.xlsx")
+zip.write("mon_zip2.xlsx")
+
+zip.close()
+
+//////////////////////////////////
+
+Pour zipper directement tout un dossier :
+
+import shutil
+
+shutil.make_archive("mes_fichier_zip","zip","le_dossier_a_zipper")		**en premier param le nom que je donne à mon dossier sans 											l'extension, en 2ieme, l'extension, et en 3ieme le dossier 											contenant les fichiers à zipper**
+
+//////////////////////////////////
+
+Pour dézipper mes fichiers :
+
+import shutil
+
+shutil.unpack_archive("mes_fichier_zip.zip", "dossier_dezipper")		**premier param le dossier à dézipper, second le nom que je 										veux donner à mon répertoire**
