@@ -1,0 +1,36 @@
+//////////////////////////// VIM ////////////////////////////
+
+Vim est un editeur de texte natif à linux.
+Pour utiliser vim :
+
+- vi file.txt
+- vim file.txt
+
+Pour quitter la lecture du texte on tape :
+
+- :q!
+
+////////////////////////////
+
+Pour pouvoir modifier du texte on appuie sur la touche "i" pour insertion.
+Une fois nos modifs enregistrés on appuie sur "esc" (echap) pour sortir du mode insertion.
+Pour enregistrer nos modifs ":wq" (write and quit).
+
+////////////////////////////
+
+Pour annuler une écriture de texte, je fait "esc" pour sortir du mode insertion et j'appuie sur la touche "u".
+
+Equivalent d'un "ctrl+z".
+
+////////////////////////////
+
+Pour chercher une occurence, un mot dans mon texte je tape "/le mot que je cherche".
+Puis je tape sur "entrée" pour afficher la première occurence de mon mot, pour me déplacer sur la prochaine occurence, je tape sur "n".
+
+////////////////////////////
+
+Pour du chercher/remplacer dans un texte :
+
+- :g/mot a remplacer/s//mot qui le remplace/g
+
+On peut bien sûr utiliser des regex. 

@@ -1,0 +1,43 @@
+////////////////////////// FIND //////////////////////////
+
+La commande find permet de chercher dans un dossier de manière récursive si un fichier existe, par nom du user propriétaire du fichier, divers type de fichiers...
+
+- find Documents/ -name "file*"
+
+** ici je cherche dans le dossier "Documents" tous les fichiers qui commencent par file de façon récursive, ainsi la commande me renverra aussi ceux dans les dossier enfants ** 
+
+ //////////////////////////
+
+- find Documents/ -type d -name "test"
+
+** ici je vais chercher un document de type dossier via le "d" dont le nom est test " **
+
+ //////////////////////////
+
+- find Documents/ -type f -name "file.txt" -size -100k
+
+** ici je cherche un document de type fichier via le "f" dont le nom est "file.txt" et dont la taille fait moins de 100k** 
+
+ //////////////////////////
+
+- find Documents/ -mtime -1
+
+** ici je cherche un document dont la date de modification est de hier (-1), -2 pour il y a 2 jours... **
+
+ //////////////////////////
+
+- find Documents/ -ctime -1
+
+** ici je cherche un document dont la date de création est de hier (-1), -2 pour il y a 2 jours... **
+
+ //////////////////////////
+
+- find Documents/ -ctime -1 -exec ls -l {} \;
+
+** ici je fais ma recherche et ensuite j'applique une commande sur les résultats de ma recherche, {} et \; sont obligatoires **
+
+ //////////////////////////
+
+- find Documents/ -inum 2088
+
+** ici je recherche un fichier par son inode (2088) **

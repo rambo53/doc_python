@@ -1,0 +1,29 @@
+/////////////////////////////////////////////// LS ///////////////////////////////////////////////
+
+La commande "ls" pour lister les fichier et dossier dans un dossier.
+
+- ls -a 	** pour afficher les éléments cachés **
+
+- ls -l 	** pour avoir un affichage plus complet en informations sur chaques éléments **
+
+- ls -lh 	** affichage des infos en mode human readable avec des indications sur la taille des éléments **
+
+- ls -la	** je peux copmbiner les 2 instructions **
+
+/////////////////////////
+
+- ls -l dossier		** affichera les infos des fichiers contenus dans ce dossier  **
+
+- ls -ld dossier	** affichera les infos sur mon dossier directement sans afficher les fichiers en son sein **
+
+/////////////////////////
+
+- ls -lR
+
+** pour afficher le contenu de mes dossiers de manière récursive **
+
+/////////////////////////
+
+- ls -i
+
+** pour afficher les inodes (id) de mes fichiers ou dossier **
