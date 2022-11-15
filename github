@@ -1,0 +1,22 @@
+Pour pusher un projet existant depuis ma machine sur github :
+
+- ouvrir git bash depuis le projet à importer (click droit "git bash here")
+- git init -b main
+- git add .
+- git commit -m "first commit"
+
+Il se peut que gitBash demande une authentification, dans ce cas :
+
+- git config --global user.email "monmail@hotmail.fr"
+
+Je retape la commande suivante si gitBash m'a demandé de m'authentifier :
+
+- git commit -m "first commit"
+
+- git remote add origin https://github.com/rambo53/sveltekit.git (par exemple, mais le nom et l'adresse du repo sont fournit par github)
+
+- git branch -M main
+
+- git push -u origin main
+
+Et tada mon repo créé est automatiquement alimenter avec mon projet local.
