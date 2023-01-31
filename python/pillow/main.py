@@ -1,7 +1,7 @@
 from PIL import Image, ImageFilter, ImageDraw, ImageFont,  ImageColor 
 
 im = Image.open("lenna.png")  
-'''
+
 im.show()  
 print(im.filename)  
 print(im.format)
@@ -74,11 +74,14 @@ d.text((14,60), "Point", fill=(255,255,255,255))
 
 out = Image.alpha_composite(img, text)    
 out.show()  
-'''
+
 # inverse le sens d'une photo horizontalement
 im_flip = im.transpose(Image.FLIP_LEFT_RIGHT)
 
 # inverse le sens d'une photo de bas en haut
 im_flip = im.transpose(Image.FLIP_TOP_BOTTOM) 
-
 im_flip.show()
+
+# convertit l'image en noir et blanc
+image = im.convert('L')
+image.show()
