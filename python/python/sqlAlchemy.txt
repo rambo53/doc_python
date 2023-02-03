@@ -1,0 +1,7 @@
+Quand je requête une table en bdd je ne veux pas toujours récupéré toutes les valeurs de mon objet, pour palier à ce pbm :
+
+# sur ma requête dans ma méthode
+load_only('ownerName', 'boxSize', 'boxes', 'lastPickUp', 'zone', 'code')
+
+# dans mon model sur mon attribut
+deferred()
