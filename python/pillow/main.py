@@ -1,4 +1,4 @@
-from PIL import Image, ImageFilter, ImageDraw, ImageFont,  ImageColor 
+from PIL import Image, ImageFilter, ImageDraw, ImageFont,  ImageColor, ImageEnhance, ImageOps 
 
 im = Image.open("lenna.png")  
 
@@ -11,8 +11,106 @@ print(im.width)
 print(im.height)
 print(im.info)
 
-# Show rotated Image  
-imim = im.rotate(45)  
+#########################################################################
+    #################### FILTER ENHANCE ########################
+#########################################################################
+
+# pour intensifier les couleurs
+im_enh = ImageEnhance.Color(im)
+im_enh = im_enh.enhance(2)
+im_enh.show()
+
+# pour augmenter le contraste des couleurs
+im_con = ImageEnhance.Contrast(im)
+im_con = im_con.enhance(2)
+im_con.show()
+
+# pour augmenter la luminosité
+im_br = ImageEnhance.Brightness(im)
+im_br = im_br.enhance(2)
+im_br.show()
+
+# pour augmenter le détail d'une image
+im_sh = ImageEnhance.Sharpness(im)
+im_sh = im_sh.enhance(5)
+im_sh.show()
+
+# floutera la photo
+blur_Image = im.filter(ImageFilter.BLUR)  
+blur_Image.show()  
+
+# floutera la photo selon la valeur passé en param de boxblur, de 1 à 9
+blur_Image = im.filter(ImageFilter.BoxBlur(1))  
+blur_Image.show()  
+
+#########################################################################
+#########################################################################
+
+
+#########################################################################
+         #################### OPS ########################
+#########################################################################
+
+# Ajuste le contraste et applique divers traitement directement
+im_auto_con = ImageOps.autocontrast(image=im, cutoff=5)
+im_auto_con.show() 
+
+# redimensionne une photo technique 2
+im_resize = ImageOps.scale(image = im, factor = 0.4)
+im_resize.show()
+
+# pour garder un ratio normal et ne pas risquer de déformer mon image avec une largeur ou hauteur trop importante
+# ici par exemple une largeur de 500 est trop importante, pillow gardera donc une largeur de 300 pour ne pas déformer l'image
+im_contain = ImageOps.contain(image = im, size = (500,200))
+im_contain.show()
+
+# ajoute un cadre de 100 px autour de mon image, par défaut de couleur noir, sinon on change avec fill
+im_border = ImageOps.expand(image = im, border =100, fill = (255,255,0))
+im_border.show()
+
+# pour rogner mon image de 100px de chaques côtés
+im_crop = ImageOps.crop(image = im, border = 100)
+im_crop.show()
+
+#########################################################################
+#########################################################################
+
+
+#########################################################################
+         #################### DEFORMER ########################
+#########################################################################
+
+class Deformer():
+    def getmesh(self, im):
+        w, h = im.size
+        # les coordonnées des 4 angles de mon img en partant du coin haut gauche puis dans le sens inverse des aiguilles d'une montre
+        # voir deform_1.png
+        im_shape_source = (0,0,0,h,w,h,w,0)
+        # dimensions du rectangle de notre img qui servira pour analyse (convolution tensorflow) en partant de l'angle en haut à gauche
+        # de position x et y 0, puis 100 de largeur par 200 de hauteur
+        im_target_rect = (0,0,100,200)
+
+        return [(im_target_rect, im_shape_source)]
+
+im_deform = ImageOps.deform(im, Deformer())
+im_deform.show()
+
+#########################################################################
+#########################################################################
+
+# redimensionner une photo
+im_resize = im.resize((im.width*2, im.height*2))
+im_resize.show()
+
+# extrait un bout de mon image
+# comme css mes 4 côtés dans le sens des aiguilles d'une montre en partant du côté gauche
+im = im.crop((0,0,20,20))
+im.show() 
+
+# Show rotated Image, l'arg "expand=true" permet d'étendre les côtés de l'image pour ne pas couper les angles lors de la rotation
+# fillcolor remplit les contours avec une couleur passé en param, par défaut ils sont noirs
+# print(ImageColor.colormap) pour voir les couleurs natives dispos 
+imim = im.rotate(45, fillcolor="blue")  
 imim.show()  
 
 # create a thumbnail 
@@ -29,14 +127,6 @@ rotated_image2 = im.transpose(Image.ROTATE_90)
 rotated_image2.show() 
 
 rotated_image2.save('lenna_rotate.png')  
-
-# floutera la photo
-blur_Image = im.filter(ImageFilter.BLUR)  
-blur_Image.show()  
-
-# floutera la photo selon la valeur passé en param de boxblur, de 1 à 9
-blur_Image = im.filter(ImageFilter.BoxBlur(1))  
-blur_Image.show()  
 
 # ajouter watermark à photo
 text = "c'est moi"  
