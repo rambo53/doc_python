@@ -1,0 +1,17 @@
+pip install pandas_profiling 
+
+
+from pandas_profiling import ProfileReport 
+import pandas as pd 
+
+train = pd.read_csv('../datasources/titanic/train.csv') 
+prof = ProfileReport(train) 
+prof.to_file(output_file='rapport.html') 
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+Me permet de générer un rapport sur les datas de mon fichier csv au format html, et sur mon fichier csv de manière générale.
+
+La taille du fichier, si il y des lignes en doubles, si il y a des valeurs manquantes dans des cellules et le pourcentage de valeurs manquantes.
+
+Et ensuite des stats sur chacunes de nos colonnes.
