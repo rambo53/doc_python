@@ -1,0 +1,30 @@
+Pour évaluer la similitude entre deux chaines de caractères et ainsi détecter d'éventuelles doublon, on peut utiliser l'algorithme de Jaro :
+
+Librairie jaro-winkler, si les deux chaines sont de mêmes tailles :
+
+import jaro
+
+jaro.jaro_metric("BINUIT", "BENOIT")
+
+ici = 0.77777777
+
+///////////////////////////////////////////////////////////
+
+Ou bien on a l'algo de Levenshtein, qui lui renvoie 2 valeurs, la distance = nombre d'opérations pour obtenir le même résultat, et le ratio pour évaluer la similitude
+entre les deux :
+
+import Levenshtein as lev 
+
+def levCalclulate(str1, str2) : 
+    Distance = lev.distance(str1, str2) 
+    Ratio = lev.ratio(str1, str2) 
+    print("Levenshtein entre {0} et {1}".format(str1, str2)) 
+    print("> Distance : {0}\n> Ratio : {1}\n".format(Distance, Ratio)) 
+ 
+levCalclulate("Benoit", "Ben")
+
+Levenshtein entre Benoit et Ben
+
+> Distance : 3
+
+> Ratio : 0.6666666666666666
