@@ -1,0 +1,19 @@
+On peut utiliser "where" pour filtrer plus rapidement des lignes sur un df, et appliquer des conditions multiples.
+Attention cette fonction me retourne le dataframe avec les lignes ne correspondant pas à mes conditions valorisé à "NaN".
+Faire un "dropna()" pour récupérer uniquement les lignes qui m'intéressent.
+
+//////////////////////// CODE ////////////////////////
+
+technologies= {
+    'Courses':["Spark","PySpark","Spark","Python","PySpark"],
+    'Fee' :[22000,25000,23000,24000,26000],
+    'Discount':[1500,1000,1200,800,1300],
+    'Duration':['30days','50days','30days','35days','40days']
+          }
+df = pd.DataFrame(technologies)
+
+cond1 = df.Fee > 23000
+cond2 = df.Discount > 900
+
+df2 = df.where(cond1 & cond2)
+df2 = df2.dropna()
