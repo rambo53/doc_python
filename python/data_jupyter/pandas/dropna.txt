@@ -1,0 +1,14 @@
+Pour supprimer des lignes si elles ont toutes leurs colonnes ayant la valeur "NaN", ou si une colonne à une valeur "NaN".
+
+# Drop columns that has all Nan Values
+df=df.dropna(axis=1)
+
+# Default drop rows that contains nan values
+df2=df.dropna()
+
+# Drop rows that has NaN values on selected columns
+df2=df.dropna(subset=['Courses','Duration'])
+
+# With threshold, 
+# Keep only the rows with at least 2 non-NA values.
+df2=df.dropna(thresh=3,axis=1)
