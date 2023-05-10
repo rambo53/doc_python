@@ -1,0 +1,17 @@
+Pour supprimer des valeurs en doublons, des doublons parfait soit les mêmes valeurs sur toutes la ligne, ou si des doublons apparaissent dans certaines colonnes.
+
+technologies = {
+    'Courses':["Spark","PySpark","PySpark","Pandas"],
+    'Fee' :[20000,22000,22000,30000],
+    'Duration':['30days','35days','35days','50days'],
+    }
+   
+df = pd.DataFrame(technologies)
+
+# sur ligne complète
+df1 = df.drop_duplicates()
+print(df1)
+
+# sur une colonne
+df3 = df.drop_duplicates(subset=['Courses'])
+print(df3)
