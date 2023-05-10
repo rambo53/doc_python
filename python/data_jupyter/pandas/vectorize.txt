@@ -26,3 +26,10 @@ Deuxième façon avec la même fonction plus simple :
 lst_access = df_access["A intégrer PIM"].str.split("\n")
 
 ////////////////////////////////////
+
+import numpy as np
+
+def clean_col_vectorize(col_type):
+    return col_type.replace("pim", "dam")
+
+attr_xl['type'] = np.vectorize(clean_col_vectorize)(attr_xl['type']) 
