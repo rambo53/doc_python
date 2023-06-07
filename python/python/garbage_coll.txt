@@ -1,0 +1,11 @@
+////////////////// GARBAGE COLLECTOR //////////////////
+
+On peut déclencher le garbage collector à volonté si besoin ou bien le bloquer :
+
+import gc
+
+# bloquer
+gc.disable()
+
+# activer
+gc.collect()
