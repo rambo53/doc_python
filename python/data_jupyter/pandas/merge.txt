@@ -1,0 +1,33 @@
+////////////////////// MERGE //////////////////////
+
+Pour relier des valeurs ensemble via un id commun dans un seul fichier.
+
+Un premier df:
+
+id_truc	  nom
+1	        ouch
+2	        haha
+
+Un deuxième:
+
+id_truc	  note
+1	        5
+1	        10
+2	        5
+2	        0
+1	        7
+
+/////////////////////
+
+df_final = pd.merge(df1, df2)
+
+Résultat :
+
+	  id_truc	  nom	  note
+0	  1	        ouch	5
+1	  1	        ouch	10
+2	  1	        ouch	7
+3	  2	        haha	5
+4	  2	        haha	0
+
+Pour fonctionner il faut des id commun mais aussi que les noms de colonnes sur lesquelles je vais merger portent le même nom.
