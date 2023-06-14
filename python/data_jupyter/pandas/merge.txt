@@ -5,17 +5,17 @@ Pour relier des valeurs ensemble via un id commun dans un seul fichier.
 Un premier df:
 
 id_truc	  nom
-1	        ouch
-2	        haha
+1	  ouch
+2	  haha
 
 Un deuxième:
 
 id_truc	  note
-1	        5
-1	        10
-2	        5
-2	        0
-1	        7
+1	  5
+1	  10
+2	  5
+2	  0
+1	  7
 
 /////////////////////
 
@@ -31,3 +31,57 @@ Résultat :
 4	  2	        haha	0
 
 Pour fonctionner il faut des id commun mais aussi que les noms de colonnes sur lesquelles je vais merger portent le même nom.
+Si mes colonnes n'ont pas le même nom dans ce cas je précise les colonnes sur lesquelles je veux merger :
+
+- df_final = pd.merge(df1, df2, left_on="id_truc", right_on="id_t")
+
+/////////////////////
+
+Pour merge j'ai 4 possibilité, inner, outer, left, right.
+
+Un premier df:
+
+id_truc	  nom
+1	  ouch
+2	  haha
+3	  hoho
+
+Un deuxième:
+
+id_truc	  note
+1	  5
+2         5
+4	  7
+
+id_truc	  nom	  note
+1	  ouch	  5
+2	  haha	  5
+
+- df_final = pd.merge(df1, df2, how="inner")
+Pour inner le résultat n'incluera pas le 3 ni le 4, c'est le résultat par défaut si on ne précise pas le "how".
+
+id_truc	  nom	  note
+1	  ouch	  5
+2	  haha	  5
+3	  hoho    NaN
+4         NaN	  7
+
+- df_final = pd.merge(df1, df2, how="outer")
+Pour outer le résultat incluera le 3 et le 4, et indiquera "NaN" pour la valeur manquante, ici note pour 3 et nom pour 4.
+
+id_truc	  nom	  note
+1	  ouch	  5
+2	  haha	  5
+3	  hoho    NaN
+
+- df_final = pd.merge(df1, df2, how="left")
+Pour left le résultat incluera le 3, et indiquera "NaN" pour la valeur manquante, ici note.
+
+id_truc	  nom	  note
+1	  ouch	  5
+2	  haha	  5
+4         NaN	  7
+
+- df_final = pd.merge(df1, df2, how="right")
+Pour right le résultat incluera le 4, et indiquera "NaN" pour la valeur manquante, ici nom.
+
