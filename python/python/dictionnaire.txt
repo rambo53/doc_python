@@ -98,7 +98,23 @@ print(a)
 
 {'nom': 'Wayne', 'prenom': 'Bruce'} 
 
+///////////////////////////////////
 
+Je peux utiliser les defaultdict, qui ont la particularité de ne pas lever d'erreur si une clé appelé n'est pas présente.
+
+from collections import defaultdict
+
+d = defaultdict(lambda: "lolilol")    ** je passe une valeur par défaut si une clé n'est pas présente **
+d["a"] = "yep baby"
+d["b"] = "yeah buddy"
+
+print(d["a"])
+print(d["b"])
+print(d["c"])                         ** affichera lolilol car ma clée n'existe pas dans mon dict **
+
+Je peux déclarer mon defaultdict de cette façon :
+
+d = defaultdict(int)                  ** toute les valeurs de mes clées auront par défaut la valeur 0 **
 
 
 
