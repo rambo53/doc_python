@@ -11,3 +11,9 @@ df = pd.DataFrame(technologies)
 df2 = df[df.Courses.values == "Spark"]
 
 print(df2)
+
+
+
+Pour query avec conditions multiples :
+
+attr_scope_loc = df_attr[(df_attr['localizable']=="1") & (df_attr['scopable']=="1")]
