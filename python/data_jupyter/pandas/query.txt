@@ -17,3 +17,11 @@ print(df2)
 Pour query avec conditions multiples :
 
 attr_scope_loc = df_attr[(df_attr['localizable']=="1") & (df_attr['scopable']=="1")]
+
+///////////////////////////
+
+Pour récupérer les lignes non présentes dans un autre dataframe, ici on veut avoir un dataframe contenant les lignes
+dont le "code" n'est pas présent dans "lst_code_in_akeneo", pour ce faire on utilise le tilde, qui représente la négation en pandas : 
+
+lst_code_in_akeneo = df_asset_in_akeneo["code"].tolist()
+asset_not_in_akeneo = df_padd_asset[~ df_padd_asset.code.isin(lst_code_in_akeneo)]
