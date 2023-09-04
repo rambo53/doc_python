@@ -25,3 +25,12 @@ dont le "code" n'est pas présent dans "lst_code_in_akeneo", pour ce faire on ut
 
 lst_code_in_akeneo = df_asset_in_akeneo["code"].tolist()
 asset_not_in_akeneo = df_padd_asset[~ df_padd_asset.code.isin(lst_code_in_akeneo)]
+
+
+Une variante pour récupérer les lignes dont les index n'existent pas dans un autre df :
+
+# je commence par réindexer mes df à comparer
+df_padd_reindex = df_padd.set_index(df_padd["combination_reference"], inplace=False, drop=False)
+df_ekkia_reindex = df_ekkia.set_index(df_ekkia["reference"], inplace=False, drop=False)
+
+df_ekkia_not_in_padd = df_ekkia_reindex[ ~df_ekkia_reindex.index.isin(df_padd_reindex.index) ]
