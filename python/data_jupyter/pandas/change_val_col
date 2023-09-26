@@ -1,0 +1,10 @@
+////////////////////////// TRAITEMENT SUR VALEURS COL //////////////////////////
+
+Si je veux appliquer un traitement simple sur toutes les valeurs d'une colonne, ici par exemple un replace, ex :
+
+- valeur de base dans colonne "CODE" : 1-2-3
+
+Je veux remplacer tous les "-" par des "_" en une fois sans boucler sur toutes les valeurs contenues dans ma colonne "CODE".
+
+
+df_fam["CODE"] = df_fam["CODE"].str.replace('-', '_')
