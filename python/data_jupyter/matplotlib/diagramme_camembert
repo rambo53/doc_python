@@ -1,0 +1,21 @@
+import matplotlib.pyplot as plt
+
+# pour pouvoir construire un graph je doit avoir un dataframe
+
+df_integ = pd.read_excel("analyse_ekkia_integ.xlsx", dtype=str, keep_default_na=False)
+
+labels = df_integ["scope"].tolist()
+
+fig, ax = plt.subplots()
+sku_origin = df_integ["sku_origin_file"]
+
+  # explode est pour faire ressortir un élément de mon camembert
+explode = (0.2, 0, 0, 0)
+
+  # autopct est pour indiquer les pourcentage directement dans ce dernier 1.1, le deuxième 1 est pour le nombre de décimale affichées
+ax.pie(sku_origin, labels=labels, startangle=90, explode=explode, autopct='%1.1f%%')
+ax.axis('equal')
+
+plt.show()
+
+  
