@@ -73,6 +73,8 @@ sentence_filter = filtre_stopfr( word_tokenize(sentence, language="french") )
 fd = nltk.FreqDist(sentence_filter) 
 print(fd.most_common())
 
+[('néoprène', 2), ('polypropylène', 2), ('Sangle', 2), ('bardette', 1), ('légère', 1), ('facile', 1), ('entretien', 1), ('alvéolé', 1), ('antidérapant', 1), ('Assise', 1), ('matelassée', 1), ('recouverte', 1), ('Rexine', 1), ('anneaux', 1), ('étrivières', 1), ('camouflés', 1), ('limiter', 1), ('gêne', 1), ('niveau', 1), ('cuisses', 1), ('Equipée', 1), ('poignée', 1), ('anneau', 1), ('croupière', 1), ('contre-sanglon', 1), ('double', 1), ('épaisseur', 1), ('œillets', 1), ('renfort', 1), ('doublée', 1), ('amara', 1), ('côté', 1), ('poney', 1), ('davantage', 1), ('confort', 1)]
+
 # si l'on veut extraire les 'n' premiers mots les plus fréquents on précise dans la focntion 'most_common' par exemple les 5 premiers
 print(fd.most_common(5))
 
