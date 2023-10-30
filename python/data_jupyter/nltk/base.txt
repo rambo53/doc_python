@@ -1,0 +1,89 @@
+///////////////// BASE NLTK //////////////////
+
+Le Nltk est le traitement du language naturel comme data.
+
+Pour pouvoir utiliser la librairie "nltk" il faut utiliser Jupiter notebook (plus simple).
+Importer nltk et charger les dépendances :
+
+import nltk
+nltk.download()
+
+from nltk.corpus import stopwords
+from nltk import word_tokenize
+
+# Pour un exemple simple d'utilisation, on récupère un texte :
+
+Sentence = 'Une bardette légère et facile d’entretien en néoprène alvéolé antidérapant. Assise matelassée néoprène, recouverte Rexine avec anneaux d’étrivières camouflés pour limiter la gêne au niveau des cuisses. Equipée d’une poignée en polypropylène et d’un anneau de croupière. Sangle et contre-sanglon double épaisseur avec œillets de renfort en polypropylène. Sangle doublée amara côté poney pour davantage de confort.'
+
+
+# puis on utilise les fonctions de stop words pour éliminer de notre texte les mots inutiles, on peut ajouter les mots que nous voulons ou la ponctuation.
+
+french_stopwords = set(stopwords.words('french'))
+
+lst_french_ponct = [".", ",", '’']
+french_stopwords.update(lst_french_ponct)
+
+filtre_stopfr =  lambda text: [token for token in text if token.lower() not in french_stopwords]
+
+sentence_filter = filtre_stopfr( word_tokenize(sentence, language="french") )
+
+# une fois cette étape réalisée voilà le résultat 
+
+['bardette',
+ 'légère',
+ 'facile',
+ 'entretien',
+ 'néoprène',
+ 'alvéolé',
+ 'antidérapant',
+ 'Assise',
+ 'matelassée',
+ 'néoprène',
+ 'recouverte',
+ 'Rexine',
+ 'anneaux',
+ 'étrivières',
+ 'camouflés',
+ 'limiter',
+ 'gêne',
+ 'niveau',
+ 'cuisses',
+ 'Equipée',
+ 'poignée',
+ 'polypropylène',
+ 'anneau',
+ 'croupière',
+ 'Sangle',
+ 'contre-sanglon',
+ 'double',
+ 'épaisseur',
+ 'œillets',
+ 'renfort',
+ 'polypropylène',
+ 'Sangle',
+ 'doublée',
+ 'amara',
+ 'côté',
+ 'poney',
+ 'davantage',
+ 'confort']
+
+# on peut ensuite récupérer une fréquence de distribution de mots, afin de voir les mots apparaissant le plus souvent dans notre texte.
+
+fd = nltk.FreqDist(sentence_filter) 
+print(fd.most_common())
+
+# on peut aussi regrouper les mots ayant la même racine synthaxique
+
+example_words = ["donner","don","donne","donnera","dons","test"]
+stemmer = nltk.stem.snowball.FrenchStemmer()
+
+for w in example_words:
+    print(stemmer.stem(w))
+
+don
+don
+don
+don
+don
+test
