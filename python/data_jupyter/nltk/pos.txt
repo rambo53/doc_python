@@ -1,0 +1,14 @@
+///////////////// pos part of speech //////////////////
+
+Permet d'identifier chaque mot en fonction de s'il s'agit d'un adjectif, nom, verbe...
+
+tagged = nltk.pos_tag(sentence_filter)
+tagged
+
+
+# ici NN = nom, JJ= adjectif, NNS = nom pluriel
+[('bardette', 'NN'),
+('facile', 'JJ'),
+('étrivières', 'NNS')]
+
+# attention le tag avec nltk n'est pas précis pour le français, voir spacy si besoin plus précis
