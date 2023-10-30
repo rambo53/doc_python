@@ -1,0 +1,29 @@
+POUR CRÉER DES DIAGRAMMES BARRE REGROUPÉ SELON CERTAINES VALEURS
+
+import pandas as pd
+from math import floor
+
+df_analyse = pd.read_excel("analyse_padd.xlsx", keep_default_na=False)
+
+legend_x_names = ["nb_sku_origin_file", "nb_sku_p3", "nb_sku_akeneo"]
+x_names = df_analyse["scope"].tolist()
+
+y1 = df_analyse["nb_sku_origin_file"].tolist()
+y2 = df_analyse["nb_sku_p3"].tolist()
+y3 = df_analyse["nb_sku_akeneo"].tolist()
+
+nb_categories = len(legend_x_names)
+largeur_barre = floor(1*10/nb_categories)/10
+
+x1 = range(len(y1))
+x2 = [i + largeur_barre for i in x1]
+x3 = [i + 2*largeur_barre for i in x1]
+
+plt.bar(x1, y1, width = largeur_barre, color = 'red')
+plt.bar(x2, y2, width = largeur_barre, color = 'blue')
+plt.bar(x3, y3, width = largeur_barre, color = 'green')
+
+plt.xticks([r + largeur_barre / nb_categories for r in range(len(y1))], x_names, rotation=60)
+plt.legend(legend_x_names,loc=1)
+
+plt.show()
