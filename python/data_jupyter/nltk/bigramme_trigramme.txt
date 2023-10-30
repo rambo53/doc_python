@@ -1,0 +1,21 @@
+///////////////// bigame, trigramme, n-grammes //////////////////
+
+Les "n-grams" sont des séquences de 'n' éléments dans un texte.
+
+# exemple :
+
+sentence = "la vie est belle"
+
+Bigrammes : (la, vie), (vie, est), (est,belle)
+Trigrammes : (la, vie, est), (vie, est, belle)
+...
+
+Permet de prédire la suite de mots à venir.
+
+# pour générer des bigrams, on doit d'abord nettoyer le texte
+from nltk.util import ngrams
+from collections import Counter
+
+Bigrams = ngrams(sentence_filter, 2)
+
+print(Counter(bigrams).most_common(5))
