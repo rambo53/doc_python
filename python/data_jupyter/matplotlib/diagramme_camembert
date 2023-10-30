@@ -13,8 +13,12 @@ sku_origin = df_integ["sku_origin_file"]
 explode = (0.2, 0, 0, 0)
 
   # autopct est pour indiquer les pourcentage directement dans ce dernier 1.1, le deuxième 1 est pour le nombre de décimale affichées
+
 ax.pie(sku_origin, labels=labels, startangle=90, explode=explode, autopct='%1.1f%%')
 ax.axis('equal')
+
+# pour donner un titre à mon diagramme, le premier param est le titre, taille d'écriture, largeur d'écriture
+fig.suptitle("test", size="xx-large", weight="bold")
 
 plt.show()
 
