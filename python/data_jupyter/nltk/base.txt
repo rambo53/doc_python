@@ -73,6 +73,12 @@ sentence_filter = filtre_stopfr( word_tokenize(sentence, language="french") )
 fd = nltk.FreqDist(sentence_filter) 
 print(fd.most_common())
 
+# si l'on veut extraire les 'n' premiers mots les plus fréquents on précise dans la focntion 'most_common' par exemple les 5 premiers
+print(fd.most_common(5))
+
+# si je veux extraire la fréquence de distribution d'un mot en particulier 
+fd.get("bardette")
+
 # on peut aussi regrouper les mots ayant la même racine synthaxique
 
 example_words = ["donner","don","donne","donnera","dons","test"]
