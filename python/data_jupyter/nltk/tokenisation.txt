@@ -1,0 +1,47 @@
+///////////////// Tokenisation //////////////////
+
+La tokenisation est la transformation d'une chaine de caractère en jetons individuels.
+
+
+Sentence = 'Une bardette légère et facile d’entretien en néoprène alvéolé antidérapant. Assise matelassée néoprène, recouverte Rexine avec anneaux d’étrivières camouflés pour limiter la gêne au niveau des cuisses. Equipée d’une poignée en polypropylène et d’un anneau de croupière. Sangle et contre-sanglon double épaisseur avec œillets de renfort en polypropylène. Sangle doublée amara côté poney pour davantage de confort.'
+
+french_stopwords = set(stopwords.words('french'))
+
+lst_french_ponct = [".", ",", '’']
+french_stopwords.update(lst_french_ponct)
+
+filtre_stopfr =  lambda text: [token for token in text if token.lower() not in french_stopwords]
+
+sentence_filter = filtre_stopfr( word_tokenize(sentence, language="french") )
+
+sentence_filter_lower = [word.lower() for word in sentence_filter]
+
+tagged = nltk.pos_tag(sentence_filter_lower)
+tagged
+
+[('bardette', 'NN'),
+ ('légère', 'NN'),
+ ('facile', 'JJ'),
+ ('entretien', 'NN'),
+ ('néoprène', 'NN'),
+ ('alvéolé', 'NN'),
+ ('antidérapant', 'JJ'),
+ ('Assise', 'NNP'),
+ ('matelassée', 'NN'),
+ ('néoprène', 'NN'),
+ ('recouverte', 'NN'),
+ ('rexine', 'NNP'),
+ ('anneaux', 'NN'),
+ ('étrivières', 'NNS'),
+ ('camouflés', 'VBP'),
+ ('limiter', 'JJR'),
+ ('gêne', 'NN'),
+ ('niveau', 'NN'),
+ ('cuisses', 'VBZ'),
+ ('equipée', 'NNP'),
+...
+
+# On peut retirer automatiquement les signes de ponctuation plutôt que de les rajouter nous même 
+# cette étape intervient après le filtrage des stop words
+
+sentence_without_ponct = list(filter(lambda token: nltk.tokenize.punkt.PunktToken(token).is_non_punct, Sentence))
