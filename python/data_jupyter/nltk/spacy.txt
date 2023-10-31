@@ -1,0 +1,41 @@
+///////////////// spacy //////////////////
+
+Pour extraire les adjectifs d'un texte afin de voir pour compléter des attributs.
+Une variante de NLTK.
+
+Pour une plus grande efficacité de l'étape de POS, il est préférable d'utiliser l'anglais.
+
+Installer dans sa venv spacy :
+
+- pip install spacy
+- python -m spacy download en_core_web_sm
+
+//////////////////////////////////////////// CODE ////////////////////////////////////////////
+
+import spacy
+nlp = spacy.load("en_core_web_sm")
+
+import nltk
+
+from nltk.corpus import stopwords
+from nltk import word_tokenize
+
+
+sentence = "Stainless steel fillis stirrup irons featuring a fold-away mounting step. Saves from having to lengthen stirrups and helps when mounting on horse. White interchangeable tread."
+
+
+french_stopwords = set(stopwords.words('french'))
+lst_french_ponct = [".", ",", '’']
+french_stopwords.update(lst_french_ponct)
+filtre_stopfr =  lambda text: [token for token in text if token.lower() not in french_stopwords]
+
+sentence_filter = filtre_stopfr( word_tokenize(sentence, language="french") )
+
+sentence_filter_join = " ".join(sentence_filter)
+
+about_doc = nlp(sentence_filter_join)
+
+for token in about_doc:
+    if token.pos_ == "ADJ":
+        print(token)
+        print(token.pos_)
