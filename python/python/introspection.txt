@@ -1,0 +1,18 @@
+////////////////// INTROSPECTION //////////////////
+
+Permet à mon code d'être "conscient" de lui même, et d'accèder à ses valeurs de manière automatique, ou de s'auto appeler.
+Exemples :
+
+df.apply(getattr(Class_to_call, methode_to_call), axis=1, args=[value])
+
+Ou le mot clé "eval":
+
+class class1:
+
+    def __init__(self):
+        self.toto = "toto1"
+
+test_class = eval(val_str)()
+print(test_class.toto)
+
+Le code du dessus printera "toto1"/
