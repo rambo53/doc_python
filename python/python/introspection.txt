@@ -12,7 +12,15 @@ class class1:
     def __init__(self):
         self.toto = "toto1"
 
-test_class = eval(val_str)()
-print(test_class.toto)
+    def print_toto(self):
+        print(self.toto)
 
-Le code du dessus printera "toto1"/
+val_str = "class1"
+
+try:
+    test_class = eval(val_str)()
+    test_class.print_toto()
+except NameError as ne:
+    print(ne)
+
+Le code du dessus printera "toto1"
