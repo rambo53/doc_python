@@ -34,3 +34,10 @@ df_padd_reindex = df_padd.set_index(df_padd["combination_reference"], inplace=Fa
 df_ekkia_reindex = df_ekkia.set_index(df_ekkia["reference"], inplace=False, drop=False)
 
 df_ekkia_not_in_padd = df_ekkia_reindex[ ~df_ekkia_reindex.index.isin(df_padd_reindex.index) ]
+
+///////////////////////////
+
+Pour récupérer les lignes dont une cellule contient une certaine valeur, ici je veux les lignes dont la colonne "col1" contient "stef":
+
+df = pd.DataFrame(data= {'col1':["stef", "laur", "stefane"], 'col2': ["1", "1", "1"]})
+df[df['col1'].str.contains('stef')]
