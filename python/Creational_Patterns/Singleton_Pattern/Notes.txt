@@ -1,0 +1,19 @@
+1- Dans Python, les modules sont crées une seule fois. On peut donc les considérer comme des Singleton 
+2- Un tuple de taille égale à 1 est appelé un Singleton 
+3- None est un Singleton 
+
+
+==================================
+Let’s start with differences.
+
+new	init
+1	Called before init	Called after new
+2	Accepts a type as the first argument	Accepts an instance as the first argument
+3	Is supposed to return an instance of the type received	Is not supposed to return anything
+4	Used to control instance creation	Used to initialize instance variables
+==========================================
+
+
+
+
+
